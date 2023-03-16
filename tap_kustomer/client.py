@@ -6,7 +6,8 @@ from pathlib import Path
 from typing import Any, Callable, Iterable
 
 import requests
-from singer_sdk.authenticators import BearerTokenAuthenticator
+from singer_sdk.authenticators import SimpleAuthenticator
+from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
 
@@ -17,29 +18,27 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class kustomerStream(RESTStream):
     """kustomer stream class."""
 
-    # TODO: Set the API's base URL here:
-    url_base = "https://api.mysample.com"
-
-    # OR use a dynamic url_base:
-    # @property
-    # def url_base(self) -> str:
-    #     """Return the API URL root, configurable via tap settings."""
-    #     return self.config["api_url"]
-
-    records_jsonpath = "$[*]"  # Or override `parse_response`.
-    next_page_token_jsonpath = "$.next_page"  # Or override `get_next_page_token`.
-
+    # Use a dynamic url_base depending on the `prod_point` config
     @property
-    def authenticator(self) -> BearerTokenAuthenticator:
-        """Return a new authenticator object.
-
-        Returns:
-            An authenticator instance.
+    def url_base(self) -> str:
         """
-        return BearerTokenAuthenticator.create_for_stream(
-            self,
-            token=self.config.get("auth_token", ""),
+        Return the API URL root based on the provided prod point 1 (US), 2 (EU).
+        https://developer.kustomer.com/kustomer-api-docs/reference/getting-started-with-kustomer-api#using-the-kustomer-api
+        """
+        if self.config["prod_point"] == 1:
+            # US endpoint
+            return "https://api.kustomerapp.com"
+        # EU endpoint
+        elif self.config["prod_point"] == 2:
+            return "https://api.prod2.kustomerapp.com"
+
+        raise ConfigValidationError(
+            "prod_point configuration must be either 1 (for US) or 2 (for EU)."
         )
+
+    # Where the data and pagination is
+    records_jsonpath = "$.data.*"
+    next_page_token_jsonpath = "$.links.next"
 
     @property
     def http_headers(self) -> dict:
@@ -49,10 +48,10 @@ class kustomerStream(RESTStream):
             A dictionary of HTTP headers.
         """
         headers = {}
+        headers["Accept"] = "application/json"
+        headers["Authorization"] = f"Bearer {self.config.get('api_token')}"
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
-        # If not using an authenticator, you may also provide inline auth headers:
-        # headers["Private-Token"] = self.config.get("auth_token")
         return headers
 
     def get_next_page_token(
@@ -69,17 +68,13 @@ class kustomerStream(RESTStream):
         Returns:
             The next pagination token.
         """
-        # TODO: If pagination is required, return a token which can be used to get the
-        #       next page. If this is the final page, return "None" to end the
-        #       pagination loop.
-        if self.next_page_token_jsonpath:
-            all_matches = extract_jsonpath(
-                self.next_page_token_jsonpath, response.json()
-            )
-            first_match = next(iter(all_matches), None)
-            next_page_token = first_match
-        else:
-            next_page_token = response.headers.get("X-Next-Page", None)
+        # If pagination is required, return a token which can be used to get the
+        # next page. If this is the final page, return "None" to end the
+        # pagination loop.
+
+        all_matches = extract_jsonpath(self.next_page_token_jsonpath, response.json())
+        first_match = next(iter(all_matches), None)
+        next_page_token = first_match
 
         return next_page_token
 
@@ -105,25 +100,6 @@ class kustomerStream(RESTStream):
             params["order_by"] = self.replication_key
         return params
 
-    def prepare_request_payload(
-        self,
-        context: dict | None,
-        next_page_token: Any | None,
-    ) -> dict | None:
-        """Prepare the data payload for the REST API request.
-
-        By default, no payload will be sent (return None).
-
-        Args:
-            context: The stream context.
-            next_page_token: The next page index or value.
-
-        Returns:
-            A dictionary with the JSON body for a POST requests.
-        """
-        # TODO: Delete this method if no payload is required. (Most REST APIs.)
-        return None
-
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
         """Parse the response and return an iterator of result records.
 
@@ -133,7 +109,7 @@ class kustomerStream(RESTStream):
         Yields:
             Each record from the source.
         """
-        # TODO: Parse response body and return a set of records.
+        # Parse response body and return a set of records.
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
