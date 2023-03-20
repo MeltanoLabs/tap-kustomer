@@ -29,7 +29,7 @@ class Tapkustomer(Tap):
     # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
-            "api_token",
+            "auth_token",
             th.StringType,
             required=True,
             secret=True,  # Flag config as protected.

@@ -50,7 +50,7 @@ class kustomerStream(RESTStream):
         return SimpleAuthenticator(
             stream=self,
             auth_headers={
-                "Authorization": f"Bearer {self.config.get('api_token')}",
+                "Authorization": f"Bearer {self.config.get('auth_token')}",
             },
         )
 

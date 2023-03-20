@@ -3,28 +3,39 @@ send_anonymous_usage_stats: true
 project_id: "tap-kustomer"
 default_environment: test
 environments:
-- name: test
+  - name: test
 plugins:
   extractors:
-  - name: "tap-kustomer"
-    namespace: "tap_kustomer"
-    pip_url: -e .
-    capabilities:
-    - state
-    - catalog
-    - discover
-    - about
-    - stream-maps
-    config:
-      start_date: '2010-01-01T00:00:00Z'
-    settings:
-    # TODO: To configure using Meltano, declare settings and their types here:
-    - name: username
-    - name: password
-      kind: password
-    - name: start_date
-      value: '2010-01-01T00:00:00Z'
+    - name: "tap-kustomer"
+      namespace: "tap_kustomer"
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+        - about
+        - stream-maps
+      config:
+        start_date: "2010-01-01T00:00:00Z"
+      settings:
+        - name: auth_token
+          label: API Key
+          kind: password
+          description: |
+            The token to authenticate against the API service
+        - name: start_date
+          label: Start Date
+          kind: date_iso8601
+          value: "2010-01-01T00:00:00Z"
+          description: |
+            The earliest record date to sync
+        - name: prod_point
+          label: Production Point of Deployment
+          kind: integer
+          value: 1
+          description: |
+            The production point of deployment for your organization instance. 1 (US) or 2 (EU).
   loaders:
-  - name: target-jsonl
-    variant: andyh1203
-    pip_url: target-jsonl
+    - name: target-jsonl
+      variant: andyh1203
+      pip_url: target-jsonl
