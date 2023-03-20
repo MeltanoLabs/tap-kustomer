@@ -41,6 +41,20 @@ class kustomerStream(RESTStream):
     next_page_token_jsonpath = "$.links.next"
 
     @property
+    def authenticator(self) -> SimpleAuthenticator:
+        """Return a new authenticator object.
+
+        Returns:
+            An authenticator instance.
+        """
+        return SimpleAuthenticator(
+            stream=self,
+            auth_headers={
+                "Authorization": f"Bearer {self.config.get('api_token')}",
+            },
+        )
+
+    @property
     def http_headers(self) -> dict:
         """Return the http headers needed.
 
@@ -49,7 +63,6 @@ class kustomerStream(RESTStream):
         """
         headers = {}
         headers["Accept"] = "application/json"
-        headers["Authorization"] = f"Bearer {self.config.get('api_token')}"
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
         return headers
