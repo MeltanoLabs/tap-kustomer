@@ -4,13 +4,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from singer_sdk import typing as th  # JSON Schema typing helpers
-
 from tap_kustomer.client import kustomerStream
 
 
-SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
+SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
+# Streams to export
 __all__ = [
     "ConversationsStream",
     "CustomersStream",
