@@ -5,8 +5,20 @@ from __future__ import annotations
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-# TODO: Import your custom stream types here:
-from tap_kustomer import streams
+from tap_kustomer.streams import *
+
+# All streams to be included in the tap
+STREAM_TYPES = [
+    ConversationsStream,
+    CustomersStream,
+    # KobjectsStream, # TODO - Work out where this comes from
+    MessagesStream,
+    NotesStream,
+    ShortcutsStream,
+    TagsStream,
+    TeamsStream,
+    UsersStream,
+]
 
 
 class Tapkustomer(Tap):
@@ -24,21 +36,15 @@ class Tapkustomer(Tap):
             description="The token to authenticate against the API service",
         ),
         th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType),
-            required=True,
-            description="Project IDs to replicate",
-        ),
-        th.Property(
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",
         ),
         th.Property(
-            "api_url",
-            th.StringType,
-            default="https://api.mysample.com",
-            description="The url for the API service",
+            "prod_point",
+            th.IntegerType,
+            default=1,
+            description="The production point of deployment for your organization instance. 1 (US) or 2 (EU).",
         ),
     ).to_dict()
 
@@ -48,10 +54,7 @@ class Tapkustomer(Tap):
         Returns:
             A list of discovered streams.
         """
-        return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
-        ]
+        return [stream_type(self) for stream_type in STREAM_TYPES]
 
 
 if __name__ == "__main__":
