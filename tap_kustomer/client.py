@@ -4,15 +4,46 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, Callable, Iterable
+from urllib.parse import parse_qsl
 
 import requests
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
+from singer_sdk.paginators import BaseHATEOASPaginator
 from singer_sdk.streams import RESTStream
 
 _Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
+
+
+class RESTPaginator(BaseHATEOASPaginator):
+    # Where the pagination is
+    next_page_token_jsonpath = "$.links.next"
+
+    def get_next_page_url(
+        self,
+        response: requests.Response,
+        previous_token: Any | None,
+    ) -> Any | None:
+        """Return the url for the next page.
+
+        Args:
+            response: The HTTP ``requests.Response`` object.
+            previous_token: The previous page token value.
+
+        Returns:
+            The next pagination token.
+        """
+        # If pagination is required, return a url which can be used to get the
+        # next page. If this is the final page, return "None" to end the
+        # pagination loop.
+
+        all_matches = extract_jsonpath(self.next_page_token_jsonpath, response.json())
+        first_match = next(iter(all_matches), None)
+        next_page_token = first_match
+
+        return next_page_token
 
 
 class kustomerStream(RESTStream):
@@ -36,9 +67,8 @@ class kustomerStream(RESTStream):
             "prod_point configuration must be either 1 (for US) or 2 (for EU)."
         )
 
-    # Where the data and pagination is
+    # Where the data is
     records_jsonpath = "$.data.*"
-    next_page_token_jsonpath = "$.links.next"
 
     @property
     def authenticator(self) -> SimpleAuthenticator:
@@ -67,31 +97,16 @@ class kustomerStream(RESTStream):
             headers["User-Agent"] = self.config.get("user_agent")
         return headers
 
-    def get_next_page_token(
-        self,
-        response: requests.Response,
-        previous_token: Any | None,
-    ) -> Any | None:
-        """Return a token for identifying next page or None if no more pages.
-
-        Args:
-            response: The HTTP ``requests.Response`` object.
-            previous_token: The previous page token value.
+    def get_new_paginator(self) -> BaseHATEOASPaginator:
+        """Return the paginator
 
         Returns:
-            The next pagination token.
+            A paginator for handling next page requests
         """
-        # If pagination is required, return a token which can be used to get the
-        # next page. If this is the final page, return "None" to end the
-        # pagination loop.
+        return RESTPaginator()
 
-        all_matches = extract_jsonpath(self.next_page_token_jsonpath, response.json())
-        first_match = next(iter(all_matches), None)
-        next_page_token = first_match
-
-        return next_page_token
-
-    def get_url_params(
+    @property
+    def base_url_params(
         self,
         context: dict | None,
         next_page_token: Any | None,
@@ -107,7 +122,9 @@ class kustomerStream(RESTStream):
         """
         params: dict = {}
         if next_page_token:
-            params["page"] = next_page_token
+            params.update(parse_qsl(next_page_token.query))
+
+        # TODO: Check these parameters work as can't find reference to them in the docs
         if self.replication_key:
             params["sort"] = "asc"
             params["order_by"] = self.replication_key
