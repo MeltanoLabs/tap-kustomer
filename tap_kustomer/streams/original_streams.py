@@ -7,7 +7,7 @@ from pathlib import Path
 from tap_kustomer.client import kustomerStream
 
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas"
+SCHEMAS_DIR = Path(__file__).parent / "schemas" / "original"
 
 # Streams to export
 __all__ = [
