@@ -10,44 +10,21 @@ import requests
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.paginators import BaseHATEOASPaginator
+from singer_sdk.pagination import BaseHATEOASPaginator
 from singer_sdk.streams import RESTStream
-
-_Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
-SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 
 class RESTPaginator(BaseHATEOASPaginator):
-    # Where the pagination is
-    next_page_token_jsonpath = "$[links].next"
 
-    def get_next_page_url(
-        self,
-        response: requests.Response,
-        previous_token: Any | None,
-    ) -> Any | None:
-        """Return the url for the next page.
-
-        Args:
-            response: The HTTP ``requests.Response`` object.
-            previous_token: The previous page token value.
-
-        Returns:
-            The next pagination token.
-        """
-        # If pagination is required, return a url which can be used to get the
-        # next page. If this is the final page, return "None" to end the
-        # pagination loop.
-
-        all_matches = extract_jsonpath(self.next_page_token_jsonpath, response.json())
-        first_match = next(iter(all_matches), None)
-        next_page_token = first_match
-
-        return next_page_token
-
+    def get_next_url(self, response):
+        data = response.json()
+        return data.get("links")["next"]
 
 class kustomerStream(RESTStream):
     """kustomer stream class."""
+
+    # Where the data is
+    records_jsonpath = "$[data][*]"
 
     # Use a dynamic url_base depending on the `prod_point` config
     @property
@@ -58,17 +35,14 @@ class kustomerStream(RESTStream):
         """
         if self.config["prod_point"] == 1:
             # US endpoint
-            return "https://api.kustomerapp.com"
+            return "https://api.kustomerapp.com/v1/"
         # EU endpoint
         elif self.config["prod_point"] == 2:
-            return "https://api.prod2.kustomerapp.com"
+            return "https://api.prod2.kustomerapp.com/v1/"
 
         raise ConfigValidationError(
             "prod_point configuration must be either 1 (for US) or 2 (for EU)."
         )
-
-    # Where the data is
-    records_jsonpath = "$[data][*]"
 
     @property
     def authenticator(self) -> SimpleAuthenticator:
@@ -105,8 +79,7 @@ class kustomerStream(RESTStream):
         """
         return RESTPaginator()
 
-    @property
-    def base_url_params(
+    def get_url_params(
         self,
         context: dict | None,
         next_page_token: Any | None,
@@ -121,13 +94,10 @@ class kustomerStream(RESTStream):
             A dictionary of URL query parameters.
         """
         params: dict = {}
+   
         if next_page_token:
             params.update(parse_qsl(next_page_token.query))
-
-        # TODO: Check these parameters work as can't find reference to them in the docs
-        if self.replication_key:
-            params["sort"] = "asc"
-            params["order_by"] = self.replication_key
+        
         return params
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:

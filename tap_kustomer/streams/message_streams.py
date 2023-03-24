@@ -5,11 +5,13 @@ from pathlib import Path
 
 from tap_kustomer.client import kustomerStream
 
+from singer_sdk import typing as th  # JSON Schema typing helpers
+
 SCHEMAS_DIR = Path(__file__).parent / "schemas" / "message"
 
 # Streams to export
 __all__ = [
-    "MessageStream",
+    "MessagesStream",
 	"MessageAssignedTeamStream",
 	"MessageAssignedUserStream",
 	"MessageAttachmentStream",
@@ -18,17 +20,30 @@ __all__ = [
 ]
 
     
-class MessageStream(kustomerStream):
+class MessagesStream(kustomerStream):
     """
     TODO
     """
 
-    name = "message"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "message.json"
+    name = "messages"
+    path = "messages"
+    primary_keys = []
+    replication_key = "id"
+    records_jsonpath = "$[data][*]"
 
+    schema = th.PropertiesList(
+        th.Property("type", th.StringType, description=""),
+        th.Property("id", th.StringType, description=""),
+        th.Property("attributes", 
+            th.ObjectType(
+                th.Property("externalId", th.StringType, description=""),
+                th.Property("channel", th.StringType, description=""),
+                th.Property("app", th.StringType, description=""),
+                th.Property("size", th.NumberType, description=""),
+                th.Property("direction", th.StringType, description=""),
+                th.Property("preview", th.StringType, description=""),
+                # th.Property("sentiment", th.ObjectType(th.StringType), description=""),
+        ))).to_dict()
 
 class MessageAssignedTeamStream(kustomerStream):
     """
