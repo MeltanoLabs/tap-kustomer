@@ -5,11 +5,13 @@ from __future__ import annotations
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-from tap_kustomer.streams import *
+from tap_kustomer.streams import MessagesStream
 from tap_kustomer.client import kustomerStream
 
 # All streams to be included in the tap
-STREAM_TYPES = []
+STREAM_TYPES = [
+    MessagesStream
+]
 
 
 class Tapkustomer(Tap):
@@ -24,7 +26,7 @@ class Tapkustomer(Tap):
             th.StringType,
             required=True,
             secret=True,  # Flag config as protected.
-            description="The token to authenticate against the API service",
+            description="The API KEY to authenticate against the API service",
         ),
         th.Property(
             "start_date",

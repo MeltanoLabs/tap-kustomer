@@ -1,9 +1,9 @@
 version: 1
 send_anonymous_usage_stats: true
 project_id: "tap-kustomer"
-default_environment: test
+default_environment: dev
 environments:
-  - name: test
+  - name: dev
     env:
       TAP_KUSTOMER_API_KEY: ${TAP_KUSTOMER_API_KEY}
     config:
@@ -12,7 +12,7 @@ environments:
           - name: tap-kustomer
             select:
               # Add individual stream names here
-              - company.*
+              - messages.*
 plugins:
   extractors:
     - name: "tap-kustomer"
@@ -31,7 +31,7 @@ plugins:
           label: API Key
           kind: password
           description: |
-            The token to authenticate against the API service
+            The API_KEY to authenticate against the API service
         - name: start_date
           label: Start Date
           kind: date_iso8601

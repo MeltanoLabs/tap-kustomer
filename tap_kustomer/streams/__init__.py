@@ -37,7 +37,7 @@ from tap_kustomer.streams.customer_streams import (
 )
 
 from tap_kustomer.streams.message_streams import (
-    MessageStream,
+    MessagesStream,
     MessageAssignedTeamStream,
     MessageAssignedUserStream,
     MessageAttachmentStream,
