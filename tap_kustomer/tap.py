@@ -6,19 +6,10 @@ from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
 from tap_kustomer.streams import *
+from tap_kustomer.client import kustomerStream
 
 # All streams to be included in the tap
-STREAM_TYPES = [
-    ConversationsStream,
-    CustomersStream,
-    # KobjectsStream, # TODO - Work out where this comes from
-    MessagesStream,
-    NotesStream,
-    ShortcutsStream,
-    TagsStream,
-    TeamsStream,
-    UsersStream,
-]
+STREAM_TYPES = []
 
 
 class Tapkustomer(Tap):
@@ -48,7 +39,7 @@ class Tapkustomer(Tap):
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[streams.kustomerStream]:
+    def discover_streams(self) -> list[kustomerStream]:
         """Return a list of discovered streams.
 
         Returns:
