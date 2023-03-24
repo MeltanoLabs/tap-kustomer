@@ -4,6 +4,15 @@ project_id: "tap-kustomer"
 default_environment: test
 environments:
   - name: test
+    env:
+      TAP_KUSTOMER_API_KEY: ${TAP_KUSTOMER_API_KEY}
+    config:
+      plugins:
+        extractors:
+          - name: tap-kustomer
+            select:
+              # Add individual stream names here
+              - company.*
 plugins:
   extractors:
     - name: "tap-kustomer"
@@ -18,7 +27,7 @@ plugins:
       config:
         start_date: "2010-01-01T00:00:00Z"
       settings:
-        - name: auth_token
+        - name: api_key
           label: API Key
           kind: password
           description: |
@@ -39,3 +48,4 @@ plugins:
     - name: target-jsonl
       variant: andyh1203
       pip_url: target-jsonl
+      destination_path: output
