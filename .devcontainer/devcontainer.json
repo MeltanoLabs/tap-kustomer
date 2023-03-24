@@ -18,8 +18,7 @@
     "postCreateCommand": {
         "poetry": "poetry install"
     },
-    "postStartCommand": "meltano install",
-    "remoteUser": "vscode",
+    "postStartCommand": "meltano install"
     "runArgs": ["--env-file",".secrets/.env"]
 
 }
