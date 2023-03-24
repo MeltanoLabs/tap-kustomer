@@ -32,9 +32,18 @@ class MessagesStream(kustomerStream):
     records_jsonpath = "$[data][*]"
 
     schema = th.PropertiesList(
+        th.Property("type", th.StringType, description=""),
         th.Property("id", th.StringType, description=""),
-    ).to_dict()
-
+        th.Property("attributes", 
+            th.ObjectType(
+                th.Property("externalId", th.StringType, description=""),
+                th.Property("channel", th.StringType, description=""),
+                th.Property("app", th.StringType, description=""),
+                th.Property("size", th.NumberType, description=""),
+                th.Property("direction", th.StringType, description=""),
+                th.Property("preview", th.StringType, description=""),
+                # th.Property("sentiment", th.ObjectType(th.StringType), description=""),
+        ))).to_dict()
 
 class MessageAssignedTeamStream(kustomerStream):
     """

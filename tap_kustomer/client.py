@@ -79,8 +79,7 @@ class kustomerStream(RESTStream):
         """
         return RESTPaginator()
 
-    @property
-    def base_url_params(
+    def get_url_params(
         self,
         context: dict | None,
         next_page_token: Any | None,
@@ -96,11 +95,6 @@ class kustomerStream(RESTStream):
         """
         params: dict = {}
    
-        return params
-
-    def get_url_params(self, context, next_page_token):
-        params = {}
-
         if next_page_token:
             params.update(parse_qsl(next_page_token.query))
         
