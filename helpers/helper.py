@@ -1,5 +1,9 @@
+import json
+import re
 from collections import defaultdict
 from pathlib import Path
+
+BASE = Path(__file__).parent.parent / "tap_kustomer" / "streams"
 
 
 def create_class_name(stream_name):
@@ -7,113 +11,165 @@ def create_class_name(stream_name):
     return "".join(x.title() for x in stream_name.split("_")) + "Stream"
 
 
-def generate_stream(stream_name):
+def generate_stream(api_url, stream_name, class_name, description="TODO"):
     """
     Create the template class for the stream
     """
 
-    class_name = create_class_name(stream_name)
-
     return f"""
 class {class_name}(kustomerStream):
     \"\"\"
-    TODO
+    {description}
     \"\"\"
 
     name = "{stream_name}"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    path = "{api_url}"
+    primary_keys = ["id"]
+    replication_key = "updatedAt"
     schema_filepath = SCHEMAS_DIR / "{stream_name}.json"
+
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+        \"\"\"Extract the updatedAt timestamp for the replication key\"\"\"
+        row["updatedAt"] = row["attributes"].pop("updatedAt")
+        return super().post_process(row, context)
 
 """
 
 
-def create_schema_base(stream_type, stream):
-    contents = """
-{
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-    }
-}
-    """
-
+def create_schema_base(contents, stream_name, section):
     # Create the folder if it doesn't exist (with parents)
-    folder_name = Path(__file__).parent / "outputs" / "schemas" / stream_type
+    folder_name = BASE / section / "schemas"
     folder_name.mkdir(parents=True, exist_ok=True)
 
     # Create the JSON file
-    with open(
-        Path(__file__).parent / "outputs" / "schemas" / stream_type / f"{stream}.json",
-        "w",
-    ) as f:
-        f.write(contents)
+    with open(folder_name / f"{stream_name}.json", "w") as f:
+        json.dump(contents, f)
 
 
-def create_stream_files(stream_type, streams):
+def create_stream_files(api_path, details):
     """Generate a stream file for each group"""
 
-    stream_list = '",\n\t"'.join([create_class_name(x) for x in streams])
-
-    file_headers = f"""
-from __future__ import annotations
+    file_headers = f"""from __future__ import annotations
 
 from pathlib import Path
 
 from tap_kustomer.client import kustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "{stream_type}"
+SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = [
-    "{stream_list}"
-]
+__all__ = ["{details['class']}"]
 
     """
 
     # Create the file
     my_file_contents = file_headers
 
-    for stream in streams:
-        my_file_contents += generate_stream(stream)
-        create_schema_base(stream_type, stream)
+    my_file_contents += generate_stream(
+        api_path, details["name"], details["class"], details["description"]
+    )
+    create_schema_base(details["schema"], details["name"], details["section"])
 
-    with open(
-        Path(__file__).parent / "outputs" / f"{stream_type}_streams.py", "w"
-    ) as f:
+    with open(BASE / details["section"] / f"{details['name']}_streams.py", "w") as f:
         f.write(my_file_contents)
 
 
-def create_init_list(all_streams):
+def create_init_list(stream_list):
     """Create the init file list for imports"""
-    contents = ""
-    for stream_type, streams in all_streams.items():
-        contents += f"from tap_kustomer.streams.{stream_type}_streams import (\n"
-        for stream in streams:
-            contents += "\t " + create_class_name(stream) + ",\n"
-        contents += ")\n\n"
 
-    with open(Path(__file__).parent / "outputs" / "__init__.py", "w") as f:
+    # Section specific init file
+    contents = ""
+    for details in sorted(stream_list.values(), key=lambda x: x["name"]):
+        contents += f"from tap_kustomer.streams.{details['section']}.{details['name']}_streams import {details['class']}\n"
+
+    with open(BASE / details["section"] / "__init__.py", "w") as f:
+        f.write(contents)
+
+    # Add to the main init file
+    contents = f"from tap_kustomer.streams.{details['section']} import (\n"
+    for details in sorted(stream_list.values(), key=lambda x: x["name"]):
+        contents += f"\t{details['class']},\n"
+
+    contents += ")\n\n"
+
+    with open(BASE / "__init__.py", "a") as f:
         f.write(contents)
 
 
-def generate_files():
-    # Load the streams
-    with open(Path(__file__).parent / "stream_names.csv", "r") as f:
-        stream_list = [i.split(",") for i in f.read().splitlines()[1:]]
+def get_json_schemas(section):
+    """
+    This aims to extract the properties from the html of the Kustomer API docs.
 
-    # Split by stream group
-    all_streams = defaultdict(list)
-    for stream in stream_list:
-        all_streams[stream[1]].append(stream[0])
+    1. Go to a relevant API page in the section e.g. https://developer.kustomer.com/kustomer-api-docs/reference/getcompanies
+    2. Open the network tab and refresh the page
+    3. Find the response from the /getcompanies?json=on request
+    4. Paste the results into `{section}_properties.json`
+    """
+
+    # Load the data
+    with open(Path(__file__).parent / f"{section}_properties.json", "r") as f:
+        main_file = json.load(f)["oasDefinition"]
+
+    paths = {}
+
+    paths_section = main_file["paths"]
+
+    for api_path in paths_section.keys():
+        if (
+            "{" not in api_path
+            and "=" not in api_path
+            and "get" in paths_section[api_path].keys()
+        ):
+            definition = paths_section[api_path]["get"]
+            description = definition["summary"]
+            schema = definition["responses"]["200"]["content"]["application/json"][
+                "schema"
+            ]["$ref"].split("/")[-1]
+            schema_json = main_file["components"]["schemas"][schema]["properties"][
+                "data"
+            ]
+
+            if "items" in schema_json:
+                schema_json = schema_json["items"]
+
+            # Add the replication key
+            schema_json["properties"]["updatedAt"] = {
+                "type": "string",
+                "format": "date-time",
+            }
+
+            name = api_path[1:].replace("/", "_").replace("-", "_")
+            name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+
+            paths[api_path[1:]] = {
+                "description": description,
+                "schema": schema_json,
+                "name": name,
+                "class": create_class_name(name),
+                "section": section,
+            }
+
+    return paths
+
+
+def generate_files():
+    section = "core_resources"
+
+    # Load the streams
+    stream_list = get_json_schemas(section)
 
     # Create the contents
-    for stream_type, streams in all_streams.items():
-        create_stream_files(stream_type, streams)
+    for api_path, details in stream_list.items():
+        create_stream_files(api_path, details)
 
     # Create the init file list
-    create_init_list(all_streams)
+    create_init_list(stream_list)
+
+    # Display the classnames for the import
+    print("Add this to the top of your tap.py file")
+    print(f"\t# {section}")
+    for details in stream_list.values():
+        print(f'\t{details["class"]},')
 
 
 if __name__ == "__main__":
