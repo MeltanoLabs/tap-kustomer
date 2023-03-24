@@ -19,7 +19,7 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 class RESTPaginator(BaseHATEOASPaginator):
     # Where the pagination is
-    next_page_token_jsonpath = "$.links.next"
+    next_page_token_jsonpath = "$[links].next"
 
     def get_next_page_url(
         self,
@@ -68,7 +68,7 @@ class kustomerStream(RESTStream):
         )
 
     # Where the data is
-    records_jsonpath = "$.data.*"
+    records_jsonpath = "$[data][*]"
 
     @property
     def authenticator(self) -> SimpleAuthenticator:
@@ -80,7 +80,7 @@ class kustomerStream(RESTStream):
         return SimpleAuthenticator(
             stream=self,
             auth_headers={
-                "Authorization": f"Bearer {self.config.get('auth_token')}",
+                "Authorization": f"Bearer {self.config.get('api_key')}",
             },
         )
 
