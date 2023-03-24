@@ -20,5 +20,4 @@
     },
     "postStartCommand": "meltano install"
     "runArgs": ["--env-file",".secrets/.env"]
-
 }
