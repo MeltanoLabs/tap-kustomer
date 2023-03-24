@@ -11,8 +11,21 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
-              # Add individual stream names here
+              # # Add individual stream names here
+              # - audit_logs.*
+              # - brands_default.*
+              # - brands.*
+              # - companies.*
+              # - conversations.*
+              # - customers.*
+              # - klasses.*
               - messages.*
+              # - notes.*
+              # - outbound_accounts.*
+              # - satisfaction.*
+              # - schedules_default.*
+              # - schedules.*
+              # - spam_senders.*
 plugins:
   extractors:
     - name: "tap-kustomer"
