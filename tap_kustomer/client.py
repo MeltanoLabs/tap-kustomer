@@ -37,8 +37,8 @@ class kustomerStream(RESTStream):
         )
 
     # Where the data and pagination is
-    records_jsonpath = "$.data.*"
-    next_page_token_jsonpath = "$.links.next"
+    records_jsonpath = "$[data][*]"
+    next_page_token_jsonpath = "$[links].next"
 
     @property
     def authenticator(self) -> SimpleAuthenticator:
@@ -50,7 +50,7 @@ class kustomerStream(RESTStream):
         return SimpleAuthenticator(
             stream=self,
             auth_headers={
-                "Authorization": f"Bearer {self.config.get('auth_token')}",
+                "Authorization": f"Bearer {self.config.get('api_key')}",
             },
         )
 
