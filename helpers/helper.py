@@ -125,6 +125,10 @@ def get_json_schemas(section):
             schema = definition["responses"]["200"]["content"]["application/json"][
                 "schema"
             ]["$ref"].split("/")[-1]
+            schema_json = main_file["components"]["schemas"][schema]["properties"]
+            if "data" not in schema_json.keys():
+                continue
+
             schema_json = main_file["components"]["schemas"][schema]["properties"][
                 "data"
             ]
@@ -153,23 +157,33 @@ def get_json_schemas(section):
 
 
 def generate_files():
-    section = "core_resources"
+    sections = sorted(
+        [
+            "core_resources",
+            "knowledge_base",
+            "access_management",
+            "apps_platform",
+            "queues_and_routing",
+            "settings_and_configurations",
+            "workflows",
+        ]
+    )
 
-    # Load the streams
-    stream_list = get_json_schemas(section)
+    for section in sections:
+        # Load the streams
+        stream_list = get_json_schemas(section)
 
-    # Create the contents
-    for api_path, details in stream_list.items():
-        create_stream_files(api_path, details)
+        # Create the contents
+        for api_path, details in stream_list.items():
+            create_stream_files(api_path, details)
 
-    # Create the init file list
-    create_init_list(stream_list)
+        # Create the init file list
+        create_init_list(stream_list)
 
-    # Display the classnames for the import
-    print("Add this to the top of your tap.py file")
-    print(f"\t# {section}")
-    for details in stream_list.values():
-        print(f'\t{details["class"]},')
+        # Display the classnames for the import
+        print(f"\t# {section}")
+        for details in stream_list.values():
+            print(f'\t{details["class"]},')
 
 
 if __name__ == "__main__":
