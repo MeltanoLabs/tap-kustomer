@@ -1,15 +1,3 @@
-from tap_kustomer.streams.original_streams import (
-    ConversationsStream,
-    CustomersStream,
-    # KobjectsStream,
-    MessagesStream,
-    NotesStream,
-    ShortcutsStream,
-    TagsStream,
-    TeamsStream,
-    UsersStream,
-)
-
 from tap_kustomer.streams.card_streams import (
     CardStream,
     CardContextStream,
