@@ -137,6 +137,25 @@ def get_json_schemas(section):
 
     paths_section = main_file["paths"]
 
+    # Manually add the undocumented SLAs
+    if section == "core_resources":
+        paths_section["/slas"] = {
+            "get": {
+                "summary": "Retrieves all SLAs",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "/GETanSLAbyIDResponseSuccessversionsall"
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        }
+
     for api_path in paths_section.keys():
         if (
             "{" not in api_path

@@ -37,6 +37,7 @@ from tap_kustomer.streams.core_resources import (
 	SatisfactionStream,
 	SchedulesStream,
 	SchedulesDefaultStream,
+	SlasStream,
 	SpamSendersStream,
 )
 

@@ -47,6 +47,7 @@ environments:
               # - satisfaction.*
               # - schedules.*
               # - schedules_default.*
+              # - slas.*
               # - spam_senders.*
               # # knowledge_base
               # - p_v3_kb_articles.*

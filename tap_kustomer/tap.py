@@ -45,6 +45,7 @@ STREAM_TYPES = [
     SatisfactionStream,
     SchedulesDefaultStream,
     SchedulesStream,
+    SlasStream,
     SpamSendersStream,
     # knowledge_base
     PV3KbArticlesSearchStream,

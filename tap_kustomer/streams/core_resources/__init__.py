@@ -11,4 +11,5 @@ from tap_kustomer.streams.core_resources.outbound_accounts_streams import Outbou
 from tap_kustomer.streams.core_resources.satisfaction_streams import SatisfactionStream
 from tap_kustomer.streams.core_resources.schedules_streams import SchedulesStream
 from tap_kustomer.streams.core_resources.schedules_default_streams import SchedulesDefaultStream
+from tap_kustomer.streams.core_resources.slas_streams import SlasStream
 from tap_kustomer.streams.core_resources.spam_senders_streams import SpamSendersStream
