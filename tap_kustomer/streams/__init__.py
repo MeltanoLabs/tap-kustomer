@@ -4,7 +4,6 @@ from tap_kustomer.streams.access_management import (
 	AuthSettingsStream,
 	AuthTokensStream,
 	AuthTokensCurrentStream,
-	PAuthSettingsStream,
 	RoleGroupsStream,
 	TeamsStream,
 	UsersStream,
@@ -42,20 +41,17 @@ from tap_kustomer.streams.core_resources import (
 )
 
 from tap_kustomer.streams.knowledge_base import (
-	PV3KbArticlesStream,
-	PV3KbArticlesSearchStream,
-	PV3KbCategoriesStream,
-	V1KbArticlesStream,
-	V1KbArticlesSearchStream,
-	V1KbCategoriesStream,
-	V1KbFormsStream,
-	V1KbInternalCategoriesStream,
-	V1KbRouteStream,
-	V1KbRoutesStream,
-	V3KbTagsStream,
-	V3KbTemplatesStream,
-	V3KbThemesStream,
-	V3KbThemesActiveStream,
+	KbArticlesStream,
+	KbArticlesSearchStream,
+	KbCategoriesStream,
+	KbFormsStream,
+	KbInternalCategoriesStream,
+	KbRouteStream,
+	KbRoutesStream,
+	KbTagsStream,
+	KbTemplatesStream,
+	KbThemesStream,
+	KbThemesActiveStream,
 )
 
 from tap_kustomer.streams.queues_and_routing import (

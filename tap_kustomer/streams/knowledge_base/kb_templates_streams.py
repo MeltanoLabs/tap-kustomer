@@ -8,20 +8,26 @@ from tap_kustomer.client import kustomerStream
 SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = ["V1KbRouteStream"]
+__all__ = ["KbTemplatesStream"]
 
     
-class V1KbRouteStream(kustomerStream):
+class KbTemplatesStream(kustomerStream):
     """
-    Get Route by URL (Public)
+    Get Templates
     """
 
-    name = "v1_kb_route"
-    path = "v1/kb/route"
+    name = "kb_templates"
+    path = "kb/templates"
     primary_keys = ["id"]
     replication_key = "updatedAt"
-    schema_filepath = SCHEMAS_DIR / "v1_kb_route.json"
+    schema_filepath = SCHEMAS_DIR / "kb_templates.json"
 
+        # Overwrite the version to use v3
+        @property
+        def url_base(self) -> str:
+            return super().url_base.replace("/v1/", "/v3/")
+
+        
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None
     ) -> dict[str, Any]:

@@ -8,20 +8,26 @@ from tap_kustomer.client import kustomerStream
 SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = ["V1KbInternalCategoriesStream"]
+__all__ = ["KbThemesActiveStream"]
 
     
-class V1KbInternalCategoriesStream(kustomerStream):
+class KbThemesActiveStream(kustomerStream):
     """
-    Get Internal Categories
+    Get Active Theme (Public)
     """
 
-    name = "v1_kb_internal_categories"
-    path = "v1/kb/internal/categories"
+    name = "kb_themes_active"
+    path = "kb/themes/active"
     primary_keys = ["id"]
     replication_key = "updatedAt"
-    schema_filepath = SCHEMAS_DIR / "v1_kb_internal_categories.json"
+    schema_filepath = SCHEMAS_DIR / "kb_themes_active.json"
 
+        # Overwrite the version to use v3
+        @property
+        def url_base(self) -> str:
+            return super().url_base.replace("/v1/", "/v3/")
+
+        
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None
     ) -> dict[str, Any]:

@@ -8,19 +8,19 @@ from tap_kustomer.client import kustomerStream
 SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = ["V3KbTagsStream"]
+__all__ = ["KbInternalCategoriesStream"]
 
     
-class V3KbTagsStream(kustomerStream):
+class KbInternalCategoriesStream(kustomerStream):
     """
-    Get tags
+    Get Internal Categories
     """
 
-    name = "v3_kb_tags"
-    path = "v3/kb/tags"
+    name = "kb_internal_categories"
+    path = "kb/internal/categories"
     primary_keys = ["id"]
     replication_key = "updatedAt"
-    schema_filepath = SCHEMAS_DIR / "v3_kb_tags.json"
+    schema_filepath = SCHEMAS_DIR / "kb_internal_categories.json"
 
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None

@@ -11,14 +11,12 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
-              # # Add individual stream names here
               # # access_management
               # - auth_customer_settings.*
               # - auth_roles.*
               # - auth_settings.*
               # - auth_tokens.*
               # - auth_tokens_current.*
-              # - p_auth_settings.*
               # - role_groups.*
               # - teams.*
               # - users.*
@@ -50,20 +48,17 @@ environments:
               # - slas.*
               # - spam_senders.*
               # # knowledge_base
-              # - p_v3_kb_articles.*
-              # - p_v3_kb_articles_search.*
-              # - p_v3_kb_categories.*
-              # - v1_kb_articles.*
-              # - v1_kb_articles_search.*
-              # - v1_kb_categories.*
-              # - v1_kb_forms.*
-              # - v1_kb_internal_categories.*
-              # - v1_kb_route.*
-              # - v1_kb_routes.*
-              # - v3_kb_tags.*
-              # - v3_kb_templates.*
-              # - v3_kb_themes.*
-              # - v3_kb_themes_active.*
+              # - kb_articles.*
+              # - kb_articles_search.*
+              # - kb_categories.*
+              # - kb_forms.*
+              # - kb_internal_categories.*
+              # - kb_route.*
+              # - kb_routes.*
+              # - kb_tags.*
+              # - kb_templates.*
+              # - kb_themes.*
+              # - kb_themes_active.*
               # # queues_and_routing
               # - routing_queue_rules.*
               # - routing_queue_rules_criteria.*

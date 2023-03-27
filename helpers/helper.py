@@ -11,10 +11,21 @@ def create_class_name(stream_name):
     return "".join(x.title() for x in stream_name.split("_")) + "Stream"
 
 
-def generate_stream(api_url, stream_name, class_name, description="TODO"):
+def generate_stream(api_url, stream_name, class_name, description="TODO", version=1):
     """
     Create the template class for the stream
     """
+
+    if version == 3:
+        v3_replace = """
+        # Overwrite the version to use v3
+        @property
+        def url_base(self) -> str:
+            return super().url_base.replace("/v1/", "/v3/")
+
+        """
+    else:
+        v3_replace = ""
 
     return f"""
 class {class_name}(kustomerStream):
@@ -27,7 +38,7 @@ class {class_name}(kustomerStream):
     primary_keys = ["id"]
     replication_key = "updatedAt"
     schema_filepath = SCHEMAS_DIR / "{stream_name}.json"
-
+{v3_replace}
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None
     ) -> dict[str, Any]:
@@ -76,7 +87,11 @@ __all__ = ["{details['class']}"]
     my_file_contents = file_headers
 
     my_file_contents += generate_stream(
-        api_path, details["name"], details["class"], details["description"]
+        api_path,
+        details["name"],
+        details["class"],
+        details["description"],
+        details["version"],
     )
     create_schema_base(details["schema"], details["name"], details["section"])
 
@@ -160,6 +175,7 @@ def get_json_schemas(section):
         if (
             "{" not in api_path
             and "=" not in api_path
+            and "/p/" not in api_path  # Exclude the public ones - not required
             and "get" in paths_section[api_path].keys()
         ):
             definition = paths_section[api_path]["get"]
@@ -188,6 +204,12 @@ def get_json_schemas(section):
                     "format": "date-time",
                 }
 
+                # Some endpoints have v3 instead of v1
+                version = 3 if "v3" in api_path else 1
+
+                # Remove mention of v1 or v3 from all endpoints
+                api_path = api_path.replace("v1/", "").replace("v3/", "")
+
                 name = api_path[1:].replace("/", "_").replace("-", "_")
                 name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
 
@@ -197,6 +219,7 @@ def get_json_schemas(section):
                     "name": name,
                     "class": create_class_name(name),
                     "section": section,
+                    "version": version,
                 }
 
     return paths

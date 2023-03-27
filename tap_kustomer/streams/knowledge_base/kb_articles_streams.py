@@ -8,19 +8,19 @@ from tap_kustomer.client import kustomerStream
 SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = ["V1KbArticlesSearchStream"]
+__all__ = ["KbArticlesStream"]
 
     
-class V1KbArticlesSearchStream(kustomerStream):
+class KbArticlesStream(kustomerStream):
     """
-    Search Articles
+    Get Articles
     """
 
-    name = "v1_kb_articles_search"
-    path = "v1/kb/articles/search"
+    name = "kb_articles"
+    path = "kb/articles"
     primary_keys = ["id"]
     replication_key = "updatedAt"
-    schema_filepath = SCHEMAS_DIR / "v1_kb_articles_search.json"
+    schema_filepath = SCHEMAS_DIR / "kb_articles.json"
 
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None

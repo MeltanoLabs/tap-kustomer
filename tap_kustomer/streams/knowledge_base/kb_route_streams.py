@@ -8,19 +8,19 @@ from tap_kustomer.client import kustomerStream
 SCHEMAS_DIR = Path(__file__).parent / "schemas"
 
 # Streams to export
-__all__ = ["PAuthSettingsStream"]
+__all__ = ["KbRouteStream"]
 
     
-class PAuthSettingsStream(kustomerStream):
+class KbRouteStream(kustomerStream):
     """
-    Get Public Auth Settings
+    Get Route by URL (Public)
     """
 
-    name = "p_auth_settings"
-    path = "p/auth/settings"
+    name = "kb_route"
+    path = "kb/route"
     primary_keys = ["id"]
     replication_key = "updatedAt"
-    schema_filepath = SCHEMAS_DIR / "p_auth_settings.json"
+    schema_filepath = SCHEMAS_DIR / "kb_route.json"
 
     def get_url_params(
         self, context: dict | None, next_page_token: Any | None
