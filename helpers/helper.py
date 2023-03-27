@@ -5,6 +5,27 @@ from pathlib import Path
 
 BASE = Path(__file__).parent.parent / "tap_kustomer" / "streams"
 
+UNWANTED_TAPS = [
+    "auth_customer_settings",
+    "auth_settings",
+    "auth_tokens",
+    "auth_tokens_current",
+    "p_auth_settings",
+    "users_current",
+    "brands_default",
+    "outbound_accounts",
+    "schedules_default",
+    "kb_articles_search",
+    "kb_articles_search",
+    "kb_route",
+    "kb_themes_active",
+    "routing_work_sessions_current",
+    "routing_work_sessions_current_work_items",
+    "chat_settings",
+    "notifications_users_current_settings",
+    "users_current_settings",
+]
+
 
 def create_class_name(stream_name):
     """Create the CamelCase class name from the snake case name"""
@@ -18,10 +39,10 @@ def generate_stream(api_url, stream_name, class_name, description="TODO", versio
 
     if version == 3:
         v3_replace = """
-        # Overwrite the version to use v3
-        @property
-        def url_base(self) -> str:
-            return super().url_base.replace("/v1/", "/v3/")
+    # Overwrite the version to use v3
+    @property
+    def url_base(self) -> str:
+        return super().url_base.replace("/v1/", "/v3/")
 
         """
     else:
@@ -50,7 +71,7 @@ class {class_name}(kustomerStream):
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
         \"\"\"Extract the updatedAt timestamp for the replication key\"\"\"
-        row["updatedAt"] = row["attributes"].pop("updatedAt")
+        row["updatedAt"] = row["attributes"]["updatedAt"]
         return super().post_process(row, context)
 
 """
@@ -213,14 +234,15 @@ def get_json_schemas(section):
                 name = api_path[1:].replace("/", "_").replace("-", "_")
                 name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
 
-                paths[api_path[1:]] = {
-                    "description": description,
-                    "schema": schema_json,
-                    "name": name,
-                    "class": create_class_name(name),
-                    "section": section,
-                    "version": version,
-                }
+                if name not in UNWANTED_TAPS:
+                    paths[api_path[1:]] = {
+                        "description": description,
+                        "schema": schema_json,
+                        "name": name,
+                        "class": create_class_name(name),
+                        "section": section,
+                        "version": version,
+                    }
 
     return paths
 

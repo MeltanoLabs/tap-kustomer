@@ -11,14 +11,9 @@ from tap_kustomer.client import kustomerStream
 # All streams to be included in the tap
 STREAM_TYPES = [
     # access_management
-    AuthCustomerSettingsStream,
     AuthRolesStream,
-    AuthSettingsStream,
-    AuthTokensCurrentStream,
-    AuthTokensStream,
     RoleGroupsStream,
     TeamsStream,
-    UsersCurrentStream,
     UsersStream,
     # apps_platform
     AppsAvailableStream,
@@ -32,7 +27,6 @@ STREAM_TYPES = [
     OutboundWebhooksTransactionsStream,
     # core_resources
     AuditLogsStream,
-    BrandsDefaultStream,
     BrandsStream,
     CompaniesStream,
     ConversationsStream,
@@ -40,23 +34,18 @@ STREAM_TYPES = [
     KlassesStream,
     MessagesStream,
     NotesStream,
-    OutboundAccountsStream,
     SatisfactionStream,
-    SchedulesDefaultStream,
     SchedulesStream,
     SlasStream,
     SpamSendersStream,
     # knowledge_base
-    KbArticlesSearchStream,
     KbArticlesStream,
     KbCategoriesStream,
     KbFormsStream,
     KbInternalCategoriesStream,
-    KbRouteStream,
     KbRoutesStream,
     KbTagsStream,
     KbTemplatesStream,
-    KbThemesActiveStream,
     KbThemesStream,
     # queues_and_routing
     RoutingQueueRulesCriteriaStream,
@@ -66,24 +55,19 @@ STREAM_TYPES = [
     RoutingStatusesStream,
     RoutingUsersCurrentSettingsStream,
     RoutingWorkItemsStream,
-    RoutingWorkSessionsCurrentStream,
-    RoutingWorkSessionsCurrentWorkItemsStream,
     RoutingWorkSessionsStream,
     # settings_and_configurations
-    ChatSettingsStream,
     CustomersSearchesPinnedStream,
     CustomersSearchesPositionsStream,
     CustomersSearchesSchemaStream,
     CustomersSearchesStream,
     NotificationsLogsSettingsStream,
     NotificationsStream,
-    NotificationsUsersCurrentSettingsStream,
     SettingsStream,
     ShortcutsCategoriesStream,
     ShortcutsStream,
     SnippetsStream,
     SnoozesStream,
-    UsersCurrentSettingsStream,
     # workflows
     WorkflowsStream,
 ]

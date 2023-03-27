@@ -12,15 +12,10 @@ environments:
           - name: tap-kustomer
             select:
               # # access_management
-              # - auth_customer_settings.*
               # - auth_roles.*
-              # - auth_settings.*
-              # - auth_tokens.*
-              # - auth_tokens_current.*
               # - role_groups.*
               # - teams.*
               # - users.*
-              # - users_current.*
               # # apps_platform
               # - apps.*
               # - apps_available.*
@@ -34,31 +29,25 @@ environments:
               # # core_resources
               # - audit_logs.*
               # - brands.*
-              # - brands_default.*
               # - companies.*
-              # - conversations.*
-              - customers.*
+              - conversations.*
+              # - customers.*
               # - klasses.*
               # - messages.*
               # - notes.*
-              # - outbound_accounts.*
               # - satisfaction.*
               # - schedules.*
-              # - schedules_default.*
               # - slas.*
               # - spam_senders.*
               # # knowledge_base
               # - kb_articles.*
-              # - kb_articles_search.*
               # - kb_categories.*
               # - kb_forms.*
               # - kb_internal_categories.*
-              # - kb_route.*
               # - kb_routes.*
               # - kb_tags.*
               # - kb_templates.*
               # - kb_themes.*
-              # - kb_themes_active.*
               # # queues_and_routing
               # - routing_queue_rules.*
               # - routing_queue_rules_criteria.*
@@ -68,23 +57,18 @@ environments:
               # - routing_users_current_settings.*
               # - routing_work_items.*
               # - routing_work_sessions.*
-              # - routing_work_sessions_current.*
-              # - routing_work_sessions_current_work_items.*
               # # settings_and_configurations
-              # - chat_settings.*
               # - customers_searches.*
               # - customers_searches_pinned.*
               # - customers_searches_positions.*
               # - customers_searches_schema.*
               # - notifications.*
               # - notifications_logs_settings.*
-              # - notifications_users_current_settings.*
               # - settings.*
               # - shortcuts.*
               # - shortcuts_categories.*
               # - snippets.*
               # - snoozes.*
-              # - users_current_settings.*
               # # workflows
               # - workflows.*
 plugins:

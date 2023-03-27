@@ -22,10 +22,10 @@ class KbTagsStream(kustomerStream):
     replication_key = "updatedAt"
     schema_filepath = SCHEMAS_DIR / "kb_tags.json"
 
-        # Overwrite the version to use v3
-        @property
-        def url_base(self) -> str:
-            return super().url_base.replace("/v1/", "/v3/")
+    # Overwrite the version to use v3
+    @property
+    def url_base(self) -> str:
+        return super().url_base.replace("/v1/", "/v3/")
 
         
     def get_url_params(
@@ -39,6 +39,6 @@ class KbTagsStream(kustomerStream):
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
         """Extract the updatedAt timestamp for the replication key"""
-        row["updatedAt"] = row["attributes"].pop("updatedAt")
+        row["updatedAt"] = row["attributes"]["updatedAt"]
         return super().post_process(row, context)
 

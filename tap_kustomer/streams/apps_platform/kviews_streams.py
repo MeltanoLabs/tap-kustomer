@@ -33,6 +33,6 @@ class KviewsStream(kustomerStream):
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
         """Extract the updatedAt timestamp for the replication key"""
-        row["updatedAt"] = row["attributes"].pop("updatedAt")
+        row["updatedAt"] = row["attributes"]["updatedAt"]
         return super().post_process(row, context)
 
