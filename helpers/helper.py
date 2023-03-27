@@ -195,12 +195,12 @@ def generate_files():
 
         # Display the classnames for the import
         print(f"\t# {section}")
-        for details in stream_list.values():
+        for details in sorted(stream_list.values(), key=lambda x: x["class"]):
             print(f'\t{details["class"]},')
 
         # Display the names for the meltano.yml
         meltano_yml += f"{yml_whitespace}# {section}\n"
-        for details in stream_list.values():
+        for details in sorted(stream_list.values(), key=lambda x: x["name"]):
             meltano_yml += f'{yml_whitespace}- {details["name"]}.*\n'
 
     print("-" * 50)
