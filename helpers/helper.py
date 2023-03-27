@@ -179,6 +179,9 @@ def generate_files():
         ]
     )
 
+    meltano_yml = ""
+    yml_whitespace = "  " * 7
+
     for section in sections:
         # Load the streams
         stream_list = get_json_schemas(section)
@@ -194,6 +197,14 @@ def generate_files():
         print(f"\t# {section}")
         for details in stream_list.values():
             print(f'\t{details["class"]},')
+
+        # Display the names for the meltano.yml
+        meltano_yml += f"{yml_whitespace}# {section}\n"
+        for details in stream_list.values():
+            meltano_yml += f'{yml_whitespace}- {details["name"]}.*\n'
+
+    print("-" * 50)
+    print(meltano_yml)
 
 
 if __name__ == "__main__":

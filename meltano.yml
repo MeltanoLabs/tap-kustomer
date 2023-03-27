@@ -12,20 +12,85 @@ environments:
           - name: tap-kustomer
             select:
               # # Add individual stream names here
+              # # access_management
+              # - auth_settings.*
+              # - auth_customer_settings.*
+              # - p_auth_settings.*
+              # - auth_tokens.*
+              # - auth_tokens_current.*
+              # - auth_roles.*
+              # - role_groups.*
+              # - teams.*
+              # - users.*
+              # - users_current.*
+              # # apps_platform
+              # - apps.*
+              # - apps_available.*
+              # - cards.*
+              # - hooks_email.*
+              # - hooks_form.*
+              # - hooks_web.*
+              # - kviews.*
+              # - outbound_webhooks_transactions.*
+              # - outbound_webhooks.*
+              # # core_resources
               # - audit_logs.*
-              # - brands_default.*
               # - brands.*
+              # - brands_default.*
+              # - schedules.*
+              # - schedules_default.*
               # - companies.*
               # - conversations.*
               # - customers.*
+              # - outbound_accounts.*
               # - klasses.*
               - messages.*
               # - notes.*
-              # - outbound_accounts.*
               # - satisfaction.*
-              # - schedules_default.*
-              # - schedules.*
               # - spam_senders.*
+              # # knowledge_base
+              # - v1_kb_articles.*
+              # - v1_kb_articles_search.*
+              # - p_v3_kb_articles.*
+              # - p_v3_kb_articles_search.*
+              # - v1_kb_categories.*
+              # - v1_kb_internal_categories.*
+              # - p_v3_kb_categories.*
+              # - v1_kb_forms.*
+              # - v3_kb_tags.*
+              # - v3_kb_themes.*
+              # - v3_kb_themes_active.*
+              # - v3_kb_templates.*
+              # - v1_kb_route.*
+              # - v1_kb_routes.*
+              # # queues_and_routing
+              # - routing_work_sessions_current.*
+              # - routing_work_sessions_current_work_items.*
+              # - routing_work_sessions.*
+              # - routing_queues.*
+              # - routing_queue_rules.*
+              # - routing_queue_rules_criteria.*
+              # - routing_statuses.*
+              # - routing_settings.*
+              # - routing_users_current_settings.*
+              # - routing_work_items.*
+              # # settings_and_configurations
+              # - chat_settings.*
+              # - notifications_logs_settings.*
+              # - notifications_users_current_settings.*
+              # - notifications.*
+              # - customers_searches.*
+              # - customers_searches_positions.*
+              # - customers_searches_schema.*
+              # - customers_searches_pinned.*
+              # - settings.*
+              # - users_current_settings.*
+              # - shortcuts_categories.*
+              # - shortcuts.*
+              # - snippets.*
+              # - snoozes.*
+              # # workflows
+              # - workflows.*
 plugins:
   extractors:
     - name: "tap-kustomer"
