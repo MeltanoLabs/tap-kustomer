@@ -39,7 +39,7 @@ environments:
               # - brands_default.*
               # - companies.*
               # - conversations.*
-              # - customers.*
+              - customers.*
               # - klasses.*
               # - messages.*
               # - notes.*

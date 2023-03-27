@@ -106,6 +106,19 @@ def create_init_list(stream_list):
         f.write(contents)
 
 
+def allow_nullable(my_dict):
+    """Replace the properties with oneOf"""
+
+    for key, value in my_dict.items():
+        if isinstance(value, dict):
+            if key != "properties":
+                my_dict[key] = {"oneOf": [{"type": "null"}, allow_nullable(value)]}
+            else:
+                my_dict[key] = allow_nullable(value)
+
+    return my_dict
+
+
 def get_json_schemas(section):
     """
     This aims to extract the properties from the html of the Kustomer API docs.
@@ -131,37 +144,41 @@ def get_json_schemas(section):
             and "get" in paths_section[api_path].keys()
         ):
             definition = paths_section[api_path]["get"]
-            description = definition["summary"]
-            schema = definition["responses"]["200"]["content"]["application/json"][
-                "schema"
-            ]["$ref"].split("/")[-1]
-            schema_json = main_file["components"]["schemas"][schema]["properties"]
-            if "data" not in schema_json.keys():
-                continue
+            if "deprecated" not in definition or definition["deprecated"] == False:
+                description = definition["summary"]
+                schema = definition["responses"]["200"]["content"]["application/json"][
+                    "schema"
+                ]["$ref"].split("/")[-1]
+                schema_json = main_file["components"]["schemas"][schema]["properties"]
+                if "data" not in schema_json.keys():
+                    continue
 
-            schema_json = main_file["components"]["schemas"][schema]["properties"][
-                "data"
-            ]
+                schema_json = main_file["components"]["schemas"][schema]["properties"][
+                    "data"
+                ]
 
-            if "items" in schema_json:
-                schema_json = schema_json["items"]
+                if "items" in schema_json:
+                    schema_json = schema_json["items"]
 
-            # Add the replication key
-            schema_json["properties"]["updatedAt"] = {
-                "type": "string",
-                "format": "date-time",
-            }
+                # Allow fields to be nullable
+                schema_json = allow_nullable(schema_json)
 
-            name = api_path[1:].replace("/", "_").replace("-", "_")
-            name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+                # Add the replication key
+                schema_json["properties"]["updatedAt"] = {
+                    "type": "string",
+                    "format": "date-time",
+                }
 
-            paths[api_path[1:]] = {
-                "description": description,
-                "schema": schema_json,
-                "name": name,
-                "class": create_class_name(name),
-                "section": section,
-            }
+                name = api_path[1:].replace("/", "_").replace("-", "_")
+                name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+
+                paths[api_path[1:]] = {
+                    "description": description,
+                    "schema": schema_json,
+                    "name": name,
+                    "class": create_class_name(name),
+                    "section": section,
+                }
 
     return paths
 
@@ -181,6 +198,10 @@ def generate_files():
 
     meltano_yml = ""
     yml_whitespace = "  " * 7
+
+    # Empty the __init__ file
+    with open(BASE / "__init__.py", "w") as f:
+        f.write("")
 
     for section in sections:
         # Load the streams
