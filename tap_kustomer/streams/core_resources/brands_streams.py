@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from tap_kustomer.client import kustomerStream
 
@@ -20,6 +21,15 @@ class BrandsStream(kustomerStream):
     primary_keys = ["id"]
     replication_key = "updatedAt"
     schema_filepath = SCHEMAS_DIR / "brands.json"
+
+    def get_url_params(
+        self, context: dict | None, next_page_token: Any | None
+    ) -> dict[str, Any]:
+        params = super().get_url_params(context, next_page_token)
+
+        # TODO: Add additional params here: params["new_param"] = config.get("new_param")
+
+        return params
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
         """Extract the updatedAt timestamp for the replication key"""
