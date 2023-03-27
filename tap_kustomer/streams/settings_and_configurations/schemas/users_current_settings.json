@@ -1,0 +1,1 @@
+{"type": "object", "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "attributes": {"type": "object", "properties": {"name": {"type": "string"}, "value": {"type": "string", "nullable": true}}, "required": ["name", "value"]}, "updatedAt": {"type": "string", "format": "date-time"}}, "required": ["id", "type", "attributes"]}
