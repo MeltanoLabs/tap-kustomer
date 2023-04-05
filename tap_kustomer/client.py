@@ -2,23 +2,30 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any, Callable, Iterable
+from typing import Any, Iterable
 from urllib.parse import parse_qsl
+from datetime import datetime
 
-import requests
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseHATEOASPaginator
 from singer_sdk.streams import RESTStream
+from singer_sdk import typing as th  # JSON Schema typing helpers
+
+import requests
 
 
 class RESTPaginator(BaseHATEOASPaginator):
 
     def get_next_url(self, response):
         data = response.json()
-        return data.get("links")["next"]
+        next_link = data.get("links")["next"]
+
+        if next_link == "/v1/customers/search?page=101&pageSize=100":
+            next_link = data.get("links")["first"]
+
+        return next_link
 
 class kustomerStream(RESTStream):
     """kustomer stream class."""
@@ -113,14 +120,41 @@ class kustomerStream(RESTStream):
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        """As needed, append or transform raw data to match expected structure.
-
-        Args:
-            row: An individual record from the stream.
-            context: The stream context.
-
-        Returns:
-            The updated record dictionary, or ``None`` to skip the record.
-        """
-        # TODO: Delete this method if not needed.
+        
+        row["updated_at"] = row["attributes"]["updatedAt"]
+        self.max_observed_timestamp = row["updated_at"]
+    
         return row
+
+    def prepare_request_payload(
+        self,
+        context: dict | None,
+        next_page_token: th.TypeVar("_TToken") | None,
+    ) -> dict | None:
+
+        if self.max_timestamp:
+            gte = self.max_timestamp
+        elif self.get_starting_timestamp(context):
+            gte = self.get_starting_timestamp(context)
+        else:
+            gte = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
+
+        if next_page_token and next_page_token.query == 'page=1&pageSize=100':
+            self.max_timestamp = self.max_observed_timestamp
+            gte = self.max_timestamp
+
+        return {
+            "and": [
+                {
+                self.updated_at: {
+                    "gte": f"{gte}"
+                    }
+                }
+            ],
+            "sort": [
+                {
+                self.updated_at: "asc"
+                }
+            ],
+            "queryContext": self.query_context
+        }  

@@ -25,7 +25,7 @@ plugins:
         - about
         - stream-maps
       config:
-        start_date: "2010-01-01T00:00:00Z"
+        start_date: "2023-04-04"
       settings:
         - name: api_key
           label: API Key

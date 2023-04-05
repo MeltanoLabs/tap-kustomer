@@ -38,11 +38,6 @@ from tap_kustomer.streams.customer_streams import (
 
 from tap_kustomer.streams.message_streams import (
     MessagesStream,
-    MessageAssignedTeamStream,
-    MessageAssignedUserStream,
-    MessageAttachmentStream,
-    MessageCreatedByTeamStream,
-    MessageShortcutStream,
 )
 
 from tap_kustomer.streams.note_streams import (
