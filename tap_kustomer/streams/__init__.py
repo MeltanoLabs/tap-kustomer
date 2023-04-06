@@ -12,6 +12,10 @@ from tap_kustomer.streams.company_streams import (
     CompanyUrlStream,
 )
 
+from tap_kustomer.streams.kobject_stream import (
+    KObjectStream
+)
+
 from tap_kustomer.streams.conversation_streams import (
     ConversationsStream
 )
