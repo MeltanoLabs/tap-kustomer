@@ -1,195 +1,51 @@
-
 from __future__ import annotations
-
-from pathlib import Path
 
 from tap_kustomer.client import kustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "customer"
+from singer_sdk import typing as th  # JSON Schema typing helpers
 
-# Streams to export
 __all__ = [
     "CustomerStream",
-	"CustomerActiveUserStream",
-	"CustomerEmailStream",
-	"CustomerExternalLinkStream",
-	"CustomerLocationStream",
-	"CustomerPhoneStream",
-	"CustomerSharedEmailStream",
-	"CustomerSharedExternalIdStream",
-	"CustomerSharedPhoneStream",
-	"CustomerSharedSocialStream",
-	"CustomerSocialStream",
-	"CustomerUrlStream",
-	"CustomerWatcherStream",
-	"KobjectStream"
 ]
 
-    
 class CustomerStream(kustomerStream):
     """
     TODO
     """
 
     name = "customer"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer.json"
+    path = "customers/search"
+    rest_method = "POST"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
 
+    max_observed_timestamp = None
+    max_timestamp = None
+    updated_at = "customer_updated_at"
+    query_context = "customer"
 
-class CustomerActiveUserStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_active_user"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_active_user.json"
-
-
-class CustomerEmailStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_email"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_email.json"
-
-
-class CustomerExternalLinkStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_external_link"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_external_link.json"
-
-
-class CustomerLocationStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_location"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_location.json"
-
-
-class CustomerPhoneStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_phone"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_phone.json"
-
-
-class CustomerSharedEmailStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_shared_email"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_shared_email.json"
-
-
-class CustomerSharedExternalIdStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_shared_external_id"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_shared_external_id.json"
-
-
-class CustomerSharedPhoneStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_shared_phone"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_shared_phone.json"
-
-
-class CustomerSharedSocialStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_shared_social"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_shared_social.json"
-
-
-class CustomerSocialStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_social"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_social.json"
-
-
-class CustomerUrlStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_url"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_url.json"
-
-
-class CustomerWatcherStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "customer_watcher"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "customer_watcher.json"
-
-
-class KobjectStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "kobject"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "kobject.json"
-
+    schema = th.PropertiesList(
+        th.Property("type", th.StringType, description=""),
+        th.Property("id", th.StringType, description=""),
+        th.Property("updated_at", th.DateTimeType, description=""),
+        th.Property("attributes", 
+            th.ObjectType(
+                th.Property("name", th.StringType, description=""),
+                th.Property("displayName", th.StringType, description=""),
+                th.Property("displayColor", th.StringType, description=""),
+                th.Property("displayIcon", th.StringType, description=""),
+                th.Property("externalIds", th.ArrayType(th.StringType), description=""),
+                th.Property("sharedExternalIds", th.ArrayType(th.StringType), description=""),
+                th.Property("emails", th.ArrayType(
+                    th.ObjectType(
+                        th.Property("type", th.StringType, description=""),
+                        th.Property("verified", th.BooleanType, description=""),
+                        th.Property("externalVerified", th.BooleanType, description=""),
+                        th.Property("email", th.StringType, description=""),
+                    )
+                ), description=""),
+                th.Property("updatedAt", th.DateTimeType, description=""),
+                th.Property("createdAt", th.DateTimeType, description=""),
+                th.Property("modifiedAt", th.DateTimeType, description=""),
+        ))).to_dict()
