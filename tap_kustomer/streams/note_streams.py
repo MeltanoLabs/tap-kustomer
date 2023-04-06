@@ -1,52 +1,39 @@
-
 from __future__ import annotations
-
-from pathlib import Path
 
 from tap_kustomer.client import kustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "note"
+from singer_sdk import typing as th  # JSON Schema typing helpers
 
-# Streams to export
 __all__ = [
     "NoteStream",
-	"NoteTeamMentionStream",
-	"NoteUserMentionStream"
 ]
 
-    
 class NoteStream(kustomerStream):
     """
     TODO
     """
 
-    name = "note"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "note.json"
+    name = "notes"
+    path = "customers/search"
+    rest_method = "POST"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
 
+    max_observed_timestamp = None
+    max_timestamp = None
+    updated_at = "note_updated_at"
+    query_context = "note"
 
-class NoteTeamMentionStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "note_team_mention"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "note_team_mention.json"
-
-
-class NoteUserMentionStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "note_user_mention"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "note_user_mention.json"
-
+    schema = th.PropertiesList(
+        th.Property("type", th.StringType, description=""),
+        th.Property("id", th.StringType, description=""),
+        th.Property("updated_at", th.DateTimeType, description=""),
+        th.Property("attributes", 
+            th.ObjectType(
+                th.Property("body", th.StringType, description=""),
+                th.Property("createdAt", th.StringType, description=""),
+                th.Property("updatedAt", th.StringType, description=""),
+                th.Property("modifiedAt", th.StringType, description=""),
+                th.Property("createdByTeams", th.ArrayType(th.StringType), description=""),
+        ))).to_dict()

@@ -42,8 +42,6 @@ from tap_kustomer.streams.message_streams import (
 
 from tap_kustomer.streams.note_streams import (
     NoteStream,
-    NoteTeamMentionStream,
-    NoteUserMentionStream,
 )
 
 from tap_kustomer.streams.queue_streams import (
