@@ -133,21 +133,21 @@ class kustomerStream(RESTStream):
     ) -> dict | None:
 
         if self.max_timestamp:
-            gte = self.max_timestamp
+            greater_than = self.max_timestamp
         elif self.get_starting_timestamp(context):
-            gte = self.get_starting_timestamp(context)
+            greater_than = self.get_starting_timestamp(context)
         else:
-            gte = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
+            greater_than = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
 
         if next_page_token and next_page_token.query == 'page=1&pageSize=100':
             self.max_timestamp = self.max_observed_timestamp
-            gte = self.max_timestamp
+            greater_than = self.max_timestamp
 
         return {
             "and": [
                 {
                 self.updated_at: {
-                    "gte": f"{gte}"
+                    "gt": f"{greater_than}"
                     }
                 }
             ],
