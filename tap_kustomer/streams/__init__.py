@@ -13,27 +13,11 @@ from tap_kustomer.streams.company_streams import (
 )
 
 from tap_kustomer.streams.conversation_streams import (
-    ConversationAssignedTeamHistoryStream,
-    ConversationAssignedUserHistoryStream,
-    ConversationChannelHistoryStream,
-    ConversationHistoryStream,
+    ConversationsStream
 )
 
 from tap_kustomer.streams.customer_streams import (
     CustomerStream,
-    CustomerActiveUserStream,
-    CustomerEmailStream,
-    CustomerExternalLinkStream,
-    CustomerLocationStream,
-    CustomerPhoneStream,
-    CustomerSharedEmailStream,
-    CustomerSharedExternalIdStream,
-    CustomerSharedPhoneStream,
-    CustomerSharedSocialStream,
-    CustomerSocialStream,
-    CustomerUrlStream,
-    CustomerWatcherStream,
-    KobjectStream,
 )
 
 from tap_kustomer.streams.message_streams import (

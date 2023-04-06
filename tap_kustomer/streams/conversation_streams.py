@@ -1,65 +1,38 @@
-
 from __future__ import annotations
-
-from pathlib import Path
 
 from tap_kustomer.client import kustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "conversation"
+from singer_sdk import typing as th  # JSON Schema typing helpers
 
-# Streams to export
 __all__ = [
-    "ConversationAssignedTeamHistoryStream",
-	"ConversationAssignedUserHistoryStream",
-	"ConversationChannelHistoryStream",
-	"ConversationHistoryStream"
+    "ConversationsStream",
 ]
 
-    
-class ConversationAssignedTeamHistoryStream(kustomerStream):
+class ConversationsStream(kustomerStream):
     """
     TODO
     """
 
-    name = "conversation_assigned_team_history"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "conversation_assigned_team_history.json"
+    name = "conversations"
+    path = "customers/search"
+    rest_method = "POST"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
 
+    max_observed_timestamp = None
+    max_timestamp = None
+    updated_at = "conversation_updated_at"
+    query_context = "conversation"
 
-class ConversationAssignedUserHistoryStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "conversation_assigned_user_history"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "conversation_assigned_user_history.json"
-
-
-class ConversationChannelHistoryStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "conversation_channel_history"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "conversation_channel_history.json"
-
-
-class ConversationHistoryStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "conversation_history"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "conversation_history.json"
-
+    schema = th.PropertiesList(
+        th.Property("type", th.StringType, description=""),
+        th.Property("id", th.StringType, description=""),
+        th.Property("updated_at", th.DateTimeType, description=""),
+        th.Property("attributes", 
+            th.ObjectType(
+                th.Property("name", th.StringType, description=""),
+                th.Property("preview", th.StringType, description=""),
+                th.Property("channels", th.ArrayType(th.StringType), description=""),
+        th.Property("status", th.StringType, description=""),
+        ))).to_dict()
