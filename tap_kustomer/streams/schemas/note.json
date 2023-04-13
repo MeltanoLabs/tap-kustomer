@@ -1,8 +1,323 @@
-
 {
-    "additionalProperties": false,
-    "type": "object",
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
     "properties": {
-    }
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "attributes": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "body": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "createdAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "createdByTeams": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "modifiedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        },
+        "relationships": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "org": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "customer": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "conversation": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "createdBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "modifiedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                }
+            },
+            "required": []
+        },
+        "links": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "self": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        }
+    },
+    "required": []
 }
-    
