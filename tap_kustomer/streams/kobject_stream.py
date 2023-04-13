@@ -23,25 +23,9 @@ class KObjectStream(CustomerSearchStream):
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
+    schema_filepath = SCHEMAS_DIR / "kobject.json"
 
     max_observed_timestamp = None
     max_timestamp = None
     updated_at = "kobject_updated_at"
     query_context = "kobject"
-
-    schema = th.PropertiesList(
-        th.Property("type", th.StringType, description=""),
-        th.Property("id", th.StringType, description=""),
-        th.Property("updated_at", th.DateTimeType, description=""),
-        th.Property("attributes", 
-            th.ObjectType(
-                th.Property("externalId", th.StringType, description=""),
-                th.Property("title", th.StringType, description=""),
-                th.Property("description", th.StringType, description=""),
-                th.Property("icon", th.StringType, description=""),
-                th.Property("images", th.ArrayType(th.StringType), description=""),
-                th.Property("tags", th.ArrayType(th.StringType), description=""),
-                th.Property("updatedAt", th.DateTimeType, description=""),
-                th.Property("createdAt", th.DateTimeType, description=""),
-                th.Property("roleGroupVersions", th.ArrayType(th.StringType), description=""),
-        ))).to_dict()
