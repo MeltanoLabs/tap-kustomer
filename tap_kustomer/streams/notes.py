@@ -9,10 +9,10 @@ from singer_sdk import typing as th  # JSON Schema typing helpers
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 __all__ = [
-    "NoteStream"
+    "NotesStream"
 ]
 
-class NoteStream(CustomerSearchStream):
+class NotesStream(CustomerSearchStream):
     """
     TODO
     """

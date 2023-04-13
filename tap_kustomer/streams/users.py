@@ -8,17 +8,16 @@ from tap_kustomer.client import KustomerStream
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 __all__ = [
-    "TeamStream"
+	"UsersStream"
 ]
 
-    
-class TeamStream(KustomerStream):
+class UsersStream(KustomerStream):
     """
     TODO
     """
 
-    name = "team"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "teams.json"
+    name = "users"
+    path = "users"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    schema_filepath = SCHEMAS_DIR / "users.json"

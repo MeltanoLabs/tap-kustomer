@@ -1,40 +1,40 @@
-from tap_kustomer.streams.company_streams import (
-    CompanyStream,
+from tap_kustomer.streams.companies import (
+    CompaniesStream,
 )
 
-from tap_kustomer.streams.kobject_stream import (
-    KObjectStream
+from tap_kustomer.streams.kobjects import (
+    KObjectsStream
 )
 
-from tap_kustomer.streams.conversation_streams import (
+from tap_kustomer.streams.conversations import (
     ConversationsStream
 )
 
-from tap_kustomer.streams.customer_streams import (
-    CustomerStream,
+from tap_kustomer.streams.customers import (
+    CustomersStream,
 )
 
-from tap_kustomer.streams.message_streams import (
+from tap_kustomer.streams.messages import (
     MessagesStream,
 )
 
-from tap_kustomer.streams.note_streams import (
-    NoteStream,
+from tap_kustomer.streams.notes import (
+    NotesStream,
 )
 
-from tap_kustomer.streams.shortcut_streams import (
-    ShortcutStream,
+from tap_kustomer.streams.shortcuts import (
+    ShortcutsStream,
 
 )
 
-from tap_kustomer.streams.tag_streams import (
-    TagStream,
+from tap_kustomer.streams.tags import (
+    TagsStream,
 )
 
-from tap_kustomer.streams.team_streams import (
-    TeamStream,
+from tap_kustomer.streams.teams import (
+    TeamsStream,
 )
 
-from tap_kustomer.streams.user_streams import (
-    UserStream,
+from tap_kustomer.streams.users import (
+    UsersStream,
 )

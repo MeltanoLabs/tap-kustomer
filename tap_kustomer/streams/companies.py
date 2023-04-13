@@ -3,24 +3,23 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tap_kustomer.client import KustomerStream
+from tap_kustomer.client import CustomerSearchStream
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 # Streams to export
 __all__ = [
-    "ShortcutStream"
+    "CompaniesStream"
 ]
 
     
-class ShortcutStream(KustomerStream):
+class CompaniesStream(CustomerSearchStream):
     """
     TODO
     """
 
-    name = "shortcut"
+    name = "companies"
     path = "/v1/TODO"
     primary_keys = ["TODO"]
     replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "shortcuts.json"
-
+    schema_filepath = SCHEMAS_DIR / "companies.json"
