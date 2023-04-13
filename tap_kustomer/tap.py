@@ -5,17 +5,18 @@ from __future__ import annotations
 from singer_sdk import Tap
 from singer_sdk import typing as th
 
-from tap_kustomer.streams import MessagesStream, NotesStream, ConversationsStream, KObjectsStream, CustomersStream, UsersStream, CompaniesStream
+from tap_kustomer import streams
+
 from tap_kustomer.client import KustomerStream, CustomerSearchStream
 
 STREAM_TYPES = [
-    MessagesStream,
-    NotesStream,
-    ConversationsStream,
-    KObjectsStream,
-    CustomersStream,
-    UsersStream,
-    CompaniesStream
+    streams.MessagesStream,
+    streams.NotesStream,
+    streams.ConversationsStream,
+    streams.KObjectsStream,
+    streams.CustomersStream,
+    streams.UsersStream,
+    streams.CompaniesStream
 ]
 
 
