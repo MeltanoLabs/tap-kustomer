@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-from tap_kustomer.client import kustomerStream
+from tap_kustomer.client import CustomerSearchStream
 
-from singer_sdk import typing as th  # JSON Schema typing helpers
+from pathlib import Path
 
 __all__ = [
-    "ConversationsStream",
+    "ConversationsStream"
 ]
 
-class ConversationsStream(kustomerStream):
+SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
+
+class ConversationsStream(CustomerSearchStream):
     """
     TODO
     """
@@ -19,20 +21,9 @@ class ConversationsStream(kustomerStream):
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
+    schema_filepath = SCHEMAS_DIR / "conversations.json"
 
     max_observed_timestamp = None
     max_timestamp = None
     updated_at = "conversation_updated_at"
     query_context = "conversation"
-
-    schema = th.PropertiesList(
-        th.Property("type", th.StringType, description=""),
-        th.Property("id", th.StringType, description=""),
-        th.Property("updated_at", th.DateTimeType, description=""),
-        th.Property("attributes", 
-            th.ObjectType(
-                th.Property("name", th.StringType, description=""),
-                th.Property("preview", th.StringType, description=""),
-                th.Property("channels", th.ArrayType(th.StringType), description=""),
-        th.Property("status", th.StringType, description=""),
-        ))).to_dict()

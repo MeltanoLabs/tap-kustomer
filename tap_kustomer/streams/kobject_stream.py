@@ -1,19 +1,23 @@
 from __future__ import annotations
 
-from tap_kustomer.client import kustomerStream
+from tap_kustomer.client import CustomerSearchStream
+
+from pathlib import Path
 
 from singer_sdk import typing as th  # JSON Schema typing helpers
 
+SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
+
 __all__ = [
-    "KObjectStream",
+    "KObjectStream"
 ]
 
-class KObjectStream(kustomerStream):
+class KObjectStream(CustomerSearchStream):
     """
     TODO
     """
 
-    name = "kobject"
+    name = "kobjects"
     path = "customers/search"
     rest_method = "POST"
     primary_keys = ["id"]

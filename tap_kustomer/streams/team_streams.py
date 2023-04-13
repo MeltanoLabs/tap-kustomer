@@ -3,18 +3,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tap_kustomer.client import kustomerStream
+from tap_kustomer.client import KustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "team"
+SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
-# Streams to export
 __all__ = [
-    "TeamStream",
-	"TeamMemberStream"
+    "TeamStream"
 ]
 
     
-class TeamStream(kustomerStream):
+class TeamStream(KustomerStream):
     """
     TODO
     """
@@ -24,16 +22,3 @@ class TeamStream(kustomerStream):
     primary_keys = ["TODO"]
     replication_key = "TODO"
     schema_filepath = SCHEMAS_DIR / "team.json"
-
-
-class TeamMemberStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "team_member"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "team_member.json"
-

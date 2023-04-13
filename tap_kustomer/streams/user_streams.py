@@ -3,63 +3,21 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tap_kustomer.client import kustomerStream
+from tap_kustomer.client import KustomerStream
 
-SCHEMAS_DIR = Path(__file__).parent / "schemas" / "user"
+SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
-# Streams to export
 __all__ = [
-    "NotificationStream",
-	"SnoozeStream",
-	"UserStream",
-	"UserRoleStream"
+	"UserStream"
 ]
 
-    
-class NotificationStream(kustomerStream):
+class UserStream(KustomerStream):
     """
     TODO
     """
 
-    name = "notification"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "notification.json"
-
-
-class SnoozeStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "snooze"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "snooze.json"
-
-
-class UserStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "user"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    name = "users"
+    path = "users"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "user.json"
-
-
-class UserRoleStream(kustomerStream):
-    """
-    TODO
-    """
-
-    name = "user_role"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "user_role.json"
-
