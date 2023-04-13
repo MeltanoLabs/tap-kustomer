@@ -16,6 +16,7 @@ environments:
               - notes.*
               - kobjects.*
               - customers.*
+              - companies.*
 
 plugins:
   extractors:

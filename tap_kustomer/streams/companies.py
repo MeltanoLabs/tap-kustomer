@@ -17,9 +17,7 @@ class CompaniesStream(CustomerSearchStream):
     """
     TODO
     """
-
     name = "companies"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    updated_at = "company_updated_at"
+    query_context = "company"
     schema_filepath = SCHEMAS_DIR / "companies.json"

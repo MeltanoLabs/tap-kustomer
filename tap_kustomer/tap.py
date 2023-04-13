@@ -3,19 +3,19 @@
 from __future__ import annotations
 
 from singer_sdk import Tap
-from singer_sdk import typing as th  # JSON schema typing helpers
+from singer_sdk import typing as th
 
-from tap_kustomer.streams import MessagesStream, NotesStream, ConversationsStream, KObjectsStream, CustomersStream, UsersStream
+from tap_kustomer.streams import MessagesStream, NotesStream, ConversationsStream, KObjectsStream, CustomersStream, UsersStream, CompaniesStream
 from tap_kustomer.client import KustomerStream, CustomerSearchStream
 
-# All streams to be included in the tap
 STREAM_TYPES = [
     MessagesStream,
     NotesStream,
     ConversationsStream,
     KObjectsStream,
     CustomersStream,
-    UsersStream
+    UsersStream,
+    CompaniesStream
 ]
 
 
