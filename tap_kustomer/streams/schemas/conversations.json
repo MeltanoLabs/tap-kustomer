@@ -1345,82 +1345,11 @@
                   ]
               },
               "custom": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdWithinBusinessHoursBool": {
-                          "type": "boolean"
-                      },
-                      "prioritySetBool": {
-                          "type": "boolean"
-                      },
-                      "caseCategoryTree": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "autoResponseSentBool": {
-                          "type": "boolean"
-                      },
-                      "autoResponseAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "smsBotIsExistingOrderStr": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "botIsExistingOrderStr": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "botHasOrderNumberStr": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "orderIdLookupStr": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "claimClaimAdjacentStatusTree": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "isMainPhoneBool": {
-                          "type": "boolean"
-                      },
-                      "deltaLabelCreatedBool": {
-                          "type": "boolean"
-                      },
-                      "productInspectionSentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "deltaShippingLabelUrlStr": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "required": []
               },
               "lastMessageDirection": {
                   "type": [
