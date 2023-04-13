@@ -22,5 +22,5 @@ class ShortcutStream(KustomerStream):
     path = "/v1/TODO"
     primary_keys = ["TODO"]
     replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "shortcut.json"
+    schema_filepath = SCHEMAS_DIR / "shortcuts.json"
 

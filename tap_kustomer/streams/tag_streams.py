@@ -20,5 +20,5 @@ class TagStream(KustomerStream):
     path = "/v1/TODO"
     primary_keys = ["TODO"]
     replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "tag.json"
+    schema_filepath = SCHEMAS_DIR / "tags.json"
 

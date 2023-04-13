@@ -21,4 +21,4 @@ class TeamStream(KustomerStream):
     path = "/v1/TODO"
     primary_keys = ["TODO"]
     replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "team.json"
+    schema_filepath = SCHEMAS_DIR / "teams.json"

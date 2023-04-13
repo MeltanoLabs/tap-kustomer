@@ -22,4 +22,4 @@ class CompanyStream(CustomerSearchStream):
     path = "/v1/TODO"
     primary_keys = ["TODO"]
     replication_key = "TODO"
-    schema_filepath = SCHEMAS_DIR / "company.json"
+    schema_filepath = SCHEMAS_DIR / "companies.json"

@@ -20,4 +20,4 @@ class UserStream(KustomerStream):
     path = "users"
     primary_keys = ["id"]
     replication_key = "updated_at"
-    schema_filepath = SCHEMAS_DIR / "user.json"
+    schema_filepath = SCHEMAS_DIR / "users.json"

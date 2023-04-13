@@ -23,7 +23,7 @@ class NoteStream(CustomerSearchStream):
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
-    schema_filepath = SCHEMAS_DIR / "note.json"
+    schema_filepath = SCHEMAS_DIR / "notes.json"
 
     max_observed_timestamp = None
     max_timestamp = None

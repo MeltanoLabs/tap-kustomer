@@ -24,7 +24,7 @@ class CustomerStream(CustomerSearchStream):
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
-    schema_filepath = SCHEMAS_DIR / "customer.json"
+    schema_filepath = SCHEMAS_DIR / "customers.json"
 
     max_observed_timestamp = None
     max_timestamp = None

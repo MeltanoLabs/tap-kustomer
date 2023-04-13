@@ -23,7 +23,7 @@ class KObjectStream(CustomerSearchStream):
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
-    schema_filepath = SCHEMAS_DIR / "kobject.json"
+    schema_filepath = SCHEMAS_DIR / "kobjects.json"
 
     max_observed_timestamp = None
     max_timestamp = None
