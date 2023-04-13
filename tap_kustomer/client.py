@@ -136,7 +136,15 @@ class KustomerStream(RESTStream):
 
 class CustomerSearchStream(KustomerStream):
     """kustomer stream class."""
-
+    
+    rest_method = "POST"
+    path = "customers/search"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
+    max_observed_timestamp = None
+    max_timestamp = None
+    
     def get_new_paginator(self) -> BaseHATEOASPaginator:
         """Return the paginator
 
