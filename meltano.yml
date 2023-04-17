@@ -11,8 +11,13 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
-              # Add individual stream names here
               - messages.*
+              - conversations.*
+              - notes.*
+              - kobjects.*
+              - customers.*
+              - companies.*
+
 plugins:
   extractors:
     - name: "tap-kustomer"

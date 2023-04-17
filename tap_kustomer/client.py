@@ -1,4 +1,4 @@
-"""REST client handling, including kustomerStream base class."""
+"""REST client handling, including KustomerStream base class."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from singer_sdk import typing as th  # JSON Schema typing helpers
 import requests
 
 
-class RESTPaginator(BaseHATEOASPaginator):
+class PageLimitRESTPaginator(BaseHATEOASPaginator):
 
     def get_next_url(self, response):
         data = response.json()
@@ -27,13 +27,20 @@ class RESTPaginator(BaseHATEOASPaginator):
 
         return next_link
 
-class kustomerStream(RESTStream):
-    """kustomer stream class."""
+class RESTPaginator(BaseHATEOASPaginator):
 
-    # Where the data is
+    def get_next_url(self, response):
+        data = response.json()
+        next_link = data.get("links")["next"]
+
+        return next_link
+
+
+class KustomerStream(RESTStream):
+    """kustomer base stream class."""
+    
     records_jsonpath = "$[data][*]"
 
-    # Use a dynamic url_base depending on the `prod_point` config
     @property
     def url_base(self) -> str:
         """
@@ -78,14 +85,6 @@ class kustomerStream(RESTStream):
             headers["User-Agent"] = self.config.get("user_agent")
         return headers
 
-    def get_new_paginator(self) -> BaseHATEOASPaginator:
-        """Return the paginator
-
-        Returns:
-            A paginator for handling next page requests
-        """
-        return RESTPaginator()
-
     def get_url_params(
         self,
         context: dict | None,
@@ -126,6 +125,34 @@ class kustomerStream(RESTStream):
     
         return row
 
+    def get_new_paginator(self) -> BaseHATEOASPaginator:
+        """Return the paginator
+
+        Returns:
+            A paginator for handling next page requests
+        """
+        return RESTPaginator()
+
+
+class CustomerSearchStream(KustomerStream):
+    """kustomer stream class."""
+    
+    rest_method = "POST"
+    path = "customers/search"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
+    max_observed_timestamp = None
+    max_timestamp = None
+    
+    def get_new_paginator(self) -> BaseHATEOASPaginator:
+        """Return the paginator
+
+        Returns:
+            A paginator for handling next page requests
+        """
+        return PageLimitRESTPaginator()
+
     def prepare_request_payload(
         self,
         context: dict | None,
@@ -158,3 +185,4 @@ class kustomerStream(RESTStream):
             ],
             "queryContext": self.query_context
         }  
+    

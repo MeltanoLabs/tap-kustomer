@@ -1,0 +1,657 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "attributes": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "channel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "app": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "size": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "direction": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "directionType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preview": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "meta": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "trackingId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "from": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "to": {
+                            "type": [
+                                "null",
+                                "string",
+                                "array",
+                                "object"
+                            ]
+                        },
+                        "cc": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "bcc": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "subject": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "inReplyTo": {
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "payload": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "placedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "externalRecordingUrl": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "answeredAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "endedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "permalink": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "messageType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "status": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "responseTime": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "responseBusinessTime": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "assignedTeams": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "assignedUsers": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "auto": {
+                    "type": "boolean"
+                },
+                "sentAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "createdAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "redacted": {
+                    "type": "boolean"
+                },
+                "createdByTeams": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "rev": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "reactions": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "subjectId": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "subjectType": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "name": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "createdAt": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "firstDelivered": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "timestamp": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "clientType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "firstRead": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "timestamp": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "intentDetections": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "lang": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externalId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modifiedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        },
+        "relationships": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "org": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "modifiedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "customer": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "conversation": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "createdBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "shortcuts": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": []
+                            }
+                        }
+                    },
+                    "required": []
+                }
+            },
+            "required": []
+        },
+        "links": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "self": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "related": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        }
+    },
+    "required": []
+}

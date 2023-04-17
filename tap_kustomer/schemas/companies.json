@@ -1,0 +1,29 @@
+
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+          "format": "date-time",
+          "type": [
+              "string",
+              "null"
+          ]
+        }
+    }
+}
