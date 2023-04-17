@@ -19,5 +19,9 @@
         "poetry": "poetry install"
     },
     "postStartCommand": "meltano install",
-    "runArgs": ["--env-file",".secrets/.env"]
+    "runArgs": [
+        "--env-file",
+        ".secrets/.env",
+        "--network=host"
+    ]
 }
