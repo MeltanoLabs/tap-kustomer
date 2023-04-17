@@ -95,6 +95,31 @@ You can also test the `tap-kustomer` CLI interface directly using `poetry run`:
 poetry run tap-kustomer --help
 ```
 
+### Setting up a postgres container locally
+
+Ensure Docker is running, then run these commands to create a postgres container locally:
+
+```sh
+docker run \
+ --name dbt-postgres \
+ -e POSTGRES_PASSWORD=postgres \
+ -e POSTGRES_USER=postgres \
+ -e POSTGRES_DB=postgres \
+ -p 5432:5432 -d postgres
+```
+
+If using the devcontainer, add the following to your `.secrets/.env` file:
+
+```
+TARGET_POSTGRES_PASSWORD=postgres
+```
+
+If running it locally, you need to export it instead (OSX):
+
+```sh
+export TARGET_POSTGRES_PASSWORD=postgres
+```
+
 ### Testing with [Meltano](https://www.meltano.com)
 
 _**Note:** This tap will work in any Singer environment and does not require Meltano.
