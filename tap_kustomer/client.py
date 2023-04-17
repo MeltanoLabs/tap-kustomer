@@ -1,32 +1,46 @@
-"""REST client handling, including kustomerStream base class."""
+"""REST client handling, including KustomerStream base class."""
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any, Callable, Iterable
+from typing import Any, Iterable
 from urllib.parse import parse_qsl
+from datetime import datetime
 
-import requests
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseHATEOASPaginator
 from singer_sdk.streams import RESTStream
+from singer_sdk import typing as th  # JSON Schema typing helpers
 
+import requests
+
+
+class PageLimitRESTPaginator(BaseHATEOASPaginator):
+
+    def get_next_url(self, response):
+        data = response.json()
+        next_link = data.get("links")["next"]
+
+        if next_link == "/v1/customers/search?page=101&pageSize=100":
+            next_link = data.get("links")["first"]
+
+        return next_link
 
 class RESTPaginator(BaseHATEOASPaginator):
 
     def get_next_url(self, response):
         data = response.json()
-        return data.get("links")["next"]
+        next_link = data.get("links")["next"]
 
-class kustomerStream(RESTStream):
-    """kustomer stream class."""
+        return next_link
 
-    # Where the data is
+
+class KustomerStream(RESTStream):
+    """kustomer base stream class."""
+    
     records_jsonpath = "$[data][*]"
 
-    # Use a dynamic url_base depending on the `prod_point` config
     @property
     def url_base(self) -> str:
         """
@@ -71,14 +85,6 @@ class kustomerStream(RESTStream):
             headers["User-Agent"] = self.config.get("user_agent")
         return headers
 
-    def get_new_paginator(self) -> BaseHATEOASPaginator:
-        """Return the paginator
-
-        Returns:
-            A paginator for handling next page requests
-        """
-        return RESTPaginator()
-
     def get_url_params(
         self,
         context: dict | None,
@@ -113,14 +119,70 @@ class kustomerStream(RESTStream):
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        """As needed, append or transform raw data to match expected structure.
+        
+        row["updated_at"] = row["attributes"]["updatedAt"]
+        self.max_observed_timestamp = row["updated_at"]
+    
+        return row
 
-        Args:
-            row: An individual record from the stream.
-            context: The stream context.
+    def get_new_paginator(self) -> BaseHATEOASPaginator:
+        """Return the paginator
 
         Returns:
-            The updated record dictionary, or ``None`` to skip the record.
+            A paginator for handling next page requests
         """
-        # TODO: Delete this method if not needed.
-        return row
+        return RESTPaginator()
+
+
+class CustomerSearchStream(KustomerStream):
+    """kustomer stream class."""
+    
+    rest_method = "POST"
+    path = "customers/search"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
+    records_jsonpath = "$[data][*]"
+    max_observed_timestamp = None
+    max_timestamp = None
+    
+    def get_new_paginator(self) -> BaseHATEOASPaginator:
+        """Return the paginator
+
+        Returns:
+            A paginator for handling next page requests
+        """
+        return PageLimitRESTPaginator()
+
+    def prepare_request_payload(
+        self,
+        context: dict | None,
+        next_page_token: th.TypeVar("_TToken") | None,
+    ) -> dict | None:
+
+        if self.max_timestamp:
+            greater_than = self.max_timestamp
+        elif self.get_starting_timestamp(context):
+            greater_than = self.get_starting_timestamp(context)
+        else:
+            greater_than = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
+
+        if next_page_token and next_page_token.query == 'page=1&pageSize=100':
+            self.max_timestamp = self.max_observed_timestamp
+            greater_than = self.max_timestamp
+
+        return {
+            "and": [
+                {
+                self.updated_at: {
+                    "gt": f"{greater_than}"
+                    }
+                }
+            ],
+            "sort": [
+                {
+                self.updated_at: "asc"
+                }
+            ],
+            "queryContext": self.query_context
+        }  
+    

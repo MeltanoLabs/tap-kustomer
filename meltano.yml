@@ -11,8 +11,13 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
-              # Add individual stream names here
               - messages.*
+              - conversations.*
+              - notes.*
+              - kobjects.*
+              - customers.*
+              - companies.*
+
 plugins:
   extractors:
     - name: "tap-kustomer"
@@ -25,7 +30,7 @@ plugins:
         - about
         - stream-maps
       config:
-        start_date: "2010-01-01T00:00:00Z"
+        start_date: "2023-04-04"
       settings:
         - name: api_key
           label: API Key

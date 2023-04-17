@@ -3,14 +3,20 @@
 from __future__ import annotations
 
 from singer_sdk import Tap
-from singer_sdk import typing as th  # JSON schema typing helpers
+from singer_sdk import typing as th
 
-from tap_kustomer.streams import MessagesStream
-from tap_kustomer.client import kustomerStream
+from tap_kustomer import streams
 
-# All streams to be included in the tap
+from tap_kustomer.client import KustomerStream, CustomerSearchStream
+
 STREAM_TYPES = [
-    MessagesStream
+    streams.MessagesStream,
+    streams.NotesStream,
+    streams.ConversationsStream,
+    streams.KObjectsStream,
+    streams.CustomersStream,
+    streams.UsersStream,
+    streams.CompaniesStream
 ]
 
 
@@ -19,7 +25,6 @@ class Tapkustomer(Tap):
 
     name = "tap-kustomer"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
             "api_key",
@@ -41,7 +46,7 @@ class Tapkustomer(Tap):
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[kustomerStream]:
+    def discover_streams(self) -> list[KustomerStream, CustomerSearchStream]:
         """Return a list of discovered streams.
 
         Returns:

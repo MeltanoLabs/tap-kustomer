@@ -1,0 +1,1253 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "attributes": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "displayName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displayColor": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displayIcon": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externalIds": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sharedExternalIds": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "emails": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "verified": {
+                                "type": "boolean"
+                            },
+                            "externalVerified": {
+                                "type": "boolean"
+                            },
+                            "email": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "sharedEmails": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "verified": {
+                                "type": "boolean"
+                            },
+                            "email": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "externalVerified": {
+                                "type": "boolean"
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "phones": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "verified": {
+                                "type": "boolean"
+                            },
+                            "phone": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "sharedPhones": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "whatsapps": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sharedWhatsapps": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "facebookIds": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "instagramIds": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "pageId": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "username": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "threadId": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "instagramId": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "socials": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sharedSocials": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "urls": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "locations": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "activeUsers": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "watchers": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "recentLocation": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "updatedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "location": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "countryName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "cityName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "regionName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "zipCode": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "createdAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modifiedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastActivityAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastCustomerActivityAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "deleted": {
+                    "type": "boolean"
+                },
+                "lastConversation": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "channels": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "tags": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentiment": {
+                            "type": [
+                                "object",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "conversationCounts": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "done": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "open": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "snoozed": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "all": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "preview": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "subject": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "text": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "type": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "previewAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "tags": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "custom": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "required": []
+                },
+                "progressiveStatus": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "verified": {
+                    "type": "boolean"
+                },
+                "rev": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "recentItems": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "updatedAt": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "meta": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "klassName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": []
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "satisfactionLevel": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "firstSatisfaction": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "sentByTeams": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "conversation": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "formResponse": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "form": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "channel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "scheduledFor": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "createdAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sentAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "updatedAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sentBy": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "rating": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "score": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "firstAnswer": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "lastSatisfaction": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "sentByTeams": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "conversation": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "formResponse": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "form": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "channel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "scheduledFor": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "createdAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sentAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "updatedAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sentBy": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "rating": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "score": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "firstAnswer": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "count": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "acknowledgeCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "avgRating": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "avgScore": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "roleGroupVersions": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "accessOverride": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "user": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    }
+                },
+                "firstName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastMessageIn": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentiment": {
+                            "type": "null"
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "lastMessageOut": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "lastMessageAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sentiment": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "polarity": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "confidence": {
+                            "type": "number"
+                        }
+                    },
+                    "required": []
+                },
+                "signedUpAt": {
+                    "type": "null"
+                },
+                "avatarUrl": {
+                    "type": "null"
+                },
+                "username": {
+                    "type": "null"
+                },
+                "locale": {
+                    "type": "null"
+                },
+                "timeZone": {
+                    "type": "null"
+                },
+                "birthdayAt": {
+                    "type": "null"
+                },
+                "gender": {
+                    "type": "null"
+                },
+                "lastSeenAt": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "lastMessageUnrespondedTo": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "presence": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unmaskingWindow": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "updatedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "defaultLang": {
+                    "type": "null"
+                },
+                "companyName": {
+                    "type": "null"
+                }
+            },
+            "required": []
+        },
+        "relationships": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "messages": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "modifiedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "org": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "shopify-orders": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "kobject": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "stamped-io-reviews": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "kobject": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "loop-returns": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "kobject": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "gift-orders": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "kobject": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                }
+            },
+            "required": []
+        },
+        "links": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "self": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        }
+    },
+    "required": []
+}
