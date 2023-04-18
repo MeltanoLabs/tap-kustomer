@@ -6,6 +6,7 @@ environments:
   - name: dev
     env:
       TAP_KUSTOMER_API_KEY: ${TAP_KUSTOMER_API_KEY}
+      TARGET_POSTGRES_PASSWORD: ${TARGET_POSTGRES_PASSWORD}
     config:
       plugins:
         extractors:
@@ -30,7 +31,7 @@ plugins:
         - about
         - stream-maps
       config:
-        start_date: "2023-04-04"
+        start_date: "2023-04-17"
       settings:
         - name: api_key
           label: API Key
@@ -54,3 +55,11 @@ plugins:
       variant: andyh1203
       pip_url: target-jsonl
       destination_path: output
+    - name: target-postgres
+      variant: transferwise
+      pip_url: pipelinewise-target-postgres
+      config:
+        host: localhost
+        port: 5432
+        user: postgres
+        dbname: postgres
