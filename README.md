@@ -102,6 +102,7 @@ Ensure Docker is running, then run these commands to create a postgres container
 ```sh
 docker run \
  --name dbt-postgres \
+ --network host \
  -e POSTGRES_PASSWORD=postgres \
  -e POSTGRES_USER=postgres \
  -e POSTGRES_DB=postgres \
