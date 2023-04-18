@@ -21,9 +21,7 @@ __all__ = [
 ]
 
 class CompaniesStream(CustomerSearchStream):
-    """
-    TODO
-    """
+
     name = "companies"
     updated_at = "company_updated_at"
     query_context = "company"
@@ -31,9 +29,6 @@ class CompaniesStream(CustomerSearchStream):
 
 
 class ConversationsStream(CustomerSearchStream):
-    """
-    TODO
-    """
     
     name = "conversations"
     schema_filepath = SCHEMAS_DIR / "conversations.json"
@@ -42,9 +37,6 @@ class ConversationsStream(CustomerSearchStream):
 
 
 class CustomersStream(CustomerSearchStream):
-    """
-    TODO
-    """
 
     name = "customers"
     schema_filepath = SCHEMAS_DIR / "customers.json"
@@ -53,9 +45,6 @@ class CustomersStream(CustomerSearchStream):
 
 
 class KObjectsStream(CustomerSearchStream):
-    """
-    TODO
-    """
 
     name = "kobjects"
     schema_filepath = SCHEMAS_DIR / "kobjects.json"
@@ -63,9 +52,6 @@ class KObjectsStream(CustomerSearchStream):
     query_context = "kobject"
 
 class MessagesStream(CustomerSearchStream):
-    """
-    TODO
-    """
 
     name = "messages"
     schema_filepath = SCHEMAS_DIR / "messages.json"
@@ -73,9 +59,6 @@ class MessagesStream(CustomerSearchStream):
     query_context = "message"
 
 class NotesStream(CustomerSearchStream):
-    """
-    TODO
-    """
 
     name = "notes"
     schema_filepath = SCHEMAS_DIR / "notes.json"
@@ -83,48 +66,28 @@ class NotesStream(CustomerSearchStream):
     query_context = "note"
 
 class ShortcutsStream(KustomerStream):
-    """
-    TODO
-    """
 
-    name = "shortcut"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    name = "shortcuts"
+    path = "shortcuts"
     schema_filepath = SCHEMAS_DIR / "shortcuts.json"
 
 
 class TagsStream(KustomerStream):
-    """
-    TODO
-    """
 
-    name = "tag"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    name = "tags"
+    path = "tags"
     schema_filepath = SCHEMAS_DIR / "tags.json"
 
 
 class TeamsStream(KustomerStream):
-    """
-    TODO
-    """
 
-    name = "team"
-    path = "/v1/TODO"
-    primary_keys = ["TODO"]
-    replication_key = "TODO"
+    name = "teams"
+    path = "teams"
     schema_filepath = SCHEMAS_DIR / "teams.json"
 
 
 class UsersStream(KustomerStream):
-    """
-    TODO
-    """
 
     name = "users"
     path = "users"
-    primary_keys = ["id"]
-    replication_key = "updated_at"
     schema_filepath = SCHEMAS_DIR / "users.json"
