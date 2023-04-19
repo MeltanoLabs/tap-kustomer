@@ -18,6 +18,10 @@ environments:
               - kobjects.*
               - customers.*
               - companies.*
+              - teams.*
+              - tags.*
+              - users.*
+              - shortcuts.*
 
 plugins:
   extractors:

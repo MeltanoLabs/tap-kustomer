@@ -39,8 +39,11 @@ class RESTPaginator(BaseHATEOASPaginator):
 class KustomerStream(RESTStream):
     """kustomer base stream class."""
     
+    rest_method = "GET"
+    primary_keys = ["id"]
+    replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
-
+   
     @property
     def url_base(self) -> str:
         """

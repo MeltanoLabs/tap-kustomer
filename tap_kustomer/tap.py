@@ -16,7 +16,11 @@ STREAM_TYPES = [
     streams.KObjectsStream,
     streams.CustomersStream,
     streams.UsersStream,
-    streams.CompaniesStream
+    streams.CompaniesStream,
+    streams.TeamsStream,
+    streams.TagsStream,
+    streams.UsersStream,
+    streams.ShortcutsStream
 ]
 
 
