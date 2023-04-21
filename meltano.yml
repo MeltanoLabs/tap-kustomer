@@ -12,16 +12,18 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
-              - messages.*
+              - companies.*
               - conversations.*
+              - customers.*
               - notes.*
               - kobjects.*
-              - customers.*
-              - companies.*
-              - teams.*
-              - tags.*
-              - users.*
+              - messages.*
               - shortcuts.*
+              - slas.*
+              - sla_versions.*
+              - tags.*
+              - teams.*
+              - users.*
 
 plugins:
   extractors:

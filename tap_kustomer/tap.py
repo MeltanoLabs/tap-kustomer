@@ -10,17 +10,18 @@ from tap_kustomer import streams
 from tap_kustomer.client import KustomerStream, CustomerSearchStream
 
 STREAM_TYPES = [
+    streams.CompaniesStream,
+    streams.ConversationsStream,
+    streams.CustomersStream,
+    streams.KObjectsStream,
     streams.MessagesStream,
     streams.NotesStream,
-    streams.ConversationsStream,
-    streams.KObjectsStream,
-    streams.CustomersStream,
-    streams.UsersStream,
-    streams.CompaniesStream,
-    streams.TeamsStream,
+    streams.ShortcutsStream,
+    streams.SlaStream,
+    streams.SlaVersionStream,
     streams.TagsStream,
+    streams.TeamsStream,
     streams.UsersStream,
-    streams.ShortcutsStream
 ]
 
 

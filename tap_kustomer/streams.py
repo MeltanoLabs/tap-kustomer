@@ -15,6 +15,8 @@ __all__ = [
     "MessagesStream",
     "NotesStream",
     "ShortcutsStream",
+    "SlaStream",
+    "SlaVersionStream",
     "TagsStream",
     "TeamsStream",
     "UsersStream"
@@ -72,7 +74,46 @@ class ShortcutsStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "shortcuts.json"
 
 
-class TagsStream(KustomerStream):
+class SlaStream(KustomerStream):
+    name = "slas"
+    path = "slas"
+    schema_filepath = SCHEMAS_DIR / "slas.json"
+    replication_key = None
+
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+        return row
+
+
+class SlaVersionStream(KustomerStream):
+    name = "sla_versions"
+    path = "slas"
+    schema_filepath = SCHEMAS_DIR / "sla_versions.json"
+    replication_key = None
+
+    # Need to get the versions
+    records_jsonpath = "$[included][*]"
+
+    def get_url_params(
+        self,
+        context: dict | None,
+        next_page_token: Any | None,
+    ) -> dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization.
+
+        Args:
+            context: The stream context.
+            next_page_token: The next page index or value.
+
+        Returns:
+            A dictionary of URL query parameters.
+        """
+        params = super().get_url_params(context, next_page_token)
+        params["versions"] = "all"
+
+        return params
+
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+        return row
 
     name = "tags"
     path = "tags"
