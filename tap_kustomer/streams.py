@@ -115,6 +115,9 @@ class SlaVersionStream(KustomerStream):
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
         return row
 
+
+class TagsStream(KustomerStream):
+
     name = "tags"
     path = "tags"
     schema_filepath = SCHEMAS_DIR / "tags.json"
