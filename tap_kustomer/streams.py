@@ -77,10 +77,6 @@ class ShortcutsStream(KustomerStream):
     path = "shortcuts"
     schema_filepath = SCHEMAS_DIR / "shortcuts.json"
 
-
-class TagsStream(KustomerStream):
-
-
 class TagsStream(KustomerStream):
     name = "tags"
     path = "tags"
@@ -104,13 +100,10 @@ class UsersStream(KustomerStream):
 
 class AttachmentsChildStream(KustomerStream):
     name = "attachments"
+    parent_stream_type = ConversationsStream
     path = "conversations/{id}/attachments"
     schema_filepath = SCHEMAS_DIR / "attachments.json"
     replication_key = None
-
-    parent_stream_type = ConversationsStream
-
-    # Assume attachments don't have `updated_at` incremented when attachments are changed
     ignore_parent_replication_keys = True
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
