@@ -124,8 +124,10 @@ class KustomerStream(RESTStream):
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        row["updated_at"] = row["attributes"]["updatedAt"]
-        self.max_observed_timestamp = row["updated_at"]
+        # For incremental models, bring out the nested replication key
+        if self.replication_key is not None:
+            row["updated_at"] = row["attributes"]["updatedAt"]
+            self.max_observed_timestamp = row["updated_at"]
 
         return row
 
