@@ -17,7 +17,6 @@ import requests
 
 
 class PageLimitRESTPaginator(BaseHATEOASPaginator):
-
     def get_next_url(self, response):
         data = response.json()
         next_link = data.get("links")["next"]
@@ -27,23 +26,26 @@ class PageLimitRESTPaginator(BaseHATEOASPaginator):
 
         return next_link
 
-class RESTPaginator(BaseHATEOASPaginator):
 
+class RESTPaginator(BaseHATEOASPaginator):
     def get_next_url(self, response):
         data = response.json()
-        next_link = data.get("links")["next"]
+        if "links" in data and "next" in data.get("links"):
+            next_link = data.get("links")["next"]
+        else:
+            next_link = None
 
         return next_link
 
 
 class KustomerStream(RESTStream):
     """kustomer base stream class."""
-    
+
     rest_method = "GET"
     primary_keys = ["id"]
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
-   
+
     @property
     def url_base(self) -> str:
         """
@@ -103,10 +105,10 @@ class KustomerStream(RESTStream):
             A dictionary of URL query parameters.
         """
         params: dict = {}
-   
+
         if next_page_token:
             params.update(parse_qsl(next_page_token.query))
-        
+
         return params
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
@@ -122,10 +124,11 @@ class KustomerStream(RESTStream):
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        
-        row["updated_at"] = row["attributes"]["updatedAt"]
-        self.max_observed_timestamp = row["updated_at"]
-    
+        # For incremental models, bring out the nested replication key
+        if self.replication_key is not None:
+            row["updated_at"] = row["attributes"]["updatedAt"]
+            self.max_observed_timestamp = row["updated_at"]
+
         return row
 
     def get_new_paginator(self) -> BaseHATEOASPaginator:
@@ -139,7 +142,7 @@ class KustomerStream(RESTStream):
 
 class CustomerSearchStream(KustomerStream):
     """kustomer stream class."""
-    
+
     rest_method = "POST"
     path = "customers/search"
     primary_keys = ["id"]
@@ -147,7 +150,7 @@ class CustomerSearchStream(KustomerStream):
     records_jsonpath = "$[data][*]"
     max_observed_timestamp = None
     max_timestamp = None
-    
+
     def get_new_paginator(self) -> BaseHATEOASPaginator:
         """Return the paginator
 
@@ -161,7 +164,6 @@ class CustomerSearchStream(KustomerStream):
         context: dict | None,
         next_page_token: th.TypeVar("_TToken") | None,
     ) -> dict | None:
-
         if self.max_timestamp:
             greater_than = self.max_timestamp
         elif self.get_starting_timestamp(context):
@@ -169,23 +171,12 @@ class CustomerSearchStream(KustomerStream):
         else:
             greater_than = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
 
-        if next_page_token and next_page_token.query == 'page=1&pageSize=100':
+        if next_page_token and next_page_token.query == "page=1&pageSize=100":
             self.max_timestamp = self.max_observed_timestamp
             greater_than = self.max_timestamp
 
         return {
-            "and": [
-                {
-                self.updated_at: {
-                    "gt": f"{greater_than}"
-                    }
-                }
-            ],
-            "sort": [
-                {
-                self.updated_at: "asc"
-                }
-            ],
-            "queryContext": self.query_context
-        }  
-    
+            "and": [{self.updated_at: {"gt": f"{greater_than}"}}],
+            "sort": [{self.updated_at: "asc"}],
+            "queryContext": self.query_context,
+        }
