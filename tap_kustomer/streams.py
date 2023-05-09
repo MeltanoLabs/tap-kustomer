@@ -23,6 +23,10 @@ __all__ = [
     "AttachmentsChildStream",
 ]
 
+# -----------------------------------------------------------------
+# Customer Search streams
+# -----------------------------------------------------------------
+
 
 class CompaniesStream(CustomerSearchStream):
     name = "companies"
@@ -72,10 +76,16 @@ class NotesStream(CustomerSearchStream):
     query_context = "note"
 
 
+# -----------------------------------------------------------------
+# Kustomer streams
+# -----------------------------------------------------------------
+
+
 class ShortcutsStream(KustomerStream):
     name = "shortcuts"
     path = "shortcuts"
     schema_filepath = SCHEMAS_DIR / "shortcuts.json"
+
 
 class TagsStream(KustomerStream):
     name = "tags"
@@ -95,7 +105,9 @@ class UsersStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "users.json"
 
 
+# -----------------------------------------------------------------
 # Child streams
+# -----------------------------------------------------------------
 
 
 class AttachmentsChildStream(KustomerStream):
@@ -105,6 +117,3 @@ class AttachmentsChildStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "attachments.json"
     replication_key = None
     ignore_parent_replication_keys = True
-
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        return row
