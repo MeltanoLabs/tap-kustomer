@@ -1,2394 +1,2487 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "type": [
-      "object",
-      "null"
-  ],
-  "properties": {
-      "type": {
-          "type": [
-              "string",
-              "null"
-          ]
-      },
-      "id": {
-          "type": [
-              "string",
-              "null"
-          ]
-      },
-      "updated_at": {
-        "format": "date-time",
-        "type": [
-            "string",
-            "null"
-        ]
-      },
-      "attributes": {
-          "type": [
-              "object",
-              "null"
-          ],
-          "properties": {
-              "name": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "preview": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "channels": {
-                  "type": [
-                      "array",
-                      "null"
-                  ],
-                  "items": {
-                      "type": [
-                          "string",
-                          "null"
-                      ]
-                  }
-              },
-              "status": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "open": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "statusAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "messageCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "lastReceivedAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "noteCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "satisfaction": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "satisfactionLevel": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "sentByTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "answers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "formResponse": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "form": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "channel": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "status": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "scheduledFor": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "updatedAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "rating": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "score": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "createdAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "updatedAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "lastActivityAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "spam": {
-                  "type": "boolean"
-              },
-              "ended": {
-                  "type": "boolean"
-              },
-              "endedAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "endedReason": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "endedByType": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "tags": {
-                  "type": [
-                      "array",
-                      "null"
-                  ],
-                  "items": {
-                      "type": [
-                          "string",
-                          "null"
-                      ]
-                  }
-              },
-              "suggestedTags": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "predictions": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "suggestedShortcuts": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "firstMessageIn": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "firstDelivered": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "timestamp": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "clientType": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "directionType": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "channel": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "meta": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "trackingId": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "payload": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "to": {
-                                  "type": [
-                                      "string",
-                                      "array",
-                                      "null"
-                                  ]
-                              },
-                              "from": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "permalink": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "messageType": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "subject": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "cc": {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ]
-                              },
-                              "recipient": {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "email": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      },
-                                      "mailboxHash": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      }
-                                  },
-                                  "required": []
-                              },
-                              "proxy": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "attachmentNum": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "placedAt": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "externalRecordingUrl": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "status": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          }
-                      }
-                  }
-              },
-              "firstMessageOut": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "channel": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "directionType": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "lastMessageIn": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "meta": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "trackingId": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "payload": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "subject": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "from": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "to": {
-                                  "type": [
-                                      "null",
-                                      "string",
-                                      "array"
-                                  ]
-                              },
-                              "cc": {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ]
-                              },
-                              "recipient": {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "email": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      },
-                                      "mailboxHash": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      }
-                                  },
-                                  "required": []
-                              },
-                              "inReplyTo": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "permalink": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "messageType": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "proxy": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "attachmentNum": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "placedAt": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "externalRecordingUrl": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "status": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          }
-                      },
-                      "channel": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  }
-              },
-              "lastMessageOut": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  }
-              },
-              "lastMessageAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "lastMessageUnrespondedTo": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  }
-              },
-              "lastMessageUnrespondedToSinceLastDone": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  }
-              },
-              "assignedUsers": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "assignedTeams": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "firstResponse": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "assignedTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "assignedUsers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "responseTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "firstResponseSinceLastDone": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "assignedTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "assignedUsers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "sentAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "responseTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      }
-                  }
-              },
-              "lastResponse": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "assignedTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "assignedUsers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "id": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "firstDone": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "anyOf": [
-                              {
-                                  "type": "null"
-                              },
-                              {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ],
-                                  "items": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  }
-                              }
-                          ]
-                      },
-                      "assignedTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "assignedUsers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "null",
-                              "string"
-                          ]
-                      },
-                      "noteCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "messageCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "messageCountByChannel": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "chat": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "form": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "email": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "instagram": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "sms": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "voice": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              }
-                          }
-                      },
-                      "outboundMessageCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "outboundMessageCountByChannel": {
-                          "anyOf": [
-                              {
-                                  "type": "null"
-                              },
-                              {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "chat": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "email": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "instagram": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "sms": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      }
-                                  }
-                              }
-                          ]
-                      },
-                      "lastMessageDirection": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "lastMessageDirectionType": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "lastDone": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "createdByTeams": {
-                          "anyOf": [
-                              {
-                                  "type": "null"
-                              },
-                              {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ],
-                                  "items": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  }
-                              }
-                          ]
-                      },
-                      "assignedTeams": {
-                          "type": [
-                              "array",
-                              "null"
-                          ]
-                      },
-                      "assignedUsers": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "createdAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "createdBy": {
-                          "type": [
-                              "null",
-                              "string"
-                          ]
-                      },
-                      "noteCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "messageCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "messageCountByChannel": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "chat": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "form": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "email": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "instagram": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "sms": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              },
-                              "voice": {
-                                  "type": [
-                                      "integer",
-                                      "null"
-                                  ]
-                              }
-                          }
-                      },
-                      "outboundMessageCount": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "outboundMessageCountByChannel": {
-                          "anyOf": [
-                              {
-                                  "type": "null"
-                              },
-                              {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "chat": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "email": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "instagram": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      },
-                                      "sms": {
-                                          "type": [
-                                              "integer",
-                                              "null"
-                                          ]
-                                      }
-                                  }
-                              }
-                          ]
-                      },
-                      "lastMessageDirection": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "lastMessageDirectionType": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "doneCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "direction": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "custom": {
-                "type": [
-                    "object",
-                    "null"
-                ],
-                "required": []
-              },
-              "lastMessageDirection": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "outboundMessageCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "inboundMessageCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "rev": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "priority": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "defaultLang": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "locale": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "totalOpen": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTimeBySchedule": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTimeByScheduleSinceLastDone": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "businessTimeSinceLastDone": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "timeSinceLastDone": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "roleGroupVersions": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "accessOverride": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "modificationHistory": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "nameAt": {
-                          "type": [
-                              "null",
-                              "string"
-                          ]
-                      },
-                      "priorityAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "channelAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "assignedTeamsAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "assignedUsersAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "brandAt": {
-                          "type": "null"
-                      },
-                      "defaultLangAt": {
-                          "type": "null"
-                      },
-                      "statusAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "tagsAt": {
-                          "type": [
-                              "null",
-                              "string"
-                          ]
-                      },
-                      "customAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "assistant": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "fac": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "isFac": {
-                                  "type": "boolean"
-                              },
-                              "source": {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "type": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      },
-                                      "channel": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      }
-                                  }
-                              },
-                              "createdAt": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "reasons": {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ],
-                                  "items": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  }
-                              },
-                              "exclusions": {
-                                  "type": [
-                                      "array",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "assistantId": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "string",
-                                  "null"
-                              ]
-                          }
-                      },
-                      "status": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "type": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "emulation": {
-                          "type": "boolean"
-                      },
-                      "transferredAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "app": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "channel": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "phase": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "matchedTimeBasedRules": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "externalId": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "replyChannel": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "modifiedAt": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              },
-              "totalDone": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "businessTime": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "time": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "sla": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "name": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "version": {
-                          "type": [
-                              "integer",
-                              "null"
-                          ]
-                      },
-                      "matchedAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "metrics": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "longestUnrespondedMessage": {
-                                  "type": [
-                                      "object",
-                                      "null"
-                                  ],
-                                  "properties": {
-                                      "satisfiedAt": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      },
-                                      "breachAt": {
-                                          "type": [
-                                              "string",
-                                              "null"
-                                          ]
-                                      }
-                                  }
-                              }
-                          },
-                          "required": []
-                      },
-                      "breached": {
-                          "type": "boolean"
-                      },
-                      "status": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "summary": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "satisfiedAt": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "firstBreachAt": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          }
-                      },
-                      "breach": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "metric": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "at": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "attribution": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "totalRevenue": {
-                          "type": "number"
-                      },
-                      "hasAttributableRevenue": {
-                          "type": "boolean"
-                      },
-                      "currency": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      }
-                  },
-                  "required": []
-              },
-              "importedAt": {
-                  "type": "null"
-              },
-              "skills": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "lastDeflection": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "deflectedAt": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "articles": {
-                          "type": [
-                              "array",
-                              "null"
-                          ],
-                          "items": {
-                              "type": [
-                                  "object",
-                                  "null"
-                              ],
-                              "properties": {
-                                  "visited": {
-                                      "type": [
-                                          "integer",
-                                          "null"
-                                      ]
-                                  },
-                                  "deflected": {
-                                      "type": "boolean"
-                                  },
-                                  "id": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  },
-                                  "version": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  },
-                                  "lang": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  },
-                                  "title": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  },
-                                  "url": {
-                                      "type": [
-                                          "string",
-                                          "null"
-                                      ]
-                                  }
-                              },
-                              "required": []
-                          }
-                      },
-                      "type": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "status": {
-                          "type": [
-                              "string",
-                              "null"
-                          ]
-                      },
-                      "query": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "rawText": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "snooze": {
-                  "type": ["null", "object"]
-              },
-              "snoozeCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "reopenCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "reopenFromDoneCount": {
-                  "type": [
-                      "integer",
-                      "null"
-                  ]
-              },
-              "totalSnooze": {
-                  "type": [
-                      "object",
-                      "null"
-                  ]
-              },
-              "linkedConversations": {
-                  "type": [
-                      "array",
-                      "null"
-                  ]
-              },
-              "mergedTarget": {
-                  "type": "boolean"
-              },
-              "externalQueue": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              }
-          },
-          "required": []
-      },
-      "relationships": {
-          "type": [
-              "object",
-              "null"
-          ],
-          "properties": {
-              "messages": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "org": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "customer": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "brand": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "modifiedBy": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "endedBy": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "sla": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "slaVersion": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "queue": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              },
-              "subStatus": {
-                  "type": [
-                      "object",
-                      "null"
-                  ],
-                  "properties": {
-                      "data": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "type": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              },
-                              "id": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      },
-                      "links": {
-                          "type": [
-                              "object",
-                              "null"
-                          ],
-                          "properties": {
-                              "self": {
-                                  "type": [
-                                      "string",
-                                      "null"
-                                  ]
-                              }
-                          },
-                          "required": []
-                      }
-                  },
-                  "required": []
-              }
-          },
-          "required": []
-      },
-      "links": {
-          "type": [
-              "object",
-              "null"
-          ],
-          "properties": {
-              "self": {
-                  "type": [
-                      "string",
-                      "null"
-                  ]
-              }
-          },
-          "required": []
-      }
-  },
-  "required": []
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "attributes": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preview": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "channels": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "status": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "open": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "statusAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "messageCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "lastReceivedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "noteCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "satisfaction": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "satisfactionLevel": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "sentByTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "answers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "formResponse": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "form": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "scheduledFor": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "updatedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "rating": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "score": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "createdAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastActivityAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "spam": {
+                    "type": "boolean"
+                },
+                "ended": {
+                    "type": "boolean"
+                },
+                "endedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "endedReason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "endedByType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tags": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "suggestedTags": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "predictions": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "suggestedShortcuts": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "firstMessageIn": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "firstDelivered": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "timestamp": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "clientType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "directionType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "trackingId": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "payload": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "to": {
+                                    "type": [
+                                        "string",
+                                        "array",
+                                        "null"
+                                    ]
+                                },
+                                "from": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "permalink": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "messageType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "subject": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "cc": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ]
+                                },
+                                "recipient": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "email": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "mailboxHash": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    },
+                                    "required": []
+                                },
+                                "proxy": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "attachmentNum": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "placedAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "externalRecordingUrl": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "firstMessageOut": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "directionType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "lastMessageIn": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "trackingId": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "payload": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "subject": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "from": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "to": {
+                                    "type": [
+                                        "null",
+                                        "string",
+                                        "array"
+                                    ]
+                                },
+                                "cc": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ]
+                                },
+                                "recipient": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "email": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "mailboxHash": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    },
+                                    "required": []
+                                },
+                                "inReplyTo": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "permalink": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "messageType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "proxy": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "attachmentNum": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "placedAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "externalRecordingUrl": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "lastMessageOut": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "lastMessageAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastMessageUnrespondedTo": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "lastMessageUnrespondedToSinceLastDone": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "assignedUsers": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "assignedTeams": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "firstResponse": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "assignedTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "assignedUsers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "responseTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "firstResponseSinceLastDone": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "assignedTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "assignedUsers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "sentAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "responseTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "lastResponse": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "assignedTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "assignedUsers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "firstDone": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "anyOf": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "assignedTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "assignedUsers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "noteCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "messageCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "messageCountByChannel": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "chat": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "form": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "email": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "instagram": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "sms": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "voice": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "outboundMessageCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "outboundMessageCountByChannel": {
+                            "anyOf": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "chat": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "email": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "instagram": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "sms": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "lastMessageDirection": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "lastMessageDirectionType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "lastDone": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "createdByTeams": {
+                            "anyOf": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "assignedTeams": {
+                            "type": [
+                                "array",
+                                "null"
+                            ]
+                        },
+                        "assignedUsers": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "createdAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "createdBy": {
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "noteCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "messageCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "messageCountByChannel": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "chat": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "form": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "email": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "instagram": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "sms": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "voice": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "outboundMessageCount": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "outboundMessageCountByChannel": {
+                            "anyOf": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "chat": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "email": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "instagram": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "sms": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "lastMessageDirection": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "lastMessageDirectionType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "doneCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "direction": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "custom": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "required": []
+                },
+                "lastMessageDirection": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "outboundMessageCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "inboundMessageCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "rev": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "priority": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "defaultLang": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "locale": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "totalOpen": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTimeBySchedule": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTimeByScheduleSinceLastDone": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "businessTimeSinceLastDone": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "timeSinceLastDone": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "roleGroupVersions": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "accessOverride": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modificationHistory": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "nameAt": {
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "priorityAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channelAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "assignedTeamsAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "assignedUsersAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "brandAt": {
+                            "type": "null"
+                        },
+                        "defaultLangAt": {
+                            "type": "null"
+                        },
+                        "statusAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "tagsAt": {
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "customAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "assistant": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "fac": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "isFac": {
+                                    "type": "boolean"
+                                },
+                                "source": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "type": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "channel": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "createdAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "reasons": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "exclusions": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "assistantId": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "type": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "emulation": {
+                            "type": "boolean"
+                        },
+                        "transferredAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "app": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "channel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "phase": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "matchedTimeBasedRules": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "externalId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "replyChannel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modifiedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "totalDone": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "sla": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "version": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "matchedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "metrics": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "longestUnrespondedMessage": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "satisfiedAt": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "breachAt": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "required": []
+                        },
+                        "breached": {
+                            "type": "boolean"
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "summary": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "satisfiedAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "firstBreachAt": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "breach": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "metric": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "at": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "attribution": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "totalRevenue": {
+                            "type": "number"
+                        },
+                        "hasAttributableRevenue": {
+                            "type": "boolean"
+                        },
+                        "currency": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "required": []
+                },
+                "importedAt": {
+                    "type": "null"
+                },
+                "skills": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "lastDeflection": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "deflectedAt": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "articles": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "visited": {
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
+                                    },
+                                    "deflected": {
+                                        "type": "boolean"
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "version": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "lang": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "title": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": []
+                            }
+                        },
+                        "type": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "query": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "rawText": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "snooze": {
+                    "type": [
+                        "null",
+                        "object"
+                    ]
+                },
+                "snoozeCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "reopenCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "reopenFromDoneCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "totalSnooze": {
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "linkedConversations": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "mergedTarget": {
+                    "type": "boolean"
+                },
+                "externalQueue": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        },
+        "relationships": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "messages": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "org": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "customer": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "brand": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "createdBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "modifiedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "endedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "pinnedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "sla": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "slaVersion": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "queue": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                },
+                "subStatus": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": []
+                }
+            },
+            "required": []
+        },
+        "links": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "self": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        }
+    },
+    "required": []
 }

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Optional, Any
 
 from pathlib import Path
 from typing import Any
@@ -8,6 +9,7 @@ from tap_kustomer.client import CustomerSearchStream, KustomerStream
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 __all__ = [
+    # Parent streams
     "CompaniesStream",
     "ConversationsStream",
     "CustomersStream",
@@ -20,7 +22,13 @@ __all__ = [
     "TagsStream",
     "TeamsStream",
     "UsersStream",
+    # Child streams
+    "AttachmentsChildStream",
 ]
+
+# -----------------------------------------------------------------
+# Customer Search streams
+# -----------------------------------------------------------------
 
 
 class CompaniesStream(CustomerSearchStream):
@@ -35,6 +43,12 @@ class ConversationsStream(CustomerSearchStream):
     schema_filepath = SCHEMAS_DIR / "conversations.json"
     updated_at = "conversation_updated_at"
     query_context = "conversation"
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "id": record["id"],
+        }
 
 
 class CustomersStream(CustomerSearchStream):
@@ -63,6 +77,11 @@ class NotesStream(CustomerSearchStream):
     schema_filepath = SCHEMAS_DIR / "notes.json"
     updated_at = "note_updated_at"
     query_context = "note"
+
+
+# -----------------------------------------------------------------
+# Kustomer streams
+# -----------------------------------------------------------------
 
 
 class ShortcutsStream(KustomerStream):
@@ -116,3 +135,17 @@ class UsersStream(KustomerStream):
     name = "users"
     path = "users"
     schema_filepath = SCHEMAS_DIR / "users.json"
+
+
+# -----------------------------------------------------------------
+# Child streams
+# -----------------------------------------------------------------
+
+
+class AttachmentsChildStream(KustomerStream):
+    name = "attachments"
+    parent_stream_type = ConversationsStream
+    path = "conversations/{id}/attachments"
+    schema_filepath = SCHEMAS_DIR / "attachments.json"
+    replication_key = None
+    ignore_parent_replication_keys = True

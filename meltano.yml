@@ -12,12 +12,13 @@ environments:
         extractors:
           - name: tap-kustomer
             select:
+              - attachments.*
               - companies.*
               - conversations.*
               - customers.*
-              - notes.*
               - kobjects.*
               - messages.*
+              - notes.*
               - shortcuts.*
               - slas.*
               - sla_versions.*
@@ -37,7 +38,7 @@ plugins:
         - about
         - stream-maps
       config:
-        start_date: "2023-04-17"
+        start_date: "2023-04-20"
       settings:
         - name: api_key
           label: API Key

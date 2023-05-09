@@ -10,6 +10,7 @@ from tap_kustomer import streams
 from tap_kustomer.client import KustomerStream, CustomerSearchStream
 
 STREAM_TYPES = [
+    streams.AttachmentsChildStream,
     streams.CompaniesStream,
     streams.ConversationsStream,
     streams.CustomersStream,
