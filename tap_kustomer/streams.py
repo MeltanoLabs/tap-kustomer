@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Optional, Any
 
 from pathlib import Path
+from typing import Any
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
 
@@ -16,6 +17,8 @@ __all__ = [
     "MessagesStream",
     "NotesStream",
     "ShortcutsStream",
+    "SlaStream",
+    "SlaVersionStream",
     "TagsStream",
     "TeamsStream",
     "UsersStream",
@@ -85,6 +88,35 @@ class ShortcutsStream(KustomerStream):
     name = "shortcuts"
     path = "shortcuts"
     schema_filepath = SCHEMAS_DIR / "shortcuts.json"
+
+
+class SlaStream(KustomerStream):
+    name = "slas"
+    path = "slas"
+    schema_filepath = SCHEMAS_DIR / "slas.json"
+    replication_key = None
+
+
+class SlaVersionStream(KustomerStream):
+    name = "sla_versions"
+    path = "slas"
+    schema_filepath = SCHEMAS_DIR / "sla_versions.json"
+    replication_key = None
+
+    # Versions are not in the data key as defined in KustomerStream
+    records_jsonpath = "$[included][*]"
+
+    def get_url_params(
+        self,
+        context: dict | None,
+        next_page_token: Any | None,
+    ) -> dict[str, Any]:
+        params = super().get_url_params(context, next_page_token)
+
+        # This ensures that the endpoint returns the version details
+        params["versions"] = "all"
+
+        return params
 
 
 class TagsStream(KustomerStream):

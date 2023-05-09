@@ -20,6 +20,8 @@ environments:
               - messages.*
               - notes.*
               - shortcuts.*
+              - slas.*
+              - sla_versions.*
               - tags.*
               - teams.*
               - users.*
