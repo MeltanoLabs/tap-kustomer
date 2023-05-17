@@ -1,8 +1,9 @@
-from __future__ import annotations
-from typing import Optional, Any
+"""Stream classes for tap-kustomer."""
 
+from __future__ import annotations
+
+import typing as t
 from pathlib import Path
-from typing import Any
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
 
@@ -44,7 +45,11 @@ class ConversationsStream(CustomerSearchStream):
     updated_at = "conversation_updated_at"
     query_context = "conversation"
 
-    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+    def get_child_context(
+        self,
+        record: dict,
+        context: dict | None,  # noqa: ARG002
+    ) -> dict:
         """Return a context dictionary for child streams."""
         return {
             "id": record["id"],
@@ -109,8 +114,8 @@ class SlaVersionStream(KustomerStream):
     def get_url_params(
         self,
         context: dict | None,
-        next_page_token: Any | None,
-    ) -> dict[str, Any]:
+        next_page_token: t.Any | None,
+    ) -> dict[str, t.Any]:
         params = super().get_url_params(context, next_page_token)
 
         # This ensures that the endpoint returns the version details

@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import typing as t
+
 from singer_sdk import Tap
 from singer_sdk import typing as th
 
 from tap_kustomer import streams
 
-from tap_kustomer.client import KustomerStream, CustomerSearchStream
+if t.TYPE_CHECKING:
+    from tap_kustomer.client import CustomerSearchStream, KustomerStream
 
 STREAM_TYPES = [
     streams.AttachmentsChildStream,
@@ -48,11 +51,14 @@ class Tapkustomer(Tap):
             "prod_point",
             th.IntegerType,
             default=1,
-            description="The production point of deployment for your organization instance. 1 (US) or 2 (EU).",
+            description=(
+                "The production point of deployment for your organization instance. "
+                "1 (US) or 2 (EU)."
+            ),
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[KustomerStream, CustomerSearchStream]:
+    def discover_streams(self) -> list[KustomerStream | CustomerSearchStream]:
         """Return a list of discovered streams.
 
         Returns:

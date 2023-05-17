@@ -2,22 +2,28 @@
 
 from __future__ import annotations
 
-from typing import Any, Iterable
+import typing as t
+from datetime import datetime, timezone
 from urllib.parse import parse_qsl
-from datetime import datetime
 
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseHATEOASPaginator
 from singer_sdk.streams import RESTStream
-from singer_sdk import typing as th  # JSON Schema typing helpers
 
-import requests
+if t.TYPE_CHECKING:
+    from urllib.parse import ParseResult
+
+    import requests
+
+UTC = timezone.utc
 
 
 class PageLimitRESTPaginator(BaseHATEOASPaginator):
-    def get_next_url(self, response):
+    """Pagination class for Kustomer's Customer Search API."""
+
+    def get_next_url(self, response: requests.Response) -> str | None:
         data = response.json()
         next_link = data.get("links")["next"]
 
@@ -28,7 +34,9 @@ class PageLimitRESTPaginator(BaseHATEOASPaginator):
 
 
 class RESTPaginator(BaseHATEOASPaginator):
-    def get_next_url(self, response):
+    """Pagination class for Kustomer's REST API endpoints."""
+
+    def get_next_url(self, response: requests.Response) -> str | None:
         data = response.json()
         if "links" in data and "next" in data.get("links"):
             next_link = data.get("links")["next"]
@@ -43,24 +51,26 @@ class KustomerStream(RESTStream):
 
     rest_method = "GET"
     primary_keys = ["id"]
-    replication_key = "updated_at"
+    replication_key: str | None = "updated_at"
     records_jsonpath = "$[data][*]"
 
     @property
     def url_base(self) -> str:
-        """
-        Return the API URL root based on the provided prod point 1 (US), 2 (EU).
-        https://developer.kustomer.com/kustomer-api-docs/reference/getting-started-with-kustomer-api#using-the-kustomer-api
+        """Return the API URL root based on the provided prod point 1 (US), 2 (EU).
+
+        https://developer.kustomer.com/kustomer-api-docs/reference/getting-started-with-kustomer-api#using-the-kustomer-api.
         """
         if self.config["prod_point"] == 1:
             # US endpoint
             return "https://api.kustomerapp.com/v1/"
+
         # EU endpoint
-        elif self.config["prod_point"] == 2:
+        if self.config["prod_point"] == 2:  # noqa: PLR2004
             return "https://api.prod2.kustomerapp.com/v1/"
 
+        msg = "prod_point configuration must be either 1 (for US) or 2 (for EU)."
         raise ConfigValidationError(
-            "prod_point configuration must be either 1 (for US) or 2 (for EU)."
+            msg,
         )
 
     @property
@@ -92,9 +102,9 @@ class KustomerStream(RESTStream):
 
     def get_url_params(
         self,
-        context: dict | None,
-        next_page_token: Any | None,
-    ) -> dict[str, Any]:
+        context: dict | None,  # noqa: ARG002
+        next_page_token: t.Any | None,
+    ) -> dict[str, t.Any]:
         """Return a dictionary of values to be used in URL parameterization.
 
         Args:
@@ -111,7 +121,7 @@ class KustomerStream(RESTStream):
 
         return params
 
-    def parse_response(self, response: requests.Response) -> Iterable[dict]:
+    def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
         """Parse the response and return an iterator of result records.
 
         Args:
@@ -123,7 +133,11 @@ class KustomerStream(RESTStream):
         # Parse response body and return a set of records.
         yield from extract_jsonpath(self.records_jsonpath, input=response.json())
 
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
         # For incremental models, bring out the nested replication key
         if self.replication_key is not None:
             row["updated_at"] = row["attributes"]["updatedAt"]
@@ -132,7 +146,7 @@ class KustomerStream(RESTStream):
         return row
 
     def get_new_paginator(self) -> BaseHATEOASPaginator:
-        """Return the paginator
+        """Return the paginator.
 
         Returns:
             A paginator for handling next page requests
@@ -152,7 +166,7 @@ class CustomerSearchStream(KustomerStream):
     max_timestamp = None
 
     def get_new_paginator(self) -> BaseHATEOASPaginator:
-        """Return the paginator
+        """Return the paginator.
 
         Returns:
             A paginator for handling next page requests
@@ -162,14 +176,17 @@ class CustomerSearchStream(KustomerStream):
     def prepare_request_payload(
         self,
         context: dict | None,
-        next_page_token: th.TypeVar("_TToken") | None,
+        next_page_token: ParseResult | None,
     ) -> dict | None:
         if self.max_timestamp:
             greater_than = self.max_timestamp
         elif self.get_starting_timestamp(context):
             greater_than = self.get_starting_timestamp(context)
         else:
-            greater_than = datetime.strptime(self.config("start_date"), "%Y-%m-%d")
+            greater_than = datetime.strptime(
+                self.config("start_date"),
+                "%Y-%m-%d",
+            ).replace(tzinfo=UTC)
 
         if next_page_token and next_page_token.query == "page=1&pageSize=100":
             self.max_timestamp = self.max_observed_timestamp
