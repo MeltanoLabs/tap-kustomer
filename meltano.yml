@@ -1,72 +1,36 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: "tap-kustomer"
+project_id: tap-kustomer
 default_environment: dev
 environments:
-  - name: dev
-    env:
-      TAP_KUSTOMER_API_KEY: ${TAP_KUSTOMER_API_KEY}
-      TARGET_POSTGRES_PASSWORD: ${TARGET_POSTGRES_PASSWORD}
-    config:
-      plugins:
-        extractors:
-          - name: tap-kustomer
-            select:
-              - attachments.*
-              - companies.*
-              - conversations.*
-              - customers.*
-              - kobjects.*
-              - messages.*
-              - notes.*
-              - shortcuts.*
-              - slas.*
-              - sla_versions.*
-              - tags.*
-              - teams.*
-              - users.*
-
+- name: dev
+- name: production
 plugins:
   extractors:
-    - name: "tap-kustomer"
-      namespace: "tap_kustomer"
-      pip_url: -e .
-      capabilities:
-        - state
-        - catalog
-        - discover
-        - about
-        - stream-maps
-      config:
-        start_date: "2023-04-20"
-      settings:
-        - name: api_key
-          label: API Key
-          kind: password
-          description: |
-            The API_KEY to authenticate against the API service
-        - name: start_date
-          label: Start Date
-          kind: date_iso8601
-          value: "2010-01-01T00:00:00Z"
-          description: |
-            The earliest record date to sync
-        - name: prod_point
-          label: Production Point of Deployment
-          kind: integer
-          value: 1
-          description: |
-            The production point of deployment for your organization instance. 1 (US) or 2 (EU).
-  loaders:
-    - name: target-jsonl
-      variant: andyh1203
-      pip_url: target-jsonl
-      destination_path: output
-    - name: target-postgres
-      variant: transferwise
-      pip_url: pipelinewise-target-postgres
-      config:
-        host: localhost
-        port: 5432
-        user: postgres
-        dbname: postgres
+  - name: tap-kustomer
+    namespace: tap_kustomer
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    - about
+    - stream-maps
+    settings:
+    - name: api_key
+      kind: password
+      label: API Key
+      description: |
+        The API_KEY to authenticate against the API service
+    - name: start_date
+      kind: date_iso8601
+      value: '2023-08-01'
+      label: Start Date
+      description: |
+        The earliest record date to sync
+    - name: prod_point
+      kind: integer
+      value: 2
+      label: Production Point of Deployment
+      description: |
+        The production point of deployment for your organization instance. 1 (US) or 2 (EU).

@@ -9,13 +9,15 @@
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "required": []
         },
         "id": {
             "type": [
                 "string",
                 "null"
-            ]
+            ],
+            "required": []
         },
         "updated_at": {
             "format": "date-time",
@@ -1487,10 +1489,16 @@
                             ]
                         },
                         "brandAt": {
-                            "type": "null"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "defaultLangAt": {
-                            "type": "null"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "statusAt": {
                             "type": [
@@ -1802,7 +1810,11 @@
                     "required": []
                 },
                 "importedAt": {
-                    "type": "null"
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "skills": {
                     "type": [
