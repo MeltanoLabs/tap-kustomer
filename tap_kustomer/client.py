@@ -50,7 +50,7 @@ class KustomerStream(RESTStream):
     """kustomer base stream class."""
 
     rest_method = "GET"
-    primary_keys = ["id"]
+    primary_keys = ["id"]  # noqa: RUF012
     replication_key: str | None = "updated_at"
     records_jsonpath = "$[data][*]"
 
@@ -103,7 +103,7 @@ class KustomerStream(RESTStream):
     def get_url_params(
         self,
         context: dict | None,  # noqa: ARG002
-        next_page_token: t.Any | None,
+        next_page_token: t.Any | None,  # noqa: ANN401
     ) -> dict[str, t.Any]:
         """Return a dictionary of values to be used in URL parameterization.
 
@@ -159,7 +159,7 @@ class CustomerSearchStream(KustomerStream):
 
     rest_method = "POST"
     path = "customers/search"
-    primary_keys = ["id"]
+    primary_keys = ["id"]  # noqa: RUF012
     replication_key = "updated_at"
     records_jsonpath = "$[data][*]"
     max_observed_timestamp = None
