@@ -26,6 +26,8 @@ STREAM_TYPES = [
     streams.TagsStream,
     streams.TeamsStream,
     streams.UsersStream,
+    streams.ResourceStream,
+    streams.CustomAttributesStream,
 ]
 
 

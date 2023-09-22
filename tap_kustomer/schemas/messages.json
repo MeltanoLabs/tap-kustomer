@@ -36,6 +36,12 @@
                         "null"
                     ]
                 },
+                "subject":{
+                    "type":[
+                        "string",
+                        "null"
+                    ]
+                },
                 "app": {
                     "type": [
                         "string",

@@ -1,11 +1,14 @@
 """Stream classes for tap-kustomer."""
 
 from __future__ import annotations
+import json
 
 import typing as t
 from pathlib import Path
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
+
+import logging
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
@@ -83,6 +86,26 @@ class NotesStream(CustomerSearchStream):
     updated_at = "note_updated_at"
     query_context = "note"
 
+class ResourceStream(CustomerSearchStream):
+    name = "resource"
+    schema_filepath = SCHEMAS_DIR / "resource.json"
+    replication_key = None
+    resources = ["company", "conversation", "customer", "message"]
+    
+    def get_records(self, context: dict | None) -> t.Iterable[dict[str, t.Any]]:
+        for record in self.resources:
+            yield {"resource": record }
+
+    def get_child_context(
+        self,
+        record: dict,
+        context: dict | None,  # noqa: ARG002
+    ) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "resource": record["resource"],
+        }
+
 
 # -----------------------------------------------------------------
 # Kustomer streams
@@ -141,7 +164,6 @@ class UsersStream(KustomerStream):
     path = "users"
     schema_filepath = SCHEMAS_DIR / "users.json"
 
-
 # -----------------------------------------------------------------
 # Child streams
 # -----------------------------------------------------------------
@@ -154,3 +176,18 @@ class AttachmentsChildStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "attachments.json"
     replication_key = None
     ignore_parent_replication_keys = True
+
+class CustomAttributesStream(KustomerStream):
+    name = "custom_attributes"
+    parent_stream_type = ResourceStream
+    path = "metadata/{resource}"
+    schema_filepath = SCHEMAS_DIR / "custom_attributes.json"
+    replication_key = None
+    ignore_parent_replication_keys = True
+
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+        for k,v in row["attributes"]["properties"].items():
+            v["id"] = k
+            v["tree"] = json.dumps(v.get("tree", ""))
+        row["attributes"]["properties"] = [v for _,v in row["attributes"]["properties"].items()]
+        return row
