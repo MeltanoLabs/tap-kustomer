@@ -137,7 +137,7 @@ class SlaVersionStream(KustomerStream):
     def get_url_params(
         self,
         context: dict | None,
-        next_page_token: t.Any | None,
+        next_page_token: t.Any | None,  # noqa: ANN401
     ) -> dict[str, t.Any]:
         params = super().get_url_params(context, next_page_token)
 

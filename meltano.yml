@@ -24,7 +24,7 @@ plugins:
         The API_KEY to authenticate against the API service
     - name: start_date
       kind: date_iso8601
-      value: '2023-04-01'
+      value: '2023-08-01'
       label: Start Date
       description: |
         The earliest record date to sync
