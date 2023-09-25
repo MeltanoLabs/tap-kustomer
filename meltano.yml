@@ -28,6 +28,12 @@ plugins:
       label: Start Date
       description: |
         The earliest record date to sync
+    - name: end_date
+      kind: date_iso8601
+      value: '2023-08-02'
+      label: End Date
+      description: |
+        The latest record date to sync
     - name: prod_point
       kind: integer
       value: 2

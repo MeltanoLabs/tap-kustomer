@@ -184,7 +184,14 @@ class CustomerSearchStream(KustomerStream):
             greater_than = self.get_starting_timestamp(context)
         else:
             greater_than = datetime.strptime(
-                self.config("start_date"),
+                self.config["start_date"],
+                "%Y-%m-%d",
+            ).replace(tzinfo=UTC)
+        
+        less_than = datetime.now()
+        if 'end_date' in self.config.keys():
+            less_than = datetime.strptime(
+                self.config["end_date"],
                 "%Y-%m-%d",
             ).replace(tzinfo=UTC)
 
@@ -193,7 +200,7 @@ class CustomerSearchStream(KustomerStream):
             greater_than = self.max_timestamp
 
         return {
-            "and": [{self.updated_at: {"gt": f"{greater_than}"}}],
+            "and": [{self.updated_at: {"gte": f"{greater_than}"}}],
             "sort": [{self.updated_at: "asc"}],
             "queryContext": self.query_context,
         }
