@@ -193,7 +193,7 @@ class CustomerSearchStream(KustomerStream):
             greater_than = self.max_timestamp
 
         return {
-            "and": [{self.updated_at: {"gte": f"{greater_than}"}}],
+            "and": [{self.updated_at: {"gt": f"{greater_than}"}}],
             "sort": [{self.updated_at: "asc"}],
             "queryContext": self.query_context,
         }
