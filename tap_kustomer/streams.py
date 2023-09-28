@@ -79,6 +79,31 @@ class MessagesStream(CustomerSearchStream):
     updated_at = "message_updated_at"
     query_context = "message"
 
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+        
+        if isinstance(row['attributes'].get('meta', {}).get('to'), dict):
+            row['attributes']['meta']['to'] = [row['attributes']['meta']['to']]
+        
+        if isinstance(row['attributes'].get('meta', {}).get('to'), str):
+            row['attributes']['meta']['to'] = [{"external":row['attributes']['meta']['to']}]
+
+        if isinstance(row['attributes'].get('meta', {}).get('cc'), dict):
+            row['attributes']['meta']['cc'] = [row['attributes']['meta']['cc']]
+
+        if isinstance(row['attributes'].get('meta', {}).get('cc'), str):
+            row['attributes']['meta']['cc'] = [{"external":row['attributes']['meta']['cc']}]
+        
+        if isinstance(row['attributes'].get('meta', {}).get('bcc'), dict):
+            row['attributes']['meta']['bcc'] = [row['attributes']['meta']['bcc']]
+        
+        if isinstance(row['attributes'].get('meta', {}).get('bcc'), str):
+            row['attributes']['meta']['bcc'] = [{"external":row['attributes']['meta']['bcc']}]
+        
+        row["updated_at"] = row["attributes"]["updatedAt"]
+        self.max_observed_timestamp = row["updated_at"]
+        
+        return row
+
 
 class NotesStream(CustomerSearchStream):
     name = "notes"

@@ -36,8 +36,8 @@
                         "null"
                     ]
                 },
-                "subject":{
-                    "type":[
+                "subject": {
+                    "type": [
                         "string",
                         "null"
                     ]
@@ -92,23 +92,84 @@
                         },
                         "to": {
                             "type": [
-                                "null",
-                                "string",
                                 "array",
-                                "object"
-                            ]
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "contact": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "default": []
                         },
                         "cc": {
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "contact": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "default": []
                         },
                         "bcc": {
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "contact": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "default": []
                         },
                         "subject": {
                             "type": [
@@ -194,7 +255,13 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items":{
+                        "type":[
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "assignedUsers": {
                     "type": [
@@ -329,7 +396,33 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type":[
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "confidence":{
+                                "type":[
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "intent":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "resolutionType":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
                 },
                 "lang": {
                     "type": [
