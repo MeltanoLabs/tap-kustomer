@@ -187,10 +187,10 @@ class CustomerSearchStream(KustomerStream):
                 self.config["start_date"],
                 "%Y-%m-%d",
             ).replace(tzinfo=UTC)
-        
-        less_than = datetime.now()
-        if 'end_date' in self.config.keys():
-            less_than = datetime.strptime(
+
+        datetime.now()
+        if "end_date" in self.config:
+            datetime.strptime(
                 self.config["end_date"],
                 "%Y-%m-%d",
             ).replace(tzinfo=UTC)
