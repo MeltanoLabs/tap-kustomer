@@ -187,13 +187,6 @@ class CustomerSearchStream(KustomerStream):
                 self.config["start_date"],
                 "%Y-%m-%d",
             ).replace(tzinfo=UTC)
-        
-        less_than = datetime.now()
-        if 'end_date' in self.config.keys():
-            less_than = datetime.strptime(
-                self.config["end_date"],
-                "%Y-%m-%d",
-            ).replace(tzinfo=UTC)
 
         if next_page_token and next_page_token.query == "page=1&pageSize=100":
             self.max_timestamp = self.max_observed_timestamp

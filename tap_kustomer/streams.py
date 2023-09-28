@@ -1,14 +1,12 @@
 """Stream classes for tap-kustomer."""
 
 from __future__ import annotations
-import json
 
+import json
 import typing as t
 from pathlib import Path
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
-
-import logging
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
@@ -80,28 +78,33 @@ class MessagesStream(CustomerSearchStream):
     query_context = "message"
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        
-        if isinstance(row['attributes'].get('meta', {}).get('to'), dict):
-            row['attributes']['meta']['to'] = [row['attributes']['meta']['to']]
-        
-        if isinstance(row['attributes'].get('meta', {}).get('to'), str):
-            row['attributes']['meta']['to'] = [{"external":row['attributes']['meta']['to']}]
+        if isinstance(row["attributes"].get("meta", {}).get("to"), dict):
+            row["attributes"]["meta"]["to"] = [row["attributes"]["meta"]["to"]]
 
-        if isinstance(row['attributes'].get('meta', {}).get('cc'), dict):
-            row['attributes']['meta']['cc'] = [row['attributes']['meta']['cc']]
+        if isinstance(row["attributes"].get("meta", {}).get("to"), str):
+            row["attributes"]["meta"]["to"] = [
+                {"external": row["attributes"]["meta"]["to"]},
+            ]
 
-        if isinstance(row['attributes'].get('meta', {}).get('cc'), str):
-            row['attributes']['meta']['cc'] = [{"external":row['attributes']['meta']['cc']}]
-        
-        if isinstance(row['attributes'].get('meta', {}).get('bcc'), dict):
-            row['attributes']['meta']['bcc'] = [row['attributes']['meta']['bcc']]
-        
-        if isinstance(row['attributes'].get('meta', {}).get('bcc'), str):
-            row['attributes']['meta']['bcc'] = [{"external":row['attributes']['meta']['bcc']}]
-        
+        if isinstance(row["attributes"].get("meta", {}).get("cc"), dict):
+            row["attributes"]["meta"]["cc"] = [row["attributes"]["meta"]["cc"]]
+
+        if isinstance(row["attributes"].get("meta", {}).get("cc"), str):
+            row["attributes"]["meta"]["cc"] = [
+                {"external": row["attributes"]["meta"]["cc"]},
+            ]
+
+        if isinstance(row["attributes"].get("meta", {}).get("bcc"), dict):
+            row["attributes"]["meta"]["bcc"] = [row["attributes"]["meta"]["bcc"]]
+
+        if isinstance(row["attributes"].get("meta", {}).get("bcc"), str):
+            row["attributes"]["meta"]["bcc"] = [
+                {"external": row["attributes"]["meta"]["bcc"]},
+            ]
+
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
-        
+
         return row
 
 
@@ -111,15 +114,16 @@ class NotesStream(CustomerSearchStream):
     updated_at = "note_updated_at"
     query_context = "note"
 
+
 class ResourceStream(CustomerSearchStream):
     name = "resource"
     schema_filepath = SCHEMAS_DIR / "resource.json"
     replication_key = None
-    resources = ["company", "conversation", "customer", "message"]
-    
+    resources: t.ClassVar = ["company", "conversation", "customer", "message"]
+
     def get_records(self, context: dict | None) -> t.Iterable[dict[str, t.Any]]:
         for record in self.resources:
-            yield {"resource": record }
+            yield {"resource": record}
 
     def get_child_context(
         self,
@@ -189,6 +193,7 @@ class UsersStream(KustomerStream):
     path = "users"
     schema_filepath = SCHEMAS_DIR / "users.json"
 
+
 # -----------------------------------------------------------------
 # Child streams
 # -----------------------------------------------------------------
@@ -202,6 +207,7 @@ class AttachmentsChildStream(KustomerStream):
     replication_key = None
     ignore_parent_replication_keys = True
 
+
 class CustomAttributesStream(KustomerStream):
     name = "custom_attributes"
     parent_stream_type = ResourceStream
@@ -211,8 +217,10 @@ class CustomAttributesStream(KustomerStream):
     ignore_parent_replication_keys = True
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        for k,v in row["attributes"]["properties"].items():
+        for k, v in row["attributes"]["properties"].items():
             v["id"] = k
             v["tree"] = json.dumps(v.get("tree", ""))
-        row["attributes"]["properties"] = [v for _,v in row["attributes"]["properties"].items()]
+        row["attributes"]["properties"] = [
+            v for _, v in row["attributes"]["properties"].items()
+        ]
         return row
