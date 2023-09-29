@@ -30,6 +30,7 @@
                     ]
                 },
                 "createdAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -141,21 +142,27 @@
                     "properties": {
                         "data": {
                             "type": [
-                                "object",
+                                "array",
                                 "null"
                             ],
-                            "properties": {
-                                "type": {
-                                    "type": [
-                                        "string",
-                                        "null"
-                                    ]
-                                },
-                                "id": {
-                                    "type": [
-                                        "string",
-                                        "null"
-                                    ]
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
                                 }
                             },
                             "required": []

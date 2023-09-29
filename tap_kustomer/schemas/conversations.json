@@ -149,6 +149,12 @@
                                 "null"
                             ]
                         },
+                        "firstAnswer": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
                         "scheduledFor": {
                             "type": [
                                 "string",
@@ -289,6 +295,18 @@
                                         "string",
                                         "null"
                                     ]
+                                },
+                                "clientVersion": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "supportsReadReceipts":{
+                                    "type":[
+                                        "boolean",
+                                        "null"
+                                    ]
                                 }
                             },
                             "required": []
@@ -376,7 +394,53 @@
                                     "type": [
                                         "array",
                                         "null"
-                                    ]
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "bcc": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
                                 },
                                 "recipient": {
                                     "type": [
@@ -424,6 +488,12 @@
                                     ]
                                 },
                                 "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "inReplyTo": {
                                     "type": [
                                         "string",
                                         "null"
@@ -556,6 +626,32 @@
                                         "array",
                                         "null"
                                     ]
+                                },
+                                "bcc": {
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
                                 },
                                 "recipient": {
                                     "type": [
@@ -738,6 +834,26 @@
                         "null"
                     ]
                 },
+                "firstCompany": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "name": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
                 "firstResponse": {
                     "type": [
                         "object",
@@ -813,6 +929,12 @@
                         "responseTime": {
                             "type": [
                                 "integer",
+                                "null"
+                            ]
+                        },
+                        "source": {
+                            "type": [
+                                "string",
                                 "null"
                             ]
                         }
@@ -936,6 +1058,12 @@
                             }
                         },
                         "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "source": {
                             "type": [
                                 "string",
                                 "null"
@@ -1088,6 +1216,24 @@
                                         "integer",
                                         "null"
                                     ]
+                                },
+                                "whatsapp": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "facebook": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "twitter-dm": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
                             }
                         },
@@ -1144,6 +1290,12 @@
                         },
                         "lastMessageDirectionType": {
                             "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "source":{
+                            "type":[
                                 "string",
                                 "null"
                             ]
@@ -1271,6 +1423,24 @@
                                         "integer",
                                         "null"
                                     ]
+                                },
+                                "whatsapp": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "facebook": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "twitter-dm": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
                             }
                         },
@@ -1327,6 +1497,12 @@
                         },
                         "lastMessageDirectionType": {
                             "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "source":{
+                            "type":[
                                 "string",
                                 "null"
                             ]
@@ -1719,12 +1895,27 @@
                                     ],
                                     "properties": {
                                         "satisfiedAt": {
+                                            "format": "date-time",
                                             "type": [
                                                 "string",
                                                 "null"
                                             ]
                                         },
                                         "breachAt": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "firstResponse": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "satisfiedAt": {
                                             "type": [
                                                 "string",
                                                 "null"
@@ -1960,6 +2151,12 @@
                 "externalQueue": {
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "pinned": {
+                    "type": [
+                        "boolean",
                         "null"
                     ]
                 }

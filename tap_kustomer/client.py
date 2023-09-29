@@ -160,7 +160,7 @@ class CustomerSearchStream(KustomerStream):
     rest_method = "POST"
     path = "customers/search"
     primary_keys = ["id"]  # noqa: RUF012
-    replication_key = "updated_at"
+    replication_key: str | None = "updated_at"
     records_jsonpath = "$[data][*]"
     max_observed_timestamp = None
     max_timestamp = None
@@ -184,7 +184,7 @@ class CustomerSearchStream(KustomerStream):
             greater_than = self.get_starting_timestamp(context)
         else:
             greater_than = datetime.strptime(
-                self.config("start_date"),
+                self.config["start_date"],
                 "%Y-%m-%d",
             ).replace(tzinfo=UTC)
 

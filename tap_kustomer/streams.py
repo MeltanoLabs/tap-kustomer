@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import typing as t
 from pathlib import Path
 
@@ -76,12 +77,70 @@ class MessagesStream(CustomerSearchStream):
     updated_at = "message_updated_at"
     query_context = "message"
 
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        if isinstance(row["attributes"].get("meta", {}).get("to"), dict):
+            row["attributes"]["meta"]["to"] = [row["attributes"]["meta"]["to"]]
+
+        if isinstance(row["attributes"].get("meta", {}).get("to"), str):
+            row["attributes"]["meta"]["to"] = [
+                {"external": row["attributes"]["meta"]["to"]},
+            ]
+
+        if isinstance(row["attributes"].get("meta", {}).get("cc"), dict):
+            row["attributes"]["meta"]["cc"] = [row["attributes"]["meta"]["cc"]]
+
+        if isinstance(row["attributes"].get("meta", {}).get("cc"), str):
+            row["attributes"]["meta"]["cc"] = [
+                {"external": row["attributes"]["meta"]["cc"]},
+            ]
+
+        if isinstance(row["attributes"].get("meta", {}).get("bcc"), dict):
+            row["attributes"]["meta"]["bcc"] = [row["attributes"]["meta"]["bcc"]]
+
+        if isinstance(row["attributes"].get("meta", {}).get("bcc"), str):
+            row["attributes"]["meta"]["bcc"] = [
+                {"external": row["attributes"]["meta"]["bcc"]},
+            ]
+
+        row["updated_at"] = row["attributes"]["updatedAt"]
+        self.max_observed_timestamp = row["updated_at"]
+
+        return row
+
 
 class NotesStream(CustomerSearchStream):
     name = "notes"
     schema_filepath = SCHEMAS_DIR / "notes.json"
     updated_at = "note_updated_at"
     query_context = "note"
+
+
+class ResourceStream(CustomerSearchStream):
+    name = "resource"
+    schema_filepath = SCHEMAS_DIR / "resource.json"
+    replication_key = None
+    resources: t.ClassVar = ["company", "conversation", "customer", "message"]
+
+    def get_records(
+        self,
+        context: dict | None,  # noqa: ARG002
+    ) -> t.Iterable[dict[str, t.Any]]:
+        for record in self.resources:
+            yield {"resource": record}
+
+    def get_child_context(
+        self,
+        record: dict,
+        context: dict | None,  # noqa: ARG002
+    ) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "resource": record["resource"],
+        }
 
 
 # -----------------------------------------------------------------
@@ -154,3 +213,25 @@ class AttachmentsChildStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "attachments.json"
     replication_key = None
     ignore_parent_replication_keys = True
+
+
+class CustomAttributesStream(KustomerStream):
+    name = "custom_attributes"
+    parent_stream_type = ResourceStream
+    path = "metadata/{resource}"
+    schema_filepath = SCHEMAS_DIR / "custom_attributes.json"
+    replication_key = None
+    ignore_parent_replication_keys = True
+
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        for k, v in row["attributes"]["properties"].items():
+            v["id"] = k
+            v["tree"] = json.dumps(v.get("tree", ""))
+        row["attributes"]["properties"] = [
+            v for _, v in row["attributes"]["properties"].items()
+        ]
+        return row

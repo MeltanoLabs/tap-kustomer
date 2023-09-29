@@ -1,0 +1,217 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "resource":{
+            "type":[
+                "string",
+                "null"
+            ]
+        },
+        "id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "updated_at": {
+            "format": "date-time",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "attributes":{
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "properties":{
+                    "type":[
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type":[
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "displayName":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "modifiedAt" :{
+                                "format": "date-time",
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "modifiedBy":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "array":{
+                                "type":[
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "enumeration":{
+                                "type":[
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "hasSensitiveAttributes":{
+                                "type":[
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "deletedBy":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "deletedAt":{
+                                "format": "date-time",
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "target":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "multi":{
+                                "type":[
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "tree":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "created_at": {
+                "format": "date-time",
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "updated_at": {
+                "format": "date-time",
+                "type": [
+                    "string",
+                    "null"
+                ]
+            }
+        },
+        "relationships":{
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "org":{
+                    "type":[
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links":{
+                            "type":[
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type" : [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "data":{
+                            "type":[
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type":{
+                                    "type":[
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id":{
+                                    "type":[
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+        "links":{
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "self": {
+                    "type" : [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        }
+        },
+
+    "required": []
+}

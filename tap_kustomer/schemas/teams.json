@@ -31,7 +31,10 @@
             ],
             "properties": {
                 "icon": {
-                    "type": "null"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "type": [

@@ -26,6 +26,8 @@ STREAM_TYPES = [
     streams.TagsStream,
     streams.TeamsStream,
     streams.UsersStream,
+    streams.ResourceStream,
+    streams.CustomAttributesStream,
 ]
 
 
@@ -46,6 +48,11 @@ class Tapkustomer(Tap):
             "start_date",
             th.DateTimeType,
             description="The earliest record date to sync",
+        ),
+        th.Property(
+            "end_date",
+            th.DateTimeType,
+            description="The latest record date to sync",
         ),
         th.Property(
             "prod_point",

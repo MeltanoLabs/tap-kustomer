@@ -67,10 +67,16 @@
                     ]
                 },
                 "mobile": {
-                    "type": "null"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "emailSignature": {
-                    "type": "null"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "password": {
                     "type": [
