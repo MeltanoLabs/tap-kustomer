@@ -164,7 +164,6 @@ class CustomerSearchStream(KustomerStream):
     max_observed_timestamp = None
     max_timestamp = None
 
-
     def get_new_paginator(self) -> BaseHATEOASPaginator:
         """Return the paginator.
 
@@ -195,9 +194,11 @@ class CustomerSearchStream(KustomerStream):
             self.max_timestamp = self.max_observed_timestamp
             greater_than = self.max_timestamp
 
-        return  {
-            "and": [{self.updated_at: {"gt": f"{greater_than}"}},
-                    {self.updated_at: {"lte": f"{less_than}"}}],
+        return {
+            "and": [
+                {self.updated_at: {"gt": f"{greater_than}"}},
+                {self.updated_at: {"lte": f"{less_than}"}},
+            ],
             "sort": [{self.updated_at: "asc"}],
             "queryContext": self.query_context,
         }
