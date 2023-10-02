@@ -55,71 +55,107 @@ class ConversationsStream(CustomerSearchStream):
         return {
             "id": record["id"],
         }
-    
+
     def post_process(
         self,
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("to"), dict):
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"), dict,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["to"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["to"]
-                ]
-        
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("to"), str):
+                row["attributes"]["firstMessageIn"]["meta"]["to"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"), str,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["to"] = [
-                {"contact": row["attributes"]["firstMessageIn"]["meta"]["to"]}
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("to"), dict):
+                {
+                    "contact": row["attributes"]["firstMessageIn"]["meta"]["to"],
+                },
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"), dict,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["to"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["to"]
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("to"), str):
+                row["attributes"]["lastMessageIn"]["meta"]["to"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"), str,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["to"] = [
-                {"contact": row["attributes"]["lastMessageIn"]["meta"]["to"]}
-                ]
-        
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("cc"), dict):
+                {
+                    "contact": row["attributes"]["lastMessageIn"]["meta"]["to"],
+                },
+            ]
+
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"), dict,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["cc"]
-                ]
-        
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("cc"), str):
+                row["attributes"]["firstMessageIn"]["meta"]["cc"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"), str,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
-                {"contact": row["attributes"]["firstMessageIn"]["meta"]["cc"]}
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("cc"), dict):
+                {
+                    "contact": row["attributes"]["firstMessageIn"]["meta"]["cc"],
+                },
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"), dict,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["cc"]
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("cc"), str):
+                row["attributes"]["lastMessageIn"]["meta"]["cc"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"), str,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
-                {"contact": row["attributes"]["lastMessageIn"]["meta"]["cc"]}
-                ]
-        
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("bcc"), dict):
+                {
+                    "contact": row["attributes"]["lastMessageIn"]["meta"]["cc"],
+                },
+            ]
+
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"), dict,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["bcc"]
-                ]
-        
-        if isinstance(row["attributes"].get("firstMessageIn",{}).get("meta", {}).get("bcc"), str):
+                row["attributes"]["firstMessageIn"]["meta"]["bcc"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"), str,
+        ):
             row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
-                {"contact": row["attributes"]["firstMessageIn"]["meta"]["bcc"]}
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("bcc"), dict):
+                {
+                    "contact": row["attributes"]["firstMessageIn"]["meta"]["bcc"],
+                },
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"), dict,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["bcc"]
-                ]
-        
-        if isinstance(row["attributes"].get("lastMessageIn",{}).get("meta", {}).get("bcc"), str):
+                row["attributes"]["lastMessageIn"]["meta"]["bcc"],
+            ]
+
+        if isinstance(
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"), str,
+        ):
             row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
-                {"contact": row["attributes"]["lastMessageIn"]["meta"]["bcc"]}
-                ]
+                {
+                    "contact": row["attributes"]["lastMessageIn"]["meta"]["bcc"],
+                },
+            ]
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
