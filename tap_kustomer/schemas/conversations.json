@@ -69,6 +69,7 @@
                     ],
                     "properties": {
                         "statusAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -84,6 +85,7 @@
                     ]
                 },
                 "lastReceivedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -123,7 +125,51 @@
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "answer": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "answerRaw": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "displayType": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "questionId": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "selections": {
+                                        "type": [
+                                            "array",
+                                            "null"
+                                        ]
+                                    },
+                                    "selectionsRaw": {
+                                        "type": [
+                                            "array",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
                         },
                         "formResponse": {
                             "type": [
@@ -162,6 +208,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -174,6 +221,7 @@
                             ]
                         },
                         "updatedAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -201,30 +249,40 @@
                     "required": []
                 },
                 "createdAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "updatedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "lastActivityAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "spam": {
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "ended": {
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "endedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -258,19 +316,37 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "predictions": {
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "suggestedShortcuts": {
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "firstMessageIn": {
                     "type": [
@@ -285,6 +361,7 @@
                             ],
                             "properties": {
                                 "timestamp": {
+                                    "format": "date-time",
                                     "type": [
                                         "string",
                                         "null"
@@ -302,8 +379,8 @@
                                         "null"
                                     ]
                                 },
-                                "supportsReadReceipts":{
-                                    "type":[
+                                "supportsReadReceipts": {
+                                    "type": [
                                         "boolean",
                                         "null"
                                     ]
@@ -318,12 +395,14 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -361,10 +440,30 @@
                                 },
                                 "to": {
                                     "type": [
-                                        "string",
                                         "array",
                                         "null"
-                                    ]
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "contact": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "default": []
                                 },
                                 "from": {
                                     "type": [
@@ -412,9 +511,16 @@
                                                     "string",
                                                     "null"
                                                 ]
+                                            },
+                                            "contact": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
                                             }
                                         }
-                                    }
+                                    },
+                                    "default": []
                                 },
                                 "bcc": {
                                     "type": [
@@ -521,6 +627,40 @@
                                 ]
                             }
                         },
+                        "firstDelivered": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "timestamp": {
+                                    "format": "date-time",
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "clientType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "clientVersion": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "supportsReadReceipts": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
                         "id": {
                             "type": [
                                 "string",
@@ -528,12 +668,14 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -616,16 +758,63 @@
                                 },
                                 "to": {
                                     "type": [
-                                        "null",
-                                        "string",
-                                        "array"
-                                    ]
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "contact": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "default": []
                                 },
                                 "cc": {
                                     "type": [
                                         "array",
                                         "null"
-                                    ]
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "email": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "contact": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "default": []
                                 },
                                 "bcc": {
                                     "type": [
@@ -644,6 +833,12 @@
                                                     "null"
                                                 ]
                                             },
+                                            "contact": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
                                             "name": {
                                                 "type": [
                                                     "string",
@@ -651,7 +846,8 @@
                                                 ]
                                             }
                                         }
-                                    }
+                                    },
+                                    "default": []
                                 },
                                 "recipient": {
                                     "type": [
@@ -745,12 +941,14 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -765,6 +963,7 @@
                     }
                 },
                 "lastMessageAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -783,12 +982,14 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -809,12 +1010,14 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -826,13 +1029,25 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "assignedTeams": {
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "firstCompany": {
                     "type": [
@@ -876,7 +1091,13 @@
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedUsers": {
                             "type": [
@@ -909,6 +1130,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -921,6 +1143,7 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -963,7 +1186,13 @@
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedUsers": {
                             "type": [
@@ -996,6 +1225,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -1008,6 +1238,7 @@
                             ]
                         },
                         "sentAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -1043,7 +1274,13 @@
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedUsers": {
                             "type": [
@@ -1082,6 +1319,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -1103,29 +1341,28 @@
                     ],
                     "properties": {
                         "createdByTeams": {
-                            "anyOf": [
-                                {
-                                    "type": "null"
-                                },
-                                {
-                                    "type": [
-                                        "array",
-                                        "null"
-                                    ],
-                                    "items": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    }
-                                }
-                            ]
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedTeams": {
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedUsers": {
                             "type": [
@@ -1152,6 +1389,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -1244,43 +1482,48 @@
                             ]
                         },
                         "outboundMessageCountByChannel": {
-                            "anyOf": [
-                                {
-                                    "type": "null"
-                                },
-                                {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "chat": {
                                     "type": [
-                                        "object",
+                                        "integer",
                                         "null"
-                                    ],
-                                    "properties": {
-                                        "chat": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "email": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "instagram": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "sms": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        }
-                                    }
+                                    ]
+                                },
+                                "email": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "facebook": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "instagram": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "sms": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "whatsapp": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
-                            ]
+                            }
                         },
                         "lastMessageDirection": {
                             "type": [
@@ -1294,8 +1537,8 @@
                                 "null"
                             ]
                         },
-                        "source":{
-                            "type":[
+                        "source": {
+                            "type": [
                                 "string",
                                 "null"
                             ]
@@ -1310,29 +1553,28 @@
                     ],
                     "properties": {
                         "createdByTeams": {
-                            "anyOf": [
-                                {
-                                    "type": "null"
-                                },
-                                {
-                                    "type": [
-                                        "array",
-                                        "null"
-                                    ],
-                                    "items": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    }
-                                }
-                            ]
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedTeams": {
                             "type": [
                                 "array",
                                 "null"
-                            ]
+                            ],
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
                         },
                         "assignedUsers": {
                             "type": [
@@ -1359,6 +1601,7 @@
                             ]
                         },
                         "createdAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -1451,43 +1694,48 @@
                             ]
                         },
                         "outboundMessageCountByChannel": {
-                            "anyOf": [
-                                {
-                                    "type": "null"
-                                },
-                                {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "chat": {
                                     "type": [
-                                        "object",
+                                        "integer",
                                         "null"
-                                    ],
-                                    "properties": {
-                                        "chat": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "email": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "instagram": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        },
-                                        "sms": {
-                                            "type": [
-                                                "integer",
-                                                "null"
-                                            ]
-                                        }
-                                    }
+                                    ]
+                                },
+                                "email": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "facebook": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "instagram": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "sms": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "whatsapp": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
-                            ]
+                            }
                         },
                         "lastMessageDirection": {
                             "type": [
@@ -1501,8 +1749,8 @@
                                 "null"
                             ]
                         },
-                        "source":{
-                            "type":[
+                        "source": {
+                            "type": [
                                 "string",
                                 "null"
                             ]
@@ -1527,6 +1775,278 @@
                         "object",
                         "null"
                     ],
+                    "properties": {
+                        "sourceTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "contactMomentTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "speakingWithTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "typeStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "conversationInitiatedFromStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "productAdminTitleStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "assistantPhaseTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "referenceIdStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "caDateStatusStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "caWorkflowStatusStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "productIDStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "productLinkStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierAdminTitleStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierLinkUrl": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierManagerStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierSegmentStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierVatLegalModeStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "venueLinkStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "visitDateStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "policyExceptionBool": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "basketValueNum": {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "distributorIdStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "distributorChannelStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "distributorNameStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "distributorRequestTypeTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "orderLinkStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "paymentLinkStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@googtranAutoSourceStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@googtranAutoTargetStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@googtranNewFromStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@googtranNewToStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@googtranAutoEnabledBool": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "initialConversationChannelStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@sfdcSyncBool": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "contactReasonTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "regionStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "cityStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "requestLevelTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "top50Tree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "reassignQueueBool": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "ordersPerWEekStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "extDistributorRequestTypeTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "@jiraIssueStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "supplierRefundRequestTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
                     "required": []
                 },
                 "lastMessageDirection": {
@@ -1920,6 +2440,35 @@
                                                 "string",
                                                 "null"
                                             ]
+                                        },
+                                        "breachAt": {
+                                            "format": "date-time",
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "totalConversationOpenTime": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "satisfiedAt": {
+                                            "format": "date-time",
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "breachAt": {
+                                            "format": "date-time",
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
                                         }
                                     }
                                 }
@@ -2111,8 +2660,8 @@
                 },
                 "snooze": {
                     "type": [
-                        "null",
-                        "object"
+                        "object",
+                        "null"
                     ]
                 },
                 "snoozeCount": {
@@ -2146,7 +2695,10 @@
                     ]
                 },
                 "mergedTarget": {
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "externalQueue": {
                     "type": [

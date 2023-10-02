@@ -54,6 +54,12 @@
                         "null"
                     ]
                 },
+                "source": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "direction": {
                     "type": [
                         "string",
@@ -71,6 +77,26 @@
                         "string",
                         "null"
                     ]
+                },
+                "firstCompany": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "name": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
                 },
                 "meta": {
                     "type": [
@@ -112,6 +138,12 @@
                                             "string",
                                             "null"
                                         ]
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
                                     }
                                 }
                             },
@@ -139,6 +171,12 @@
                                             "string",
                                             "null"
                                         ]
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
                                     }
                                 }
                             },
@@ -162,6 +200,12 @@
                                         ]
                                     },
                                     "contact": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "name": {
                                         "type": [
                                             "string",
                                             "null"
@@ -230,6 +274,26 @@
                                 "string",
                                 "null"
                             ]
+                        },
+                        "recipient": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "mailboxHash": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
@@ -256,8 +320,8 @@
                         "array",
                         "null"
                     ],
-                    "items":{
-                        "type":[
+                    "items": {
+                        "type": [
                             "string",
                             "null"
                         ]
@@ -373,6 +437,12 @@
                                 "string",
                                 "null"
                             ]
+                        },
+                        "clientVersion": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "required": []
@@ -398,25 +468,25 @@
                         "null"
                     ],
                     "items": {
-                        "type":[
+                        "type": [
                             "object",
                             "null"
                         ],
                         "properties": {
-                            "confidence":{
-                                "type":[
+                            "confidence": {
+                                "type": [
                                     "number",
                                     "null"
                                 ]
                             },
-                            "intent":{
-                                "type":[
+                            "intent": {
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "resolutionType":{
-                                "type":[
+                            "resolutionType": {
+                                "type": [
                                     "string",
                                     "null"
                                 ]
@@ -437,6 +507,53 @@
                     ]
                 },
                 "modifiedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "error": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "code": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "appErrorCode": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "status": {
+                            "type": [
+                                "integer",
+                                "string"
+                            ]
+                        },
+                        "title": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "errorAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -726,6 +843,56 @@
                         }
                     },
                     "required": []
+                },
+                "attachments": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": []
+                        },
+                        "data": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": []
+                        }
+                    }
                 }
             },
             "required": []
