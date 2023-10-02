@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import typing as t
-from datetime import datetime, timezone
+from datetime import timezone
 from urllib.parse import parse_qsl
 
+import pendulum
 from singer_sdk.authenticators import SimpleAuthenticator
 from singer_sdk.exceptions import ConfigValidationError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
@@ -29,7 +30,6 @@ class PageLimitRESTPaginator(BaseHATEOASPaginator):
 
         if next_link == "/v1/customers/search?page=101&pageSize=100":
             next_link = data.get("links")["first"]
-
         return next_link
 
 
@@ -42,7 +42,6 @@ class RESTPaginator(BaseHATEOASPaginator):
             next_link = data.get("links")["next"]
         else:
             next_link = None
-
         return next_link
 
 
@@ -165,6 +164,7 @@ class CustomerSearchStream(KustomerStream):
     max_observed_timestamp = None
     max_timestamp = None
 
+
     def get_new_paginator(self) -> BaseHATEOASPaginator:
         """Return the paginator.
 
@@ -183,17 +183,21 @@ class CustomerSearchStream(KustomerStream):
         elif self.get_starting_timestamp(context):
             greater_than = self.get_starting_timestamp(context)
         else:
-            greater_than = datetime.strptime(
-                self.config["start_date"],
-                "%Y-%m-%d",
-            ).replace(tzinfo=UTC)
+            greater_than = pendulum.parse(self.config["start_date"])
+
+        if "end_date" in self.config:
+            less_than = pendulum.parse(self.config["end_date"])
+
+        else:
+            less_than = pendulum.now("UTC")
 
         if next_page_token and next_page_token.query == "page=1&pageSize=100":
             self.max_timestamp = self.max_observed_timestamp
             greater_than = self.max_timestamp
 
-        return {
-            "and": [{self.updated_at: {"gt": f"{greater_than}"}}],
+        return  {
+            "and": [{self.updated_at: {"gt": f"{greater_than}"}},
+                    {self.updated_at: {"lte": f"{less_than}"}}],
             "sort": [{self.updated_at: "asc"}],
             "queryContext": self.query_context,
         }
