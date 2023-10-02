@@ -159,7 +159,7 @@ class CustomerSearchStream(KustomerStream):
     rest_method = "POST"
     path = "customers/search"
     primary_keys = ["id"]  # noqa: RUF012
-    replication_key = "updated_at"
+    replication_key: str | None = "updated_at"
     records_jsonpath = "$[data][*]"
     max_observed_timestamp = None
     max_timestamp = None

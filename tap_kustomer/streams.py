@@ -77,7 +77,11 @@ class MessagesStream(CustomerSearchStream):
     updated_at = "message_updated_at"
     query_context = "message"
 
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
         if isinstance(row["attributes"].get("meta", {}).get("to"), dict):
             row["attributes"]["meta"]["to"] = [row["attributes"]["meta"]["to"]]
 
@@ -121,7 +125,10 @@ class ResourceStream(CustomerSearchStream):
     replication_key = None
     resources: t.ClassVar = ["company", "conversation", "customer", "message"]
 
-    def get_records(self, context: dict | None) -> t.Iterable[dict[str, t.Any]]:
+    def get_records(
+        self,
+        context: dict | None,  # noqa: ARG002
+    ) -> t.Iterable[dict[str, t.Any]]:
         for record in self.resources:
             yield {"resource": record}
 
@@ -216,7 +223,11 @@ class CustomAttributesStream(KustomerStream):
     replication_key = None
     ignore_parent_replication_keys = True
 
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
         for k, v in row["attributes"]["properties"].items():
             v["id"] = k
             v["tree"] = json.dumps(v.get("tree", ""))
