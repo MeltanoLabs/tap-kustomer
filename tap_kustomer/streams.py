@@ -62,14 +62,16 @@ class ConversationsStream(CustomerSearchStream):
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"), dict,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"),
+            dict,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["to"] = [
                 row["attributes"]["firstMessageIn"]["meta"]["to"],
             ]
 
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"), str,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"),
+            str,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["to"] = [
                 {
@@ -78,14 +80,16 @@ class ConversationsStream(CustomerSearchStream):
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"), dict,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"),
+            dict,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["to"] = [
                 row["attributes"]["lastMessageIn"]["meta"]["to"],
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"), str,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"),
+            str,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["to"] = [
                 {
@@ -94,14 +98,16 @@ class ConversationsStream(CustomerSearchStream):
             ]
 
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"), dict,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"),
+            dict,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
                 row["attributes"]["firstMessageIn"]["meta"]["cc"],
             ]
 
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"), str,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"),
+            str,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
                 {
@@ -110,14 +116,16 @@ class ConversationsStream(CustomerSearchStream):
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"), dict,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"),
+            dict,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
                 row["attributes"]["lastMessageIn"]["meta"]["cc"],
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"), str,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"),
+            str,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
                 {
@@ -126,14 +134,16 @@ class ConversationsStream(CustomerSearchStream):
             ]
 
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"), dict,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"),
+            dict,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
                 row["attributes"]["firstMessageIn"]["meta"]["bcc"],
             ]
 
         if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"), str,
+            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"),
+            str,
         ):
             row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
                 {
@@ -142,14 +152,16 @@ class ConversationsStream(CustomerSearchStream):
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"), dict,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"),
+            dict,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
                 row["attributes"]["lastMessageIn"]["meta"]["bcc"],
             ]
 
         if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"), str,
+            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"),
+            str,
         ):
             row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
                 {
