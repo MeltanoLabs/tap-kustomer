@@ -2140,13 +2140,25 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "accessOverride": {
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "modificationHistory": {
                     "type": [
@@ -2337,7 +2349,27 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "_id":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "ruleId":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
                 },
                 "externalId": {
                     "type": [
@@ -2560,7 +2592,13 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "lastDeflection": {
                     "type": [
@@ -2692,7 +2730,27 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "customer":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "id":{
+                                "type":[
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
                 },
                 "mergedTarget": {
                     "type": [
