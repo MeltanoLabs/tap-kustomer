@@ -68,14 +68,14 @@ class Tapkustomer(Tap):
             th.BooleanType,
             description=(
                 "'True' to enable schema flattening and automatically expand nested "
-             "properties."
+                "properties."
             ),
         ),
         th.Property(
             "flattening_max_depth",
             th.IntegerType,
             description="The max depth to flatten schemas.",
-        )
+        ),
     ).to_dict()
 
     def discover_streams(self) -> list[KustomerStream | CustomerSearchStream]:
