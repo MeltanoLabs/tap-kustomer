@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 import json
-import logging
-from types import NoneType
 import typing as t
 from pathlib import Path
+from types import NoneType
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
 
@@ -68,7 +67,7 @@ class ConversationsStream(CustomerSearchStream):
 
         for attribute_key in ["firstMessageIn", "lastMessageIn"]:
             for meta_key in ["to", "cc", "bcc"]:
-                has_meta = "meta" in row["attributes"].get(attribute_key, {}).keys()
+                has_meta = "meta" in row["attributes"].get(attribute_key, {})
                 value = (
                     row["attributes"]
                     .get(attribute_key, {})
@@ -85,7 +84,7 @@ class ConversationsStream(CustomerSearchStream):
 
                 if typeof in [str, type(None)]:
                     row["attributes"][attribute_key]["meta"][meta_key] = [
-                        {"contact": value}
+                        {"contact": value},
                     ]
 
         for attribute_key in ["firstDone", "lastDone"]:
