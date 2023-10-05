@@ -52,4 +52,3 @@ plugins:
       label: depth of flattening
       description: |
         The max depth to flatten schemas.
-

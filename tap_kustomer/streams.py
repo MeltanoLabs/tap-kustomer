@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import logging
+from types import NoneType
 import typing as t
 from pathlib import Path
 
@@ -61,113 +63,28 @@ class ConversationsStream(CustomerSearchStream):
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"),
-            dict,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["to"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["to"],
-            ]
+        
+        if row["attributes"].get("snooze") is None:
+            row["attributes"]["snooze"] = {}
 
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("to"),
-            str,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["to"] = [
-                {
-                    "contact": row["attributes"]["firstMessageIn"]["meta"]["to"],
-                },
-            ]
+        for attribute_key in ["firstMessageIn", "lastMessageIn"]:
+            for meta_key in ["to", "cc", "bcc"]:
+                has_meta = "meta" in row["attributes"].get(attribute_key, {}).keys()
+                value = row["attributes"].get(attribute_key, {}).get("meta", {}).get(meta_key)
+                typeof = type(value)
 
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"),
-            dict,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["to"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["to"],
-            ]
+                if not has_meta:
+                    continue
+                
+                if typeof == dict:
+                    row["attributes"][attribute_key]["meta"][meta_key] = [value]
 
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("to"),
-            str,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["to"] = [
-                {
-                    "contact": row["attributes"]["lastMessageIn"]["meta"]["to"],
-                },
-            ]
-
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"),
-            dict,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["cc"],
-            ]
-
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("cc"),
-            str,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["cc"] = [
-                {
-                    "contact": row["attributes"]["firstMessageIn"]["meta"]["cc"],
-                },
-            ]
-
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"),
-            dict,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["cc"],
-            ]
-
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("cc"),
-            str,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["cc"] = [
-                {
-                    "contact": row["attributes"]["lastMessageIn"]["meta"]["cc"],
-                },
-            ]
-
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"),
-            dict,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
-                row["attributes"]["firstMessageIn"]["meta"]["bcc"],
-            ]
-
-        if isinstance(
-            row["attributes"].get("firstMessageIn", {}).get("meta", {}).get("bcc"),
-            str,
-        ):
-            row["attributes"]["firstMessageIn"]["meta"]["bcc"] = [
-                {
-                    "contact": row["attributes"]["firstMessageIn"]["meta"]["bcc"],
-                },
-            ]
-
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"),
-            dict,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
-                row["attributes"]["lastMessageIn"]["meta"]["bcc"],
-            ]
-
-        if isinstance(
-            row["attributes"].get("lastMessageIn", {}).get("meta", {}).get("bcc"),
-            str,
-        ):
-            row["attributes"]["lastMessageIn"]["meta"]["bcc"] = [
-                {
-                    "contact": row["attributes"]["lastMessageIn"]["meta"]["bcc"],
-                },
-            ]
+                if typeof in [str, NoneType]:
+                    row["attributes"][attribute_key]["meta"][meta_key] = [{"contact": value}]
+        
+        for attribute_key in ["firstDone", "lastDone"]:
+            if row["attributes"][attribute_key].get("createdByTeams") is None:
+                row["attributes"][attribute_key]["createdByTeams"]= []
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
