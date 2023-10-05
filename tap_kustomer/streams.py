@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import typing as t
 from pathlib import Path
-from types import NoneType
 
 from tap_kustomer.client import CustomerSearchStream, KustomerStream
 
@@ -144,7 +143,7 @@ class MessagesStream(CustomerSearchStream):
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
         for meta_key in ["to", "cc", "bcc"]:
-            has_meta = "meta" in row["attributes"].keys()
+            has_meta = "meta" in row["attributes"]
             if has_meta:
                 value = row["attributes"]["meta"].get(meta_key)
 
