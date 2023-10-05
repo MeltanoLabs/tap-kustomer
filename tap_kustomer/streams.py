@@ -83,7 +83,7 @@ class ConversationsStream(CustomerSearchStream):
                 if typeof == dict:
                     row["attributes"][attribute_key]["meta"][meta_key] = [value]
 
-                if typeof in [str, NoneType]:
+                if typeof in [str, type(None)]:
                     row["attributes"][attribute_key]["meta"][meta_key] = [
                         {"contact": value}
                     ]
@@ -123,29 +123,16 @@ class MessagesStream(CustomerSearchStream):
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        if isinstance(row["attributes"].get("meta", {}).get("to"), dict):
-            row["attributes"]["meta"]["to"] = [row["attributes"]["meta"]["to"]]
+        for meta_key in ["to", "cc", "bcc"]:
+            has_meta = "meta" in row["attributes"].keys()
+            if has_meta:
+                value = row["attributes"]["meta"].get(meta_key)
 
-        if isinstance(row["attributes"].get("meta", {}).get("to"), str):
-            row["attributes"]["meta"]["to"] = [
-                {"contact": row["attributes"]["meta"]["to"]},
-            ]
+                if isinstance(value, dict):
+                    row["attributes"]["meta"][meta_key] = [value]
 
-        if isinstance(row["attributes"].get("meta", {}).get("cc"), dict):
-            row["attributes"]["meta"]["cc"] = [row["attributes"]["meta"]["cc"]]
-
-        if isinstance(row["attributes"].get("meta", {}).get("cc"), str):
-            row["attributes"]["meta"]["cc"] = [
-                {"contact": row["attributes"]["meta"]["cc"]},
-            ]
-
-        if isinstance(row["attributes"].get("meta", {}).get("bcc"), dict):
-            row["attributes"]["meta"]["bcc"] = [row["attributes"]["meta"]["bcc"]]
-
-        if isinstance(row["attributes"].get("meta", {}).get("bcc"), str):
-            row["attributes"]["meta"]["bcc"] = [
-                {"contact": row["attributes"]["meta"]["bcc"]},
-            ]
+                if isinstance(value, str):
+                    row["attributes"]["meta"][meta_key] = [{"contact": value}]
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
