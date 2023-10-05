@@ -529,7 +529,7 @@
                             "properties": {
                                 "appErrorCode": {
                                     "type": [
-                                        "integer",
+                                        "string",
                                         "null"
                                     ]
                                 }
@@ -537,8 +537,8 @@
                         },
                         "status": {
                             "type": [
-                                "integer",
-                                "string"
+                                "string",
+                                "null"
                             ]
                         },
                         "title": {
