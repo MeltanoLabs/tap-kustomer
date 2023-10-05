@@ -94,7 +94,7 @@ class ConversationsStream(CustomerSearchStream):
 
                 if (
                     row["attributes"][attribute_key].get(
-                        "outboundMessageCountByChannel"
+                        "outboundMessageCountByChannel",
                     )
                     is None
                 ):
