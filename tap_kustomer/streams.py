@@ -63,28 +63,34 @@ class ConversationsStream(CustomerSearchStream):
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        
         if row["attributes"].get("snooze") is None:
             row["attributes"]["snooze"] = {}
 
         for attribute_key in ["firstMessageIn", "lastMessageIn"]:
             for meta_key in ["to", "cc", "bcc"]:
                 has_meta = "meta" in row["attributes"].get(attribute_key, {}).keys()
-                value = row["attributes"].get(attribute_key, {}).get("meta", {}).get(meta_key)
+                value = (
+                    row["attributes"]
+                    .get(attribute_key, {})
+                    .get("meta", {})
+                    .get(meta_key)
+                )
                 typeof = type(value)
 
                 if not has_meta:
                     continue
-                
+
                 if typeof == dict:
                     row["attributes"][attribute_key]["meta"][meta_key] = [value]
 
                 if typeof in [str, NoneType]:
-                    row["attributes"][attribute_key]["meta"][meta_key] = [{"contact": value}]
-        
+                    row["attributes"][attribute_key]["meta"][meta_key] = [
+                        {"contact": value}
+                    ]
+
         for attribute_key in ["firstDone", "lastDone"]:
             if row["attributes"][attribute_key].get("createdByTeams") is None:
-                row["attributes"][attribute_key]["createdByTeams"]= []
+                row["attributes"][attribute_key]["createdByTeams"] = []
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
