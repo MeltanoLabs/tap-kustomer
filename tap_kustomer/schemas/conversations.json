@@ -1986,6 +1986,12 @@
                                 "null"
                             ]
                         },
+                        "cityLinkStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
                         "requestLevelTree": {
                             "type": [
                                 "string",
@@ -2023,6 +2029,18 @@
                             ]
                         },
                         "supplierRefundRequestTree": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "freshdeskTypeStr": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "freshdeskTicketIdStr": {
                             "type": [
                                 "string",
                                 "null"
@@ -2669,7 +2687,29 @@
                     "type": [
                         "object",
                         "null"
-                    ]
+                    ],
+                    "properties": {
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "statusAt": {
+                            "format": "date-time",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "format": "date-time",
+                            "type": [
+                                "string",
+                                "array"
+                            ]
+                        }
+                    }
                 },
                 "snoozeCount": {
                     "type": [
@@ -2693,7 +2733,21 @@
                     "type": [
                         "object",
                         "null"
-                    ]
+                    ],
+                    "properties": {
+                        "businessTime": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "time": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    }
                 },
                 "linkedConversations": {
                     "type": [
