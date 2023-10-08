@@ -157,13 +157,25 @@
                                         "type": [
                                             "array",
                                             "null"
-                                        ]
+                                        ],
+                                        "items":{
+                                            "type":[
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
                                     },
                                     "selectionsRaw": {
                                         "type": [
                                             "array",
                                             "null"
-                                        ]
+                                        ],
+                                        "items":{
+                                            "type":[
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
                                     }
                                 }
                             }
@@ -1506,6 +1518,12 @@
                                         "integer",
                                         "null"
                                     ]
+                                },
+                                "twitter-dm":{
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
                                 }
                             }
                         },
@@ -2045,6 +2063,42 @@
                                 "string",
                                 "null"
                             ]
+                        },
+                        "confluenceLinkUrl":{
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "top50DestinationBool":{
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "contactRateAtRequestDateNum":{
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "refundRateAtRequestDateNum":{
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "contactRateAtDoneDateNum":{
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "refundRateAtDoneDateNum":{
+                            "type": [
+                                "number",
+                                "null"
+                            ]
                         }
                     }
                 },
@@ -2283,7 +2337,14 @@
                                     "type": [
                                         "array",
                                         "null"
-                                    ]
+                                    ],
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                    
                                 }
                             }
                         },

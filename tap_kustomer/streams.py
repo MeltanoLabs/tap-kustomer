@@ -142,9 +142,9 @@ class MessagesStream(CustomerSearchStream):
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        for meta_key in ["to", "cc", "bcc"]:
-            has_meta = "meta" in row["attributes"]
-            if has_meta:
+        has_meta = "meta" in row["attributes"]
+        if has_meta:
+            for meta_key in ["to", "cc", "bcc"]:
                 value = row["attributes"]["meta"].get(meta_key)
 
                 if isinstance(value, dict):
@@ -152,6 +152,12 @@ class MessagesStream(CustomerSearchStream):
 
                 if isinstance(value, str):
                     row["attributes"]["meta"][meta_key] = [{"contact": value}]
+
+            # handle string / int response by api
+            if row["attributes"].get("error", {}).get("meta"):
+                row["attributes"]["error"]["meta"]["appErrorCode"] = str(
+                    row["attributes"]["error"]["meta"].get("appErrorCode", "")
+                )
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]

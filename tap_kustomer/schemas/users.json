@@ -108,7 +108,13 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type":[
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "roles": {
                     "type": [

@@ -139,7 +139,7 @@ class KustomerStream(RESTStream):
     ) -> dict | None:
         # For incremental models, bring out the nested replication key
         if self.replication_key is not None:
-            row["updated_at"] = row["attributes"]["updatedAt"]
+            row["updated_at"] = str(row["attributes"]["updatedAt"])
             self.max_observed_timestamp = row["updated_at"]
 
         return row
