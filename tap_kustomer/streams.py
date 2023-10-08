@@ -156,7 +156,7 @@ class MessagesStream(CustomerSearchStream):
             # handle string / int response by api
             if row["attributes"].get("error", {}).get("meta"):
                 row["attributes"]["error"]["meta"]["appErrorCode"] = str(
-                    row["attributes"]["error"]["meta"].get("appErrorCode", "")
+                    row["attributes"]["error"]["meta"].get("appErrorCode", ""),
                 )
 
         row["updated_at"] = row["attributes"]["updatedAt"]
