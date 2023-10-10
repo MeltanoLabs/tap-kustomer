@@ -160,7 +160,7 @@ class MessagesStream(CustomerSearchStream):
                 )
             if row["attributes"].get("error", {}):
                 row["attributes"]["error"]["code"] = str(
-                    row["attributes"]["error"].get("code", "")
+                    row["attributes"]["error"].get("code", ""),
                 )
 
         row["updated_at"] = row["attributes"]["updatedAt"]
@@ -290,7 +290,7 @@ class CustomAttributesStream(KustomerStream):
             v["tree"] = json.dumps(v.get("tree", ""))
 
         row["attributes"]["relationships"] = json.dumps(
-            row.get("attributes", {}).get("relationships")
+            row.get("attributes", {}).get("relationships"),
         )
 
         row["attributes"]["properties"] = [
