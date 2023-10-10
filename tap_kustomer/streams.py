@@ -158,6 +158,10 @@ class MessagesStream(CustomerSearchStream):
                 row["attributes"]["error"]["meta"]["appErrorCode"] = str(
                     row["attributes"]["error"]["meta"].get("appErrorCode", "")
                 )
+            if row["attributes"].get("error", {}):
+                row["attributes"]["error"]["code"] = str(
+                    row["attributes"]["error"].get("code", "")
+                )
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
@@ -284,6 +288,11 @@ class CustomAttributesStream(KustomerStream):
         for k, v in row["attributes"]["properties"].items():
             v["id"] = k
             v["tree"] = json.dumps(v.get("tree", ""))
+
+        row["attributes"]["relationships"] = json.dumps(
+            row.get("attributes", {}).get("relationships")
+        )
+
         row["attributes"]["properties"] = [
             v for _, v in row["attributes"]["properties"].items()
         ]
