@@ -23,13 +23,6 @@
                 "null"
             ]
         },
-        "updated_at": {
-            "format": "date-time",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
         "attributes": {
             "type": [
                 "object",
