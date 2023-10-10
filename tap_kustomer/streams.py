@@ -56,6 +56,66 @@ class ConversationsStream(CustomerSearchStream):
             "id": record["id"],
         }
 
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        if row["attributes"].get("snooze") is None:
+            row["attributes"]["snooze"] = {}
+
+        for attribute_key in ["firstMessageIn", "lastMessageIn"]:
+            for meta_key in ["to", "cc", "bcc"]:
+                has_meta = "meta" in row["attributes"].get(attribute_key, {})
+                value = (
+                    row["attributes"]
+                    .get(attribute_key, {})
+                    .get("meta", {})
+                    .get(meta_key)
+                )
+                typeof = type(value)
+
+                if not has_meta:
+                    continue
+
+                if typeof == dict:
+                    row["attributes"][attribute_key]["meta"][meta_key] = [value]
+
+                if typeof in [str, type(None)]:
+                    row["attributes"][attribute_key]["meta"][meta_key] = [
+                        {"contact": value},
+                    ]
+
+        # This following would be obsolete by https://github.com/meltano/sdk/issues/1995
+        if self.config.get("flattening_enabled", False):
+            for attribute_key in ["firstDone", "lastDone"]:
+                if row["attributes"][attribute_key].get("createdByTeams") is None:
+                    row["attributes"][attribute_key]["createdByTeams"] = []
+
+                if (
+                    row["attributes"][attribute_key].get(
+                        "outboundMessageCountByChannel",
+                    )
+                    is None
+                ):
+                    row["attributes"][attribute_key][
+                        "outboundMessageCountByChannel"
+                    ] = {}
+
+                if (
+                    row["attributes"][attribute_key].get("messageCountByChannel")
+                    is None
+                ):
+                    row["attributes"][attribute_key]["messageCountByChannel"] = {}
+
+            if row["attributes"]["snooze"].get("outboundMessageCountByChannel") is None:
+                row["attributes"][attribute_key]["outboundMessageCountByChannel"] = {}
+
+        row["updated_at"] = row["attributes"]["updatedAt"]
+        self.max_observed_timestamp = row["updated_at"]
+
+        return row
+
 
 class CustomersStream(CustomerSearchStream):
     name = "customers"
@@ -82,29 +142,32 @@ class MessagesStream(CustomerSearchStream):
         row: dict,
         context: dict | None = None,  # noqa: ARG002
     ) -> dict | None:
-        if isinstance(row["attributes"].get("meta", {}).get("to"), dict):
-            row["attributes"]["meta"]["to"] = [row["attributes"]["meta"]["to"]]
+        has_meta = "meta" in row["attributes"]
+        if has_meta:
+            for meta_key in ["to", "cc", "bcc"]:
+                value = row["attributes"]["meta"].get(meta_key)
 
-        if isinstance(row["attributes"].get("meta", {}).get("to"), str):
-            row["attributes"]["meta"]["to"] = [
-                {"external": row["attributes"]["meta"]["to"]},
-            ]
+                if isinstance(value, dict):
+                    row["attributes"]["meta"][meta_key] = [value]
 
-        if isinstance(row["attributes"].get("meta", {}).get("cc"), dict):
-            row["attributes"]["meta"]["cc"] = [row["attributes"]["meta"]["cc"]]
+                if isinstance(value, str):
+                    row["attributes"]["meta"][meta_key] = [{"contact": value}]
 
-        if isinstance(row["attributes"].get("meta", {}).get("cc"), str):
-            row["attributes"]["meta"]["cc"] = [
-                {"external": row["attributes"]["meta"]["cc"]},
-            ]
+            # handle string / int response by api
+            if row["attributes"].get("error", {}).get("status"):
+                row["attributes"]["error"]["status"] = str(
+                    row["attributes"]["error"].get("status", ""),
+                )
 
-        if isinstance(row["attributes"].get("meta", {}).get("bcc"), dict):
-            row["attributes"]["meta"]["bcc"] = [row["attributes"]["meta"]["bcc"]]
+            if row["attributes"].get("error", {}).get("meta"):
+                row["attributes"]["error"]["meta"]["appErrorCode"] = str(
+                    row["attributes"]["error"]["meta"].get("appErrorCode", ""),
+                )
 
-        if isinstance(row["attributes"].get("meta", {}).get("bcc"), str):
-            row["attributes"]["meta"]["bcc"] = [
-                {"external": row["attributes"]["meta"]["bcc"]},
-            ]
+            if row["attributes"].get("error", {}):
+                row["attributes"]["error"]["code"] = str(
+                    row["attributes"]["error"].get("code", ""),
+                )
 
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
@@ -231,6 +294,11 @@ class CustomAttributesStream(KustomerStream):
         for k, v in row["attributes"]["properties"].items():
             v["id"] = k
             v["tree"] = json.dumps(v.get("tree", ""))
+
+        row["attributes"]["relationships"] = json.dumps(
+            row.get("attributes", {}).get("relationships"),
+        )
+
         row["attributes"]["properties"] = [
             v for _, v in row["attributes"]["properties"].items()
         ]

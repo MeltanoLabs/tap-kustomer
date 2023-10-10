@@ -48,8 +48,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "conversation": {
                     "type": [
@@ -61,9 +60,8 @@
                             "type": [
                                 "object",
                                 "null"
-                            ],
-                            "required": []
-                          }
+                            ]
+                        }
                     }
                 },
                 "payload": {
@@ -142,8 +140,7 @@
                                                                 "null"
                                                             ]
                                                         }
-                                                    },
-                                                    "required": []
+                                                    }
                                                 }
                                             },
                                             "entityRanges": {
@@ -175,8 +172,7 @@
                                                                 "null"
                                                             ]
                                                         }
-                                                    },
-                                                    "required": []
+                                                    }
                                                 }
                                             },
                                             "data": {
@@ -185,8 +181,7 @@
                                                     "null"
                                                 ]
                                             }
-                                        },
-                                        "required": []
+                                        }
                                     }
                                 },
                                 "entityMap": {
@@ -251,8 +246,7 @@
                                                         }
                                                     }
                                                 }
-                                            },
-                                            "required": []
+                                            }
                                         },
                                         "1": {
                                             "type": [
@@ -304,8 +298,7 @@
                                                         }
                                                     }
                                                 }
-                                            },
-                                            "required": []
+                                            }
                                         },
                                         "2": {
                                             "type": [
@@ -343,20 +336,15 @@
                                                                 "null"
                                                             ]
                                                         }
-                                                    },
-                                                    "required": []
+                                                    }
                                                 }
-                                            },
-                                            "required": []
+                                            }
                                         }
-                                    },
-                                    "required": []
+                                    }
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdAt": {
                     "type": [
@@ -391,8 +379,7 @@
                 "appDisabled": {
                     "type": "boolean"
                 }
-            },
-            "required": []
+            }
         },
         "relationships": {
             "type": [
@@ -418,8 +405,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -439,11 +425,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdBy": {
                     "type": [
@@ -463,8 +447,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -484,11 +467,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "modifiedBy": {
                     "type": [
@@ -508,8 +489,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -529,11 +509,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "parent": {
                     "type": [
@@ -559,8 +537,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "links": {
                             "type": [
@@ -574,11 +551,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "accessUsers": {
                     "type": [
@@ -610,8 +585,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -636,15 +610,12 @@
                                             "null"
                                         ]
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
-                    },
-                    "required": []
+                    }
                 }
-            },
-            "required": []
+            }
         },
         "links": {
             "type": [
@@ -658,9 +629,7 @@
                         "null"
                     ]
                 }
-            },
-            "required": []
+            }
         }
-    },
-    "required": []
+    }
 }

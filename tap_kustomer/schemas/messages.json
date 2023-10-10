@@ -54,6 +54,12 @@
                         "null"
                     ]
                 },
+                "source": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "direction": {
                     "type": [
                         "string",
@@ -71,6 +77,26 @@
                         "string",
                         "null"
                     ]
+                },
+                "firstCompany": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "name": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
                 },
                 "meta": {
                     "type": [
@@ -112,6 +138,12 @@
                                             "string",
                                             "null"
                                         ]
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
                                     }
                                 }
                             },
@@ -139,6 +171,12 @@
                                             "string",
                                             "null"
                                         ]
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
                                     }
                                 }
                             },
@@ -162,6 +200,12 @@
                                         ]
                                     },
                                     "contact": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "name": {
                                         "type": [
                                             "string",
                                             "null"
@@ -230,6 +274,26 @@
                                 "string",
                                 "null"
                             ]
+                        },
+                        "recipient": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "mailboxHash": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
@@ -256,8 +320,8 @@
                         "array",
                         "null"
                     ],
-                    "items":{
-                        "type":[
+                    "items": {
+                        "type": [
                             "string",
                             "null"
                         ]
@@ -352,8 +416,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "firstDelivered": {
@@ -373,9 +436,14 @@
                                 "string",
                                 "null"
                             ]
+                        },
+                        "clientVersion": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "firstRead": {
                     "type": [
@@ -389,8 +457,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "intentDetections": {
                     "type": [
@@ -398,25 +465,25 @@
                         "null"
                     ],
                     "items": {
-                        "type":[
+                        "type": [
                             "object",
                             "null"
                         ],
                         "properties": {
-                            "confidence":{
-                                "type":[
+                            "confidence": {
+                                "type": [
                                     "number",
                                     "null"
                                 ]
                             },
-                            "intent":{
-                                "type":[
+                            "intent": {
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "resolutionType":{
-                                "type":[
+                            "resolutionType": {
+                                "type": [
                                     "string",
                                     "null"
                                 ]
@@ -441,9 +508,55 @@
                         "string",
                         "null"
                     ]
+                },
+                "error": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "code": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "meta": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "appErrorCode": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "status": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "title": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "errorAt": {
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
-            },
-            "required": []
+            }
         },
         "relationships": {
             "type": [
@@ -469,8 +582,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -490,11 +602,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "modifiedBy": {
                     "type": [
@@ -514,8 +624,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -535,11 +644,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "customer": {
                     "type": [
@@ -559,8 +666,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -580,11 +686,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "conversation": {
                     "type": [
@@ -604,8 +708,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -625,11 +728,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdBy": {
                     "type": [
@@ -649,8 +750,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -670,11 +770,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "shortcuts": {
                     "type": [
@@ -694,8 +792,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -720,15 +817,60 @@
                                             "null"
                                         ]
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
-                    },
-                    "required": []
+                    }
+                },
+                "attachments": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "data": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            },
-            "required": []
+            }
         },
         "links": {
             "type": [
@@ -748,9 +890,7 @@
                         "null"
                     ]
                 }
-            },
-            "required": []
+            }
         }
-    },
-    "required": []
+    }
 }

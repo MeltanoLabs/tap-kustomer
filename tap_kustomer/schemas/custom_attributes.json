@@ -11,8 +11,8 @@
                 "null"
             ]
         },
-        "resource":{
-            "type":[
+        "resource": {
+            "type": [
                 "string",
                 "null"
             ]
@@ -23,112 +23,143 @@
                 "null"
             ]
         },
-        "updated_at": {
-            "format": "date-time",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "attributes":{
+        "attributes": {
             "type": [
                 "object",
                 "null"
             ],
             "properties": {
-                "properties":{
-                    "type":[
+                "properties": {
+                    "type": [
                         "array",
                         "null"
                     ],
                     "items": {
-                        "type":[
+                        "type": [
                             "object",
                             "null"
                         ],
                         "properties": {
                             "id": {
-                                "type":[
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "displayName":{
-                                "type":[
+                            "displayName": {
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "modifiedAt" :{
+                            "createdAt": {
                                 "format": "date-time",
-                                "type":[
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "modifiedBy":{
-                                "type":[
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "type":{
-                                "type":[
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "array":{
-                                "type":[
-                                    "boolean",
-                                    "null"
-                                ]
-                            },
-                            "enumeration":{
-                                "type":[
-                                    "boolean",
-                                    "null"
-                                ]
-                            },
-                            "hasSensitiveAttributes":{
-                                "type":[
-                                    "boolean",
-                                    "null"
-                                ]
-                            },
-                            "deletedBy":{
-                                "type":[
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "deletedAt":{
+                            "updatedAt": {
                                 "format": "date-time",
-                                "type":[
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "target":{
-                                "type":[
+                            "modifiedAt": {
+                                "format": "date-time",
+                                "type": [
                                     "string",
                                     "null"
                                 ]
                             },
-                            "multi":{
-                                "type":[
+                            "modifiedBy": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "array": {
+                                "type": [
                                     "boolean",
                                     "null"
                                 ]
                             },
-                            "tree":{
-                                "type":[
+                            "enumeration": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "hasSensitiveAttributes": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "deletedBy": {
+                                "type": [
                                     "string",
+                                    "null"
+                                ]
+                            },
+                            "deletedAt": {
+                                "format": "date-time",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "target": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "multi": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "tree": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "lastNodeRequired": {
+                                "type": [
+                                    "boolean",
                                     "null"
                                 ]
                             }
                         }
                     }
+                },
+                "type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "relationships": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasSensitiveAttributes": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             },
             "created_at": {
@@ -146,46 +177,46 @@
                 ]
             }
         },
-        "relationships":{
+        "relationships": {
             "type": [
                 "object",
                 "null"
             ],
             "properties": {
-                "org":{
-                    "type":[
+                "org": {
+                    "type": [
                         "object",
                         "null"
                     ],
                     "properties": {
-                        "links":{
-                            "type":[
+                        "links": {
+                            "type": [
                                 "object",
                                 "null"
                             ],
                             "properties": {
                                 "self": {
-                                    "type" : [
+                                    "type": [
                                         "string",
                                         "null"
                                     ]
                                 }
                             }
                         },
-                        "data":{
-                            "type":[
+                        "data": {
+                            "type": [
                                 "object",
                                 "null"
                             ],
                             "properties": {
-                                "type":{
-                                    "type":[
+                                "type": {
+                                    "type": [
                                         "string",
                                         "null"
                                     ]
                                 },
-                                "id":{
-                                    "type":[
+                                "id": {
+                                    "type": [
                                         "string",
                                         "null"
                                     ]
@@ -194,24 +225,21 @@
                         }
                     }
                 }
-
             }
         },
-        "links":{
+        "links": {
             "type": [
                 "object",
                 "null"
             ],
             "properties": {
                 "self": {
-                    "type" : [
+                    "type": [
                         "string",
                         "null"
                     ]
                 }
             }
         }
-        },
-
-    "required": []
+    }
 }

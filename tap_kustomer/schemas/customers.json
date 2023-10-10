@@ -95,8 +95,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "sharedEmails": {
@@ -128,8 +127,7 @@
                             "externalVerified": {
                                 "type": "boolean"
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "phones": {
@@ -158,8 +156,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "sharedPhones": {
@@ -221,8 +218,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "socials": {
@@ -260,8 +256,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "activeUsers": {
@@ -318,11 +313,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdAt": {
                     "type": [
@@ -399,8 +392,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "conversationCounts": {
                     "type": [
@@ -432,8 +424,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "preview": {
                     "type": [
@@ -483,8 +474,7 @@
                     "type": [
                         "object",
                         "null"
-                    ],
-                    "required": []
+                    ]
                 },
                 "progressiveStatus": {
                     "type": [
@@ -542,11 +532,9 @@
                                             "null"
                                         ]
                                     }
-                                },
-                                "required": []
+                                }
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "satisfactionLevel": {
@@ -651,8 +639,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "lastSatisfaction": {
                             "type": [
@@ -750,8 +737,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "count": {
                             "type": [
@@ -777,8 +763,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "roleGroupVersions": {
                     "type": [
@@ -803,8 +788,7 @@
                                     "null"
                                 ]
                             }
-                        },
-                        "required": []
+                        }
                     }
                 },
                 "firstName": {
@@ -840,8 +824,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "lastMessageOut": {
                     "type": [
@@ -855,8 +838,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "lastMessageAt": {
                     "type": [
@@ -879,8 +861,7 @@
                         "confidence": {
                             "type": "number"
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "signedUpAt": {
                     "type": "null"
@@ -927,8 +908,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "presence": {
                     "type": [
@@ -954,8 +934,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "defaultLang": {
                     "type": "null"
@@ -963,8 +942,7 @@
                 "companyName": {
                     "type": "null"
                 }
-            },
-            "required": []
+            }
         },
         "relationships": {
             "type": [
@@ -990,11 +968,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "modifiedBy": {
                     "type": [
@@ -1014,8 +990,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -1035,11 +1010,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "org": {
                     "type": [
@@ -1065,8 +1038,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "links": {
                             "type": [
@@ -1080,11 +1052,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "shopify-orders": {
                     "type": [
@@ -1104,8 +1074,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "meta": {
                             "type": [
@@ -1116,11 +1085,9 @@
                                 "kobject": {
                                     "type": "boolean"
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "stamped-io-reviews": {
                     "type": [
@@ -1140,8 +1107,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "meta": {
                             "type": [
@@ -1152,11 +1118,9 @@
                                 "kobject": {
                                     "type": "boolean"
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "loop-returns": {
                     "type": [
@@ -1176,8 +1140,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "meta": {
                             "type": [
@@ -1188,11 +1151,9 @@
                                 "kobject": {
                                     "type": "boolean"
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "gift-orders": {
                     "type": [
@@ -1212,8 +1173,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "meta": {
                             "type": [
@@ -1224,14 +1184,11 @@
                                 "kobject": {
                                     "type": "boolean"
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 }
-            },
-            "required": []
+            }
         },
         "links": {
             "type": [
@@ -1245,9 +1202,7 @@
                         "null"
                     ]
                 }
-            },
-            "required": []
+            }
         }
-    },
-    "required": []
+    }
 }

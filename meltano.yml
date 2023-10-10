@@ -40,3 +40,15 @@ plugins:
       label: Production Point of Deployment
       description: |
         The production point of deployment for your organization instance. 1 (US) or 2 (EU).
+    - name: flattening_enabled
+      kind: boolean
+      value: false
+      label: flatten the records
+      description: |
+        to enable schema flattening and automatically expand nested properties.
+    - name: flattening_max_depth
+      kind: integer
+      value: 0
+      label: depth of flattening
+      description: |
+        The max depth to flatten schemas.

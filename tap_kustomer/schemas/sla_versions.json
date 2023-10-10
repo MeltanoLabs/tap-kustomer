@@ -51,15 +51,13 @@
                     "type": [
                         "object",
                         "null"
-                    ],
-                    "required": []
+                    ]
                 },
                 "criteria": {
                     "type": [
                         "object",
                         "null"
-                    ],
-                    "required": []
+                    ]
                 },
                 "createdAt": {
                     "type": [
@@ -93,8 +91,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -114,11 +111,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdBy": {
                     "type": [
@@ -138,8 +133,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -159,11 +153,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "sla": {
                     "type": [
@@ -183,8 +175,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -204,15 +195,11 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 }
-            },
-            "required": []
+            }
         }
-    },
-    "required": []
+    }
 }

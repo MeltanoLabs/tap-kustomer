@@ -96,8 +96,7 @@
                                 "null"
                             ]
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "verifiedEmailStatus": {
                     "type": [
@@ -109,7 +108,13 @@
                     "type": [
                         "array",
                         "null"
-                    ]
+                    ],
+                    "items": {
+                        "type":[
+                            "string",
+                            "null"
+                        ]
+                    }
                 },
                 "roles": {
                     "type": [
@@ -156,8 +161,7 @@
                 "isEmailValid": {
                     "type": "boolean"
                 }
-            },
-            "required": []
+            }
         },
         "relationships": {
             "type": [
@@ -183,8 +187,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -204,11 +207,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "createdBy": {
                     "type": [
@@ -228,8 +229,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -249,11 +249,9 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 },
                 "modifiedBy": {
                     "type": [
@@ -273,8 +271,7 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         },
                         "data": {
                             "type": [
@@ -294,14 +291,11 @@
                                         "null"
                                     ]
                                 }
-                            },
-                            "required": []
+                            }
                         }
-                    },
-                    "required": []
+                    }
                 }
-            },
-            "required": []
+            }
         },
         "links": {
             "type": [
@@ -315,9 +309,7 @@
                         "null"
                     ]
                 }
-            },
-            "required": []
+            }
         }
-    },
-    "required": []
+    }
 }
