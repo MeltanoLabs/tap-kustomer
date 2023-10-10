@@ -154,10 +154,16 @@ class MessagesStream(CustomerSearchStream):
                     row["attributes"]["meta"][meta_key] = [{"contact": value}]
 
             # handle string / int response by api
+            if row["attributes"].get("error", {}).get("status"):
+                row["attributes"]["error"]["status"] = str(
+                    row["attributes"]["error"].get("status", ""),
+                )
+
             if row["attributes"].get("error", {}).get("meta"):
                 row["attributes"]["error"]["meta"]["appErrorCode"] = str(
                     row["attributes"]["error"]["meta"].get("appErrorCode", ""),
                 )
+
             if row["attributes"].get("error", {}):
                 row["attributes"]["error"]["code"] = str(
                     row["attributes"]["error"].get("code", ""),
