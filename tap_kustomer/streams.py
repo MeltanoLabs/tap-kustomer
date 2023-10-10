@@ -296,4 +296,6 @@ class CustomAttributesStream(KustomerStream):
         row["attributes"]["properties"] = [
             v for _, v in row["attributes"]["properties"].items()
         ]
+
+        row["updated_at"] = row["attributes"]["updatedAt"]
         return row
