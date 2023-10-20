@@ -239,6 +239,12 @@ class UsersStream(KustomerStream):
     schema_filepath = SCHEMAS_DIR / "users.json"
 
 
+class QueueStream(KustomerStream):
+    name = "queues"
+    path = "routing/queues"
+    schema_filepath = SCHEMAS_DIR / "queues.json"
+
+
 # -----------------------------------------------------------------
 # Child streams
 # -----------------------------------------------------------------

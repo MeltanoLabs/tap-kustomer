@@ -28,6 +28,7 @@ STREAM_TYPES = [
     streams.UsersStream,
     streams.ResourceStream,
     streams.CustomAttributesStream,
+    streams.QueueStream,
 ]
 
 
