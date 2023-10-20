@@ -158,8 +158,8 @@
                                             "array",
                                             "null"
                                         ],
-                                        "items":{
-                                            "type":[
+                                        "items": {
+                                            "type": [
                                                 "string",
                                                 "null"
                                             ]
@@ -170,8 +170,8 @@
                                             "array",
                                             "null"
                                         ],
-                                        "items":{
-                                            "type":[
+                                        "items": {
+                                            "type": [
                                                 "string",
                                                 "null"
                                             ]
@@ -1519,7 +1519,7 @@
                                         "null"
                                     ]
                                 },
-                                "twitter-dm":{
+                                "twitter-dm": {
                                     "type": [
                                         "integer",
                                         "null"
@@ -2064,37 +2064,37 @@
                                 "null"
                             ]
                         },
-                        "confluenceLinkUrl":{
+                        "confluenceLinkUrl": {
                             "type": [
                                 "string",
                                 "null"
                             ]
                         },
-                        "top50DestinationBool":{
+                        "top50DestinationBool": {
                             "type": [
                                 "boolean",
                                 "null"
                             ]
                         },
-                        "contactRateAtRequestDateNum":{
+                        "contactRateAtRequestDateNum": {
                             "type": [
                                 "number",
                                 "null"
                             ]
                         },
-                        "refundRateAtRequestDateNum":{
+                        "refundRateAtRequestDateNum": {
                             "type": [
                                 "number",
                                 "null"
                             ]
                         },
-                        "contactRateAtDoneDateNum":{
+                        "contactRateAtDoneDateNum": {
                             "type": [
                                 "number",
                                 "null"
                             ]
                         },
-                        "refundRateAtDoneDateNum":{
+                        "refundRateAtDoneDateNum": {
                             "type": [
                                 "number",
                                 "null"
@@ -2344,7 +2344,6 @@
                                             "null"
                                         ]
                                     }
-
                                 }
                             }
                         },
@@ -2851,6 +2850,25 @@
                 "pinned": {
                     "type": [
                         "boolean",
+                        "null"
+                    ]
+                },
+                "deleted": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "deletedAt": {
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "deletedBy": {
+                    "type": [
+                        "string",
                         "null"
                     ]
                 }

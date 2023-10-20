@@ -201,4 +201,5 @@ class CustomerSearchStream(KustomerStream):
             ],
             "sort": [{self.updated_at: "asc"}],
             "queryContext": self.query_context,
+            "includeDeleted": True,
         }

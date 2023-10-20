@@ -86,31 +86,6 @@ class ConversationsStream(CustomerSearchStream):
                         {"contact": value},
                     ]
 
-        # This following would be obsolete by https://github.com/meltano/sdk/issues/1995
-        if self.config.get("flattening_enabled", False):
-            for attribute_key in ["firstDone", "lastDone"]:
-                if row["attributes"][attribute_key].get("createdByTeams") is None:
-                    row["attributes"][attribute_key]["createdByTeams"] = []
-
-                if (
-                    row["attributes"][attribute_key].get(
-                        "outboundMessageCountByChannel",
-                    )
-                    is None
-                ):
-                    row["attributes"][attribute_key][
-                        "outboundMessageCountByChannel"
-                    ] = {}
-
-                if (
-                    row["attributes"][attribute_key].get("messageCountByChannel")
-                    is None
-                ):
-                    row["attributes"][attribute_key]["messageCountByChannel"] = {}
-
-            if row["attributes"]["snooze"].get("outboundMessageCountByChannel") is None:
-                row["attributes"][attribute_key]["outboundMessageCountByChannel"] = {}
-
         row["updated_at"] = row["attributes"]["updatedAt"]
         self.max_observed_timestamp = row["updated_at"]
 
