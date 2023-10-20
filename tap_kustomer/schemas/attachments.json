@@ -17,6 +17,12 @@
                 "null"
             ]
         },
+        "conversation_id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
         "updated_at": {
             "format": "date-time",
             "type": [
