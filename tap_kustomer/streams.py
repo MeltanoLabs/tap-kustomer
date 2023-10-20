@@ -53,7 +53,7 @@ class ConversationsStream(CustomerSearchStream):
     ) -> dict:
         """Return a context dictionary for child streams."""
         return {
-            "id": record["id"],
+            "conversation_id": record["id"],
         }
 
     def post_process(
@@ -253,10 +253,18 @@ class QueueStream(KustomerStream):
 class AttachmentsChildStream(KustomerStream):
     name = "attachments"
     parent_stream_type = ConversationsStream
-    path = "conversations/{id}/attachments"
+    path = "conversations/{conversation_id}/attachments"
     schema_filepath = SCHEMAS_DIR / "attachments.json"
     replication_key = None
     ignore_parent_replication_keys = True
+
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        row["conversation_id"] = context["conversation_id"]
+        return row
 
 
 class CustomAttributesStream(KustomerStream):
