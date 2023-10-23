@@ -24,6 +24,8 @@ __all__ = [
     "TagsStream",
     "TeamsStream",
     "UsersStream",
+    "QueueStream",
+    "QueueTeamRoutingStream",
     # Child streams
     "AttachmentsChildStream",
 ]
@@ -243,6 +245,12 @@ class QueueStream(KustomerStream):
     name = "queues"
     path = "routing/queues"
     schema_filepath = SCHEMAS_DIR / "queues.json"
+
+
+class QueueTeamRoutingStream(KustomerStream):
+    name = "queue_team_routing"
+    path = "routing/settings"
+    schema_filepath = SCHEMAS_DIR / "queue_team_routing.json"
 
 
 # -----------------------------------------------------------------

@@ -29,6 +29,7 @@ STREAM_TYPES = [
     streams.ResourceStream,
     streams.CustomAttributesStream,
     streams.QueueStream,
+    streams.QueueTeamRoutingStream,
 ]
 
 
