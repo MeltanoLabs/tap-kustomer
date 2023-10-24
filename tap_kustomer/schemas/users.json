@@ -24,6 +24,12 @@
                 "null"
             ]
         },
+        "deleted": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
         "attributes": {
             "type": [
                 "object",
@@ -55,12 +61,14 @@
                     ]
                 },
                 "emailVerifiedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "firstEmailVerifiedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -85,12 +93,19 @@
                     ],
                     "properties": {
                         "allowNew": {
-                            "type": "boolean"
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
                         },
                         "forceNew": {
-                            "type": "boolean"
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
                         },
                         "updatedAt": {
+                            "format": "date-time",
                             "type": [
                                 "string",
                                 "null"
@@ -104,13 +119,19 @@
                         "null"
                     ]
                 },
+                "avatarUrl": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "roleGroups": {
                     "type": [
                         "array",
                         "null"
                     ],
                     "items": {
-                        "type":[
+                        "type": [
                             "string",
                             "null"
                         ]
@@ -129,30 +150,48 @@
                     }
                 },
                 "firstLoginAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "mostRecentLoginAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "updatedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "createdAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "modifiedAt": {
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "deleted": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "deletedAt": {
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -254,6 +293,48 @@
                     }
                 },
                 "modifiedBy": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "self": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "id": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deletedBy": {
                     "type": [
                         "object",
                         "null"

@@ -240,6 +240,19 @@ class UsersStream(KustomerStream):
     path = "users"
     schema_filepath = SCHEMAS_DIR / "users.json"
 
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        if self.replication_key is not None:
+            row["updated_at"] = str(row["attributes"]["updatedAt"])
+            self.max_observed_timestamp = row["updated_at"]
+
+        if row.get("attributes", {}).get("deletedAt"):
+            row["deleted"] = True
+        return row
+
 
 class QueueStream(KustomerStream):
     name = "queues"
