@@ -180,15 +180,15 @@ class CustomerSearchStream(KustomerStream):
         if self.max_timestamp:
             greater_than = self.max_timestamp
         elif self.get_starting_timestamp(context):
-            greater_than = self.get_starting_timestamp(context)
+            greater_than = pendulum.instance(self.get_starting_timestamp(context)).isoformat()
         else:
-            greater_than = pendulum.parse(self.config["start_date"])
+            greater_than = pendulum.parse(self.config["start_date"]).isoformat()
 
         if "end_date" in self.config:
-            less_than = pendulum.parse(self.config["end_date"])
+            less_than = pendulum.parse(self.config["end_date"]).isoformat()
 
         else:
-            less_than = pendulum.now("UTC")
+            less_than = pendulum.now("UTC").isoformat()
 
         if next_page_token and next_page_token.query == "page=1&pageSize=100":
             self.max_timestamp = self.max_observed_timestamp
