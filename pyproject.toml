@@ -35,24 +35,23 @@ build-backend = "poetry.core.masonry.api"
 # CLI declaration
 tap-kustomer = 'tap_kustomer.tap:Tapkustomer.cli'
 
-[tool.black]
-max-line-length = 100
-
 [tool.ruff]
-ignore = ["ANN101", "DJ", "PD", "D102"]
 line-length = 100
-select = ["ALL"]
 target-version = "py37"
 
-[tool.ruff.flake8-import-conventions]
+[tool.ruff.lint]
+ignore = ["ANN101", "DJ", "PD", "D102", "COM812", "ISC001"]
+select = ["ALL"]
+
+[tool.ruff.lint.flake8-import-conventions]
 banned-from = ["typing"]
 
-[tool.ruff.flake8-import-conventions.extend-aliases]
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
 typing = "t"
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tap_kustomer/streams.py" = ["D101"]
 "tests/*" = ["ANN201"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"

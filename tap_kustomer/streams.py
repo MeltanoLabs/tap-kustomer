@@ -231,7 +231,5 @@ class CustomAttributesStream(KustomerStream):
         for k, v in row["attributes"]["properties"].items():
             v["id"] = k
             v["tree"] = json.dumps(v.get("tree", ""))
-        row["attributes"]["properties"] = [
-            v for _, v in row["attributes"]["properties"].items()
-        ]
+        row["attributes"]["properties"] = [v for _, v in row["attributes"]["properties"].items()]
         return row
