@@ -3,52 +3,52 @@ send_anonymous_usage_stats: true
 project_id: tap-kustomer
 default_environment: dev
 environments:
-- name: dev
-- name: production
+  - name: dev
 plugins:
   extractors:
-  - name: tap-kustomer
-    namespace: tap_kustomer
-    pip_url: -e .
-    capabilities:
-    - state
-    - catalog
-    - discover
-    - about
-    - stream-maps
-    settings:
-    - name: api_key
-      kind: password
-      label: API Key
-      description: |
-        The API_KEY to authenticate against the API service
-    - name: start_date
-      kind: date_iso8601
-      value: '2023-08-01'
-      label: Start Date
-      description: |
-        The earliest record date to sync
-    - name: end_date
-      kind: date_iso8601
-      value: '2023-08-02'
-      label: End Date
-      description: |
-        The latest record date to sync
-    - name: prod_point
-      kind: integer
-      value: 2
-      label: Production Point of Deployment
-      description: |
-        The production point of deployment for your organization instance. 1 (US) or 2 (EU).
-    - name: flattening_enabled
-      kind: boolean
-      value: false
-      label: flatten the records
-      description: |
-        to enable schema flattening and automatically expand nested properties.
-    - name: flattening_max_depth
-      kind: integer
-      value: 0
-      label: depth of flattening
-      description: |
-        The max depth to flatten schemas.
+    - name: tap-kustomer
+      namespace: tap_kustomer
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+        - about
+        - stream-maps
+      settings:
+        - name: api_key
+          kind: string
+          label: API Key
+          description: |
+            The API_KEY to authenticate against the API service
+          sensitive: true
+        - name: start_date
+          kind: date_iso8601
+          value: "2023-08-01"
+          label: Start Date
+          description: |
+            The earliest record date to sync
+        - name: end_date
+          kind: date_iso8601
+          value: "2023-08-02"
+          label: End Date
+          description: |
+            The latest record date to sync
+        - name: prod_point
+          kind: integer
+          value: 2
+          label: Production Point of Deployment
+          description: |
+            The production point of deployment for your organization instance. 1 (US) or 2 (EU).
+        - name: flattening_enabled
+          kind: boolean
+          value: false
+          label: flatten the records
+          description: |
+            to enable schema flattening and automatically expand nested properties.
+        - name: flattening_max_depth
+          kind: integer
+          value: 0
+          label: depth of flattening
+          description: |
+            The max depth to flatten schemas.

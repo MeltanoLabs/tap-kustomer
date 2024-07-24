@@ -30,6 +30,7 @@ STREAM_TYPES = [
     streams.CustomAttributesStream,
     streams.QueueStream,
     streams.QueueTeamRoutingStream,
+    streams.SnoozesStream,
 ]
 
 
