@@ -270,6 +270,7 @@ class QueueTeamRoutingStream(KustomerStream):
 class SnoozesStream(KustomerStream):
     name = "snoozes"
     path = "snoozes"
+    replication_key = None
     schema_filepath = SCHEMAS_DIR / "snoozes.json"
 
 
