@@ -11,6 +11,8 @@ from tap_kustomer.client import CustomerSearchStream, KustomerStream
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 __all__ = [
+    # Child streams
+    "AttachmentsChildStream",
     # Parent streams
     "CompaniesStream",
     "ConversationsStream",
@@ -24,8 +26,6 @@ __all__ = [
     "TagsStream",
     "TeamsStream",
     "UsersStream",
-    # Child streams
-    "AttachmentsChildStream",
 ]
 
 # -----------------------------------------------------------------
